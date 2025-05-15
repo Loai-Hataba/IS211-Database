@@ -50,6 +50,7 @@
             log_btn.TabIndex = 1;
             log_btn.Text = "Log In";
             log_btn.UseVisualStyleBackColor = true;
+            log_btn.Click += log_btn_Click;
             // 
             // Form1
             // 

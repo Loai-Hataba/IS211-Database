@@ -21,7 +21,6 @@ namespace MovieRental
 
         private void signup_btn_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

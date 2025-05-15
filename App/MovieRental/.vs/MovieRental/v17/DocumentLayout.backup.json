@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,66 +38,66 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "SignUpForm.cs",
               "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\SignUpForm.cs",
               "RelativeDocumentMoniker": "SignUpForm.cs",
               "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\SignUpForm.cs",
               "RelativeToolTip": "SignUpForm.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAwwBEAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAIA4wBYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:24:23.465Z",
+              "WhenOpened": "2025-05-15T21:53:05.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T21:52:29.761Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SignUpForm.cs [Design]",
-              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\SignUpForm.cs",
-              "RelativeDocumentMoniker": "SignUpForm.cs",
-              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\SignUpForm.cs [Design]",
-              "RelativeToolTip": "SignUpForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:24:17.057Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.cs*",
-              "RelativeToolTip": "Form1.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:22:59.398Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.cs [Design]*",
-              "RelativeToolTip": "Form1.cs [Design]*",
+              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:22:58.048Z",
+              "WhenOpened": "2025-05-15T21:52:26.437Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "Form1.Designer.cs",
-              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.Designer.cs",
-              "RelativeToolTip": "Form1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAANAAAAAAAAAA==",
+              "Title": "LogInForm.cs",
+              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\LogInForm.cs",
+              "RelativeDocumentMoniker": "LogInForm.cs",
+              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\LogInForm.cs",
+              "RelativeToolTip": "LogInForm.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:22:49.9Z",
+              "WhenOpened": "2025-05-15T21:50:58.316Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LogInForm.cs [Design]",
+              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\LogInForm.cs",
+              "RelativeDocumentMoniker": "LogInForm.cs",
+              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\LogInForm.cs [Design]",
+              "RelativeToolTip": "LogInForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T21:50:03.825Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

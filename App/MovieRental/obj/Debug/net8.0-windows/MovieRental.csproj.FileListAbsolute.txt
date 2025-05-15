@@ -16,3 +16,4 @@ G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\D
 G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.genruntimeconfig.cache
 G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\ref\MovieRental.dll
 G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.SignUpForm.resources
+G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.LogInForm.resources

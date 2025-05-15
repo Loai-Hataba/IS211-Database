@@ -13,5 +13,13 @@ namespace MovieRental
             signUpForm.Show();
             this.Hide();
         }
+
+
+        private void log_btn_Click(object sender, EventArgs e)
+        {
+            LogInForm logInForm = new LogInForm();
+            logInForm.Show();
+            this.Hide();
+        }
     }
 }
