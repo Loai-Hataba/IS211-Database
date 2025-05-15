@@ -76,6 +76,7 @@
             // textBoxName
             // 
             textBoxName.Location = new Point(200, 27);
+            textBoxName.MaxLength = 20;
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(200, 26);
             textBoxName.TabIndex = 1;
@@ -92,6 +93,7 @@
             // textBoxEmail
             // 
             textBoxEmail.Location = new Point(200, 147);
+            textBoxEmail.MaxLength = 30;
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(200, 26);
             textBoxEmail.TabIndex = 7;
@@ -108,6 +110,7 @@
             // textBoxResidenceAddress
             // 
             textBoxResidenceAddress.Location = new Point(200, 187);
+            textBoxResidenceAddress.MaxLength = 70;
             textBoxResidenceAddress.Name = "textBoxResidenceAddress";
             textBoxResidenceAddress.Size = new Size(200, 26);
             textBoxResidenceAddress.TabIndex = 9;
@@ -124,6 +127,7 @@
             // textBoxBusinessAddress
             // 
             textBoxBusinessAddress.Location = new Point(200, 227);
+            textBoxBusinessAddress.MaxLength = 70;
             textBoxBusinessAddress.Name = "textBoxBusinessAddress";
             textBoxBusinessAddress.Size = new Size(200, 26);
             textBoxBusinessAddress.TabIndex = 11;
@@ -139,7 +143,9 @@
             // 
             // textBoxPhoneNumber
             // 
+            textBoxPhoneNumber.AutoCompleteMode = AutoCompleteMode.Suggest;
             textBoxPhoneNumber.Location = new Point(200, 267);
+            textBoxPhoneNumber.MaxLength = 11;
             textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             textBoxPhoneNumber.Size = new Size(200, 26);
             textBoxPhoneNumber.TabIndex = 13;
@@ -156,9 +162,12 @@
             // textBoxCreditCard
             // 
             textBoxCreditCard.Location = new Point(200, 307);
+            textBoxCreditCard.MaxLength = 16;
             textBoxCreditCard.Name = "textBoxCreditCard";
+            textBoxCreditCard.ShortcutsEnabled = false;
             textBoxCreditCard.Size = new Size(200, 26);
             textBoxCreditCard.TabIndex = 15;
+            textBoxCreditCard.UseWaitCursor = true;
             // 
             // labelPassword
             // 
@@ -172,6 +181,7 @@
             // textBoxPassword
             // 
             textBoxPassword.Location = new Point(200, 67);
+            textBoxPassword.MaxLength = 18;
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.PasswordChar = '*';
             textBoxPassword.Size = new Size(200, 26);
@@ -189,6 +199,7 @@
             // textBoxConfirmPassword
             // 
             textBoxConfirmPassword.Location = new Point(200, 107);
+            textBoxConfirmPassword.MaxLength = 18;
             textBoxConfirmPassword.Name = "textBoxConfirmPassword";
             textBoxConfirmPassword.PasswordChar = '*';
             textBoxConfirmPassword.Size = new Size(200, 26);
@@ -208,6 +219,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnablePreventFocusChange;
             ClientSize = new Size(560, 482);
             Controls.Add(signup_btn);
             Controls.Add(labelName);
@@ -227,6 +239,7 @@
             Controls.Add(labelCreditCard);
             Controls.Add(textBoxCreditCard);
             Name = "SignUpForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sign Up";
             ResumeLayout(false);
             PerformLayout();
