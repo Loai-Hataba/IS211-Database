@@ -1,0 +1,44 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T16:36:49.696Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
