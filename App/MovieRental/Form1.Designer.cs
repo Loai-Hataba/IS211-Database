@@ -28,12 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            sign_btn = new Button();
+            log_btn = new Button();
+            SuspendLayout();
+            // 
+            // sign_btn
+            // 
+            sign_btn.Location = new Point(473, 143);
+            sign_btn.Name = "sign_btn";
+            sign_btn.Size = new Size(182, 81);
+            sign_btn.TabIndex = 0;
+            sign_btn.Text = "Sign Up";
+            sign_btn.UseVisualStyleBackColor = true;
+            sign_btn.Click += sign_btn_Click;
+            // 
+            // log_btn
+            // 
+            log_btn.Location = new Point(473, 394);
+            log_btn.Name = "log_btn";
+            log_btn.Size = new Size(182, 81);
+            log_btn.TabIndex = 1;
+            log_btn.Text = "Log In";
+            log_btn.UseVisualStyleBackColor = true;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 19F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1255, 773);
+            Controls.Add(log_btn);
+            Controls.Add(sign_btn);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button sign_btn;
+        private Button log_btn;
     }
 }

@@ -6,5 +6,12 @@ namespace MovieRental
         {
             InitializeComponent();
         }
+
+        private void sign_btn_Click(object sender, EventArgs e)
+        {
+            SignUpForm signUpForm = new SignUpForm();
+            signUpForm.Show();
+            this.Hide();
+        }
     }
 }
