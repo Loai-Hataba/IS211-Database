@@ -107,6 +107,7 @@ namespace MovieRental
     editProfileButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
     editProfileButton.FlatAppearance.BorderSize = 0;
     editProfileButton.Cursor = Cursors.Hand;
+    editProfileButton.Click += EditProfileButton_Click;
 
     // Update hover effects for Edit Profile button
     editProfileButton.MouseEnter += (s, e) => {
@@ -358,18 +359,18 @@ namespace MovieRental
             // Form properties
             Text = "Edit Profile";
             Size = new Size(400, 500);
-            StartPosition = FormStartPosition.CenterScreen;  // Center the form
-            FormBorderStyle = FormBorderStyle.FixedDialog;  // Fixed size
-            MaximizeBox = false;                           // Disable maximize button
-            MinimizeBox = true;                            // Allow minimize
-            BackColor = Color.White;
-            Padding = new Padding(20);
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = true;
+            BackColor = Color.FromArgb(44, 62, 80); // Dark blue background like other forms
 
-            // Create controls
+            // Create controls with updated styling
             Label labelName = new Label
             {
                 Text = "Name:",
-                Font = new Font("Segoe UI", 9F),
+                Font = new Font("Segoe UI", 11F),
+                ForeColor = Color.WhiteSmoke,
                 Location = new Point(20, 20),
                 Size = new Size(100, 23)
             };
@@ -377,14 +378,18 @@ namespace MovieRental
             textBoxName = new TextBox
             {
                 Location = new Point(20, 45),
-                Size = new Size(340, 23),
-                Font = new Font("Segoe UI", 9F)
+                Size = new Size(340, 30),
+                Font = new Font("Segoe UI", 11F),
+                BackColor = Color.FromArgb(52, 73, 94),
+                ForeColor = Color.WhiteSmoke,
+                BorderStyle = BorderStyle.FixedSingle
             };
 
             Label labelEmail = new Label
             {
                 Text = "Email:",
-                Font = new Font("Segoe UI", 9F),
+                Font = new Font("Segoe UI", 11F),
+                ForeColor = Color.WhiteSmoke,
                 Location = new Point(20, 80),
                 Size = new Size(100, 23)
             };
@@ -392,14 +397,18 @@ namespace MovieRental
             textBoxEmail = new TextBox
             {
                 Location = new Point(20, 105),
-                Size = new Size(340, 23),
-                Font = new Font("Segoe UI", 9F)
+                Size = new Size(340, 30),
+                Font = new Font("Segoe UI", 11F),
+                BackColor = Color.FromArgb(52, 73, 94),
+                ForeColor = Color.WhiteSmoke,
+                BorderStyle = BorderStyle.FixedSingle
             };
 
             Label labelPhone = new Label
             {
                 Text = "Phone:",
-                Font = new Font("Segoe UI", 9F),
+                Font = new Font("Segoe UI", 11F),
+                ForeColor = Color.WhiteSmoke,
                 Location = new Point(20, 140),
                 Size = new Size(100, 23)
             };
@@ -407,14 +416,18 @@ namespace MovieRental
             textBoxPhone = new TextBox
             {
                 Location = new Point(20, 165),
-                Size = new Size(340, 23),
-                Font = new Font("Segoe UI", 9F)
+                Size = new Size(340, 30),
+                Font = new Font("Segoe UI", 11F),
+                BackColor = Color.FromArgb(52, 73, 94),
+                ForeColor = Color.WhiteSmoke,
+                BorderStyle = BorderStyle.FixedSingle
             };
 
             Label labelResidence = new Label
             {
                 Text = "Residence Address:",
-                Font = new Font("Segoe UI", 9F),
+                Font = new Font("Segoe UI", 11F),
+                ForeColor = Color.WhiteSmoke,
                 Location = new Point(20, 200),
                 Size = new Size(200, 23)
             };
@@ -422,14 +435,18 @@ namespace MovieRental
             textBoxResidenceAddress = new TextBox
             {
                 Location = new Point(20, 225),
-                Size = new Size(340, 23),
-                Font = new Font("Segoe UI", 9F)
+                Size = new Size(340, 30),
+                Font = new Font("Segoe UI", 11F),
+                BackColor = Color.FromArgb(52, 73, 94),
+                ForeColor = Color.WhiteSmoke,
+                BorderStyle = BorderStyle.FixedSingle
             };
 
             Label labelBusiness = new Label
             {
                 Text = "Business Address:",
-                Font = new Font("Segoe UI", 9F),
+                Font = new Font("Segoe UI", 11F),
+                ForeColor = Color.WhiteSmoke,
                 Location = new Point(20, 260),
                 Size = new Size(200, 23)
             };
@@ -437,19 +454,22 @@ namespace MovieRental
             textBoxBusinessAddress = new TextBox
             {
                 Location = new Point(20, 285),
-                Size = new Size(340, 23),
-                Font = new Font("Segoe UI", 9F)
+                Size = new Size(340, 30),
+                Font = new Font("Segoe UI", 11F),
+                BackColor = Color.FromArgb(52, 73, 94),
+                ForeColor = Color.WhiteSmoke,
+                BorderStyle = BorderStyle.FixedSingle
             };
 
             saveButton = new Button
             {
                 Text = "Save",
-                BackColor = Color.FromArgb(0, 120, 212),
+                BackColor = Color.FromArgb(46, 204, 113), // Green color
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
-                Location = new Point(160, 400),
-                Size = new Size(100, 35),
-                Font = new Font("Segoe UI", 9F),
+                Location = new Point(20, 400),
+                Size = new Size(160, 40),
+                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
                 Cursor = Cursors.Hand
             };
             saveButton.FlatAppearance.BorderSize = 0;
@@ -457,13 +477,22 @@ namespace MovieRental
             cancelButton = new Button
             {
                 Text = "Cancel",
-                BackColor = Color.FromArgb(240, 240, 240),
+                BackColor = Color.FromArgb(231, 76, 60), // Red color
+                ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
-                Location = new Point(270, 400),
-                Size = new Size(100, 35),
-                Font = new Font("Segoe UI", 9F),
+                Location = new Point(200, 400),
+                Size = new Size(160, 40),
+                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
                 Cursor = Cursors.Hand
             };
+            cancelButton.FlatAppearance.BorderSize = 0;
+
+            // Add hover effects
+            saveButton.MouseEnter += (s, e) => saveButton.BackColor = Color.FromArgb(39, 174, 96);
+            saveButton.MouseLeave += (s, e) => saveButton.BackColor = Color.FromArgb(46, 204, 113);
+
+            cancelButton.MouseEnter += (s, e) => cancelButton.BackColor = Color.FromArgb(192, 57, 43);
+            cancelButton.MouseLeave += (s, e) => cancelButton.BackColor = Color.FromArgb(231, 76, 60);
 
             // Wire up events
             saveButton.Click += SaveButton_Click;
