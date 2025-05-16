@@ -45,12 +45,12 @@ namespace MovieRental
         private void InitializeComponent()
         {
             // Form properties
-            this.BackColor = Color.FromArgb(44, 62, 80); // Dark blue-gray background
+            this.BackColor = Color.FromArgb(44, 62, 80);
             this.WindowState = FormWindowState.Maximized;
             this.Text = "Movie Details";
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            // Navigation Bar - Add bottom margin using a spacer panel
+            // --- Navigation Bar ---
             navigationBar = new Panel
             {
                 Dock = DockStyle.Top,
@@ -59,7 +59,6 @@ namespace MovieRental
                 Padding = new Padding(10)
             };
 
-            // Back Button
             backButton = new Button
             {
                 Text = "← Back",
@@ -73,8 +72,9 @@ namespace MovieRental
             };
             backButton.FlatAppearance.BorderSize = 0;
             backButton.Click += (s, e) => this.Close();
+            backButton.MouseEnter += (s, e) => backButton.ForeColor = Color.FromArgb(52, 152, 219);
+            backButton.MouseLeave += (s, e) => backButton.ForeColor = Color.WhiteSmoke;
 
-            // Home Button
             homeButton = new Button
             {
                 Text = "🏠 Home",
@@ -88,71 +88,39 @@ namespace MovieRental
             };
             homeButton.FlatAppearance.BorderSize = 0;
             homeButton.Click += (s, e) => {
-                // Close all forms except ApplicationForm
                 foreach (Form form in Application.OpenForms)
                 {
-                    if (form is ApplicationForm)
-                    {
-                        form.Show();
-                    }
-                    else if (form != this)
-                    {
-                        form.Close();
-                    }
+                    if (form is ApplicationForm) form.Show();
+                    else if (form != this) form.Close();
                 }
                 this.Close();
             };
+            homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
+            homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;
 
-            // Add hover effects
-            backButton.MouseEnter += (s, e) => {
-                backButton.ForeColor = Color.FromArgb(52, 152, 219);
-            };
-            backButton.MouseLeave += (s, e) => {
-                backButton.ForeColor = Color.WhiteSmoke;
-            };
+            navigationBar.Controls.AddRange(new Control[] { backButton, homeButton });
 
-            homeButton.MouseEnter += (s, e) => {
-                homeButton.ForeColor = Color.FromArgb(52, 152, 219);
-            };
-            homeButton.MouseLeave += (s, e) => {
-                homeButton.ForeColor = Color.WhiteSmoke;
-            };
-
-            // Add buttons to navigation bar
-            navigationBar.Controls.Add(backButton);
-            navigationBar.Controls.Add(homeButton);
-
-            // Add bottom border to navigation bar
-            Panel borderPanel = new Panel
+            // Add spacer panel between navigation and content
+            Panel spacerPanel = new Panel
             {
-                Height = 1,
-                Dock = DockStyle.Bottom,
-                BackColor = Color.FromArgb(64, 82, 100)
+                Dock = DockStyle.Top,
+                Height = 30,
+                BackColor = Color.FromArgb(44, 62, 80) // Match form background color
             };
-            navigationBar.Controls.Add(borderPanel);
 
-           // Spacer Panel - reduced height for cleaner spacing
-Panel spacerPanel = new Panel
-{
-    Dock = DockStyle.Top,
-    Height = 30, // Adjusted height for cleaner spacing
-    BackColor = Color.FromArgb(44, 62, 80) // Match form background
-};
+            // --- Main Panel ---
+            mainPanel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(52, 73, 94),
+                Padding = new Padding(40)
+            };
 
-// Main Panel - Update padding and add top margin for spacing
-mainPanel = new Panel
-{
-    Dock = DockStyle.Fill,
-    BackColor = Color.FromArgb(52, 73, 94),
-    Padding = new Padding(60, 20, 60, 40),
-    Margin = new Padding(0, 10, 0, 0) // Add spacing below spacerPanel
-};
-
-            // Movie Image - Update location
+            // Movie Image
             movieImage = new PictureBox
             {
                 Size = new Size(400, 600),
-                Location = new Point(60, 0), // Increase left spacing
+                Location = new Point(40, 20),
                 BackColor = Color.FromArgb(34, 49, 63),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BorderStyle = BorderStyle.None
@@ -163,8 +131,8 @@ mainPanel = new Panel
             {
                 AutoSize = true,
                 Font = new Font("Segoe UI", 32F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(52, 152, 219), // Blue accent color
-                Location = new Point(520, 0), // 60 + 400 + 60
+                ForeColor = Color.FromArgb(52, 152, 219),
+                Location = new Point(480, 20),
                 MaximumSize = new Size(800, 0)
             };
 
@@ -174,14 +142,14 @@ mainPanel = new Panel
                 Text = "Description",
                 Font = new Font("Segoe UI", 14F, FontStyle.Bold),
                 ForeColor = Color.WhiteSmoke,
-                Location = new Point(520, 80),
+                Location = new Point(480, 100),
                 Size = new Size(200, 30)
             };
 
             // Description Text
             descriptionText = new RichTextBox
             {
-                Location = new Point(520, 120),
+                Location = new Point(480, 140),
                 Size = new Size(600, 300),
                 Font = new Font("Segoe UI", 12F),
                 BackColor = Color.FromArgb(34, 49, 63),
@@ -194,8 +162,8 @@ mainPanel = new Panel
             priceLabel = new Label
             {
                 Font = new Font("Segoe UI", 24F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(46, 204, 113), // Green for price
-                Location = new Point(520, 440),
+                ForeColor = Color.FromArgb(46, 204, 113),
+                Location = new Point(480, 460),
                 Size = new Size(200, 40)
             };
 
@@ -203,34 +171,30 @@ mainPanel = new Panel
             availabilityLabel = new Label
             {
                 Font = new Font("Segoe UI", 14F, FontStyle.Bold),
-                Location = new Point(520, 490),
-                Size = new Size(200, 30),
-                ForeColor = Color.WhiteSmoke
+                Location = new Point(480, 510),
+                Size = new Size(200, 30)
             };
 
             // Add to Cart Button
             addToCartButton = new Button
             {
                 Text = "Add to Cart",
-                BackColor = Color.FromArgb(13, 110, 253), // Bootstrap-like blue
+                BackColor = Color.FromArgb(52, 152, 219),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Segoe UI", 12F, FontStyle.Bold),
                 Size = new Size(200, 50),
-                Location = new Point(520, 540),
+                Location = new Point(480, 560),
                 Cursor = Cursors.Hand
             };
             addToCartButton.FlatAppearance.BorderSize = 0;
+            addToCartButton.Click += AddToCartButton_Click;
 
-            // Add hover effect to button
-            addToCartButton.MouseEnter += (s, e) => {
-                addToCartButton.BackColor = Color.FromArgb(11, 94, 215);
-            };
-            addToCartButton.MouseLeave += (s, e) => {
-                addToCartButton.BackColor = Color.FromArgb(13, 110, 253);
-            };
+            // Add hover effects
+            addToCartButton.MouseEnter += (s, e) => addToCartButton.BackColor = Color.FromArgb(41, 128, 185);
+            addToCartButton.MouseLeave += (s, e) => addToCartButton.BackColor = Color.FromArgb(52, 152, 219);
 
-            // Add controls to panel
+            // Add controls to mainPanel
             mainPanel.Controls.AddRange(new Control[] {
                 movieImage,
                 titleLabel,
@@ -241,10 +205,15 @@ mainPanel = new Panel
                 addToCartButton
             });
 
-            // Add panels to form in correct order
+            // Final Form Setup
             Controls.Add(mainPanel);
-            Controls.Add(spacerPanel);
+            Controls.Add(spacerPanel);    // Add spacer between nav and main panel
             Controls.Add(navigationBar);
+
+            // Handle resize
+            this.Resize += (s, e) => {
+                // Adjust controls if needed on resize
+            };
         }
 
         private void LoadMovieDetails()
