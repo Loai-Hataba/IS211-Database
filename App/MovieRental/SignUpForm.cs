@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 namespace MovieRental
 {
     public partial class SignUpForm : Form
@@ -43,7 +44,7 @@ namespace MovieRental
             }
 
             // Validate email format
-            if (!textBoxEmail.Text.Contains("@"))
+            if (!textBoxEmail.Text.Contains("@") || ! textBoxEmail.Text.Contains("."))
             {
                 MessageBox.Show("Email must contain '@'.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -75,12 +76,20 @@ namespace MovieRental
                 return;
             }
 
+            // Check if the email already exists in the database 
+            // TODO : 
+
+            // insert the user into the database TODO : 
+            //SqlConnection connection = new SqlConnection("your_connection_string_here");
+            //connection.Open();
+            //SqlCommand command = new SqlCommand("INSERT INTO Users (Name, Password, Email, ResidenceAddress, BusinessAddress, PhoneNumber, CreditCard) VALUES (@Name, @Password, @Email, @ResidenceAddress, @BusinessAddress, @PhoneNumber, @CreditCard)", connection);
+            //command.executeNonQuery();
+            //connection.Close();
             // If all validations pass
             MessageBox.Show("Sign up successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         // Helper method to check password strength
-        private bool IsStrongPassword(string password)
+        private static bool IsStrongPassword(string password)
         {
             if (password.Length < 8)
                 return false;
@@ -94,6 +103,8 @@ namespace MovieRental
                 return false;
             return true;
         }
+
     }
-    
+ 
+       
 }

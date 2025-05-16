@@ -23,6 +23,7 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label labelConfirmPassword;
         private System.Windows.Forms.TextBox textBoxConfirmPassword;
+        private System.Windows.Forms.Label headerLabel;
 
         /// <summary>  
         /// Clean up any resources being used.  
@@ -62,174 +63,212 @@
             labelConfirmPassword = new Label();
             textBoxConfirmPassword = new TextBox();
             signup_btn = new Button();
+            headerLabel = new Label();
             SuspendLayout();
+            // 
+            // headerLabel
+            // 
+            headerLabel.AutoSize = true;
+            headerLabel.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            headerLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
+            headerLabel.Location = new System.Drawing.Point(120, 15);
+            headerLabel.Name = "headerLabel";
+            headerLabel.Size = new System.Drawing.Size(300, 60);
+            headerLabel.TabIndex = 0;
+            headerLabel.Text = "Sign Up";
             // 
             // labelName
             // 
             labelName.AutoSize = true;
-            labelName.Location = new Point(50, 30);
+            labelName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            labelName.ForeColor = System.Drawing.Color.White;
+            labelName.Location = new System.Drawing.Point(50, 90);
             labelName.Name = "labelName";
-            labelName.Size = new Size(48, 19);
-            labelName.TabIndex = 0;
+            labelName.Size = new System.Drawing.Size(77, 32);
+            labelName.TabIndex = 1;
             labelName.Text = "Name:";
             // 
             // textBoxName
             // 
-            textBoxName.Location = new Point(200, 27);
+            textBoxName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            textBoxName.Location = new System.Drawing.Point(250, 87);
             textBoxName.MaxLength = 20;
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(200, 26);
-            textBoxName.TabIndex = 1;
+            textBoxName.Size = new System.Drawing.Size(250, 39);
+            textBoxName.TabIndex = 2;
             // 
             // labelEmail
             // 
             labelEmail.AutoSize = true;
-            labelEmail.Location = new Point(50, 150);
+            labelEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            labelEmail.ForeColor = System.Drawing.Color.White;
+            labelEmail.Location = new System.Drawing.Point(50, 140);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(44, 19);
-            labelEmail.TabIndex = 6;
+            labelEmail.Size = new System.Drawing.Size(65, 32);
+            labelEmail.TabIndex = 3;
             labelEmail.Text = "Email:";
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(200, 147);
+            textBoxEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            textBoxEmail.Location = new System.Drawing.Point(250, 137);
             textBoxEmail.MaxLength = 30;
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(200, 26);
-            textBoxEmail.TabIndex = 7;
-            // 
-            // labelResidenceAddress
-            // 
-            labelResidenceAddress.AutoSize = true;
-            labelResidenceAddress.Location = new Point(50, 190);
-            labelResidenceAddress.Name = "labelResidenceAddress";
-            labelResidenceAddress.Size = new Size(125, 19);
-            labelResidenceAddress.TabIndex = 8;
-            labelResidenceAddress.Text = "Residence Address:";
-            // 
-            // textBoxResidenceAddress
-            // 
-            textBoxResidenceAddress.Location = new Point(200, 187);
-            textBoxResidenceAddress.MaxLength = 70;
-            textBoxResidenceAddress.Name = "textBoxResidenceAddress";
-            textBoxResidenceAddress.Size = new Size(200, 26);
-            textBoxResidenceAddress.TabIndex = 9;
-            // 
-            // labelBusinessAddress
-            // 
-            labelBusinessAddress.AutoSize = true;
-            labelBusinessAddress.Location = new Point(50, 230);
-            labelBusinessAddress.Name = "labelBusinessAddress";
-            labelBusinessAddress.Size = new Size(117, 19);
-            labelBusinessAddress.TabIndex = 10;
-            labelBusinessAddress.Text = "Business Address:";
-            // 
-            // textBoxBusinessAddress
-            // 
-            textBoxBusinessAddress.Location = new Point(200, 227);
-            textBoxBusinessAddress.MaxLength = 70;
-            textBoxBusinessAddress.Name = "textBoxBusinessAddress";
-            textBoxBusinessAddress.Size = new Size(200, 26);
-            textBoxBusinessAddress.TabIndex = 11;
-            // 
-            // labelPhoneNumber
-            // 
-            labelPhoneNumber.AutoSize = true;
-            labelPhoneNumber.Location = new Point(50, 270);
-            labelPhoneNumber.Name = "labelPhoneNumber";
-            labelPhoneNumber.Size = new Size(105, 19);
-            labelPhoneNumber.TabIndex = 12;
-            labelPhoneNumber.Text = "Phone Number:";
-            // 
-            // textBoxPhoneNumber
-            // 
-            textBoxPhoneNumber.AutoCompleteMode = AutoCompleteMode.Suggest;
-            textBoxPhoneNumber.Location = new Point(200, 267);
-            textBoxPhoneNumber.MaxLength = 11;
-            textBoxPhoneNumber.Name = "textBoxPhoneNumber";
-            textBoxPhoneNumber.Size = new Size(200, 26);
-            textBoxPhoneNumber.TabIndex = 13;
-            // 
-            // labelCreditCard
-            // 
-            labelCreditCard.AutoSize = true;
-            labelCreditCard.Location = new Point(50, 310);
-            labelCreditCard.Name = "labelCreditCard";
-            labelCreditCard.Size = new Size(82, 19);
-            labelCreditCard.TabIndex = 14;
-            labelCreditCard.Text = "Credit Card:";
-            // 
-            // textBoxCreditCard
-            // 
-            textBoxCreditCard.Location = new Point(200, 307);
-            textBoxCreditCard.MaxLength = 16;
-            textBoxCreditCard.Name = "textBoxCreditCard";
-            textBoxCreditCard.ShortcutsEnabled = false;
-            textBoxCreditCard.Size = new Size(200, 26);
-            textBoxCreditCard.TabIndex = 15;
-            textBoxCreditCard.UseWaitCursor = true;
+            textBoxEmail.Size = new System.Drawing.Size(250, 39);
+            textBoxEmail.TabIndex = 4;
             // 
             // labelPassword
             // 
             labelPassword.AutoSize = true;
-            labelPassword.Location = new Point(50, 70);
+            labelPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            labelPassword.ForeColor = System.Drawing.Color.White;
+            labelPassword.Location = new System.Drawing.Point(50, 190);
             labelPassword.Name = "labelPassword";
-            labelPassword.Size = new Size(70, 19);
-            labelPassword.TabIndex = 2;
+            labelPassword.Size = new System.Drawing.Size(104, 32);
+            labelPassword.TabIndex = 5;
             labelPassword.Text = "Password:";
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Location = new Point(200, 67);
+            textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            textBoxPassword.Location = new System.Drawing.Point(250, 187);
             textBoxPassword.MaxLength = 18;
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.PasswordChar = '*';
-            textBoxPassword.Size = new Size(200, 26);
-            textBoxPassword.TabIndex = 3;
+            textBoxPassword.Size = new System.Drawing.Size(250, 39);
+            textBoxPassword.TabIndex = 6;
             // 
             // labelConfirmPassword
             // 
             labelConfirmPassword.AutoSize = true;
-            labelConfirmPassword.Location = new Point(50, 110);
+            labelConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            labelConfirmPassword.ForeColor = System.Drawing.Color.White;
+            labelConfirmPassword.Location = new System.Drawing.Point(50, 240);
             labelConfirmPassword.Name = "labelConfirmPassword";
-            labelConfirmPassword.Size = new Size(123, 19);
-            labelConfirmPassword.TabIndex = 4;
+            labelConfirmPassword.Size = new System.Drawing.Size(196, 32);
+            labelConfirmPassword.TabIndex = 7;
             labelConfirmPassword.Text = "Confirm Password:";
             // 
             // textBoxConfirmPassword
             // 
-            textBoxConfirmPassword.Location = new Point(200, 107);
+            textBoxConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            textBoxConfirmPassword.Location = new System.Drawing.Point(250, 237);
             textBoxConfirmPassword.MaxLength = 18;
             textBoxConfirmPassword.Name = "textBoxConfirmPassword";
             textBoxConfirmPassword.PasswordChar = '*';
-            textBoxConfirmPassword.Size = new Size(200, 26);
-            textBoxConfirmPassword.TabIndex = 5;
+            textBoxConfirmPassword.Size = new System.Drawing.Size(250, 39);
+            textBoxConfirmPassword.TabIndex = 8;
+            // 
+            // labelResidenceAddress
+            // 
+            labelResidenceAddress.AutoSize = true;
+            labelResidenceAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            labelResidenceAddress.ForeColor = System.Drawing.Color.White;
+            labelResidenceAddress.Location = new System.Drawing.Point(50, 290);
+            labelResidenceAddress.Name = "labelResidenceAddress";
+            labelResidenceAddress.Size = new System.Drawing.Size(210, 32);
+            labelResidenceAddress.TabIndex = 9;
+            labelResidenceAddress.Text = "Residence Address:";
+            // 
+            // textBoxResidenceAddress
+            // 
+            textBoxResidenceAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            textBoxResidenceAddress.Location = new System.Drawing.Point(250, 287);
+            textBoxResidenceAddress.MaxLength = 70;
+            textBoxResidenceAddress.Name = "textBoxResidenceAddress";
+            textBoxResidenceAddress.Size = new System.Drawing.Size(250, 39);
+            textBoxResidenceAddress.TabIndex = 10;
+            // 
+            // labelBusinessAddress
+            // 
+            labelBusinessAddress.AutoSize = true;
+            labelBusinessAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            labelBusinessAddress.ForeColor = System.Drawing.Color.White;
+            labelBusinessAddress.Location = new System.Drawing.Point(50, 340);
+            labelBusinessAddress.Name = "labelBusinessAddress";
+            labelBusinessAddress.Size = new System.Drawing.Size(202, 32);
+            labelBusinessAddress.TabIndex = 11;
+            labelBusinessAddress.Text = "Business Address:";
+            // 
+            // textBoxBusinessAddress
+            // 
+            textBoxBusinessAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            textBoxBusinessAddress.Location = new System.Drawing.Point(250, 337);
+            textBoxBusinessAddress.MaxLength = 70;
+            textBoxBusinessAddress.Name = "textBoxBusinessAddress";
+            textBoxBusinessAddress.Size = new System.Drawing.Size(250, 39);
+            textBoxBusinessAddress.TabIndex = 12;
+            // 
+            // labelPhoneNumber
+            // 
+            labelPhoneNumber.AutoSize = true;
+            labelPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            labelPhoneNumber.ForeColor = System.Drawing.Color.White;
+            labelPhoneNumber.Location = new System.Drawing.Point(50, 390);
+            labelPhoneNumber.Name = "labelPhoneNumber";
+            labelPhoneNumber.Size = new System.Drawing.Size(172, 32);
+            labelPhoneNumber.TabIndex = 13;
+            labelPhoneNumber.Text = "Phone Number:";
+            // 
+            // textBoxPhoneNumber
+            // 
+            textBoxPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            textBoxPhoneNumber.Location = new System.Drawing.Point(250, 387);
+            textBoxPhoneNumber.MaxLength = 11;
+            textBoxPhoneNumber.Name = "textBoxPhoneNumber";
+            textBoxPhoneNumber.Size = new System.Drawing.Size(250, 39);
+            textBoxPhoneNumber.TabIndex = 14;
+            // 
+            // labelCreditCard
+            // 
+            labelCreditCard.AutoSize = true;
+            labelCreditCard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            labelCreditCard.ForeColor = System.Drawing.Color.White;
+            labelCreditCard.Location = new System.Drawing.Point(50, 440);
+            labelCreditCard.Name = "labelCreditCard";
+            labelCreditCard.Size = new System.Drawing.Size(136, 32);
+            labelCreditCard.TabIndex = 15;
+            labelCreditCard.Text = "Credit Card:";
+            // 
+            // textBoxCreditCard
+            // 
+            textBoxCreditCard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            textBoxCreditCard.Location = new System.Drawing.Point(250, 437);
+            textBoxCreditCard.MaxLength = 16;
+            textBoxCreditCard.Name = "textBoxCreditCard";
+            textBoxCreditCard.Size = new System.Drawing.Size(250, 39);
+            textBoxCreditCard.TabIndex = 16;
             // 
             // signup_btn
             // 
-            signup_btn.Location = new Point(226, 360);
+            signup_btn.BackColor = System.Drawing.Color.FromArgb(52, 152, 219);
+            signup_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            signup_btn.FlatAppearance.BorderSize = 0;
+            signup_btn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            signup_btn.ForeColor = System.Drawing.Color.White;
+            signup_btn.Location = new System.Drawing.Point(250, 500);
             signup_btn.Name = "signup_btn";
-            signup_btn.Size = new Size(149, 50);
-            signup_btn.TabIndex = 16;
+            signup_btn.Size = new System.Drawing.Size(180, 50);
+            signup_btn.TabIndex = 17;
             signup_btn.Text = "Sign Up";
-            signup_btn.UseVisualStyleBackColor = true;
+            signup_btn.UseVisualStyleBackColor = false;
             signup_btn.Click += signup_btn_Click;
             // 
             // SignUpForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 19F);
-            AutoScaleMode = AutoScaleMode.Font;
-            AutoValidate = AutoValidate.EnablePreventFocusChange;
-            ClientSize = new Size(560, 482);
-            Controls.Add(signup_btn);
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.FromArgb(44, 62, 80);
+            ClientSize = new System.Drawing.Size(600, 580);
+            Controls.Add(headerLabel);
             Controls.Add(labelName);
             Controls.Add(textBoxName);
+            Controls.Add(labelEmail);
+            Controls.Add(textBoxEmail);
             Controls.Add(labelPassword);
             Controls.Add(textBoxPassword);
             Controls.Add(labelConfirmPassword);
             Controls.Add(textBoxConfirmPassword);
-            Controls.Add(labelEmail);
-            Controls.Add(textBoxEmail);
             Controls.Add(labelResidenceAddress);
             Controls.Add(textBoxResidenceAddress);
             Controls.Add(labelBusinessAddress);
@@ -238,8 +277,13 @@
             Controls.Add(textBoxPhoneNumber);
             Controls.Add(labelCreditCard);
             Controls.Add(textBoxCreditCard);
+            Controls.Add(signup_btn);
+            Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "SignUpForm";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Sign Up";
             ResumeLayout(false);
             PerformLayout();
