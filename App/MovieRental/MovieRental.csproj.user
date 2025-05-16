@@ -16,5 +16,8 @@
     <Compile Update="ucMovies.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

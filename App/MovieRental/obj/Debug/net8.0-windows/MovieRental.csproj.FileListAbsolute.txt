@@ -19,3 +19,4 @@ G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\D
 G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.LogInForm.resources
 G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.Movies.resources
 G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.ucMovies.resources
+G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.UserProfile.resources

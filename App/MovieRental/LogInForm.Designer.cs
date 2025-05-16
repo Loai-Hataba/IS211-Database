@@ -41,68 +41,58 @@
             headerLabel = new Label();
             SuspendLayout();
             // 
-            // headerLabel
-            // 
-            headerLabel.AutoSize = true;
-            headerLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            headerLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            headerLabel.Location = new System.Drawing.Point(120, 15);
-            headerLabel.Name = "headerLabel";
-            headerLabel.Size = new System.Drawing.Size(180, 54);
-            headerLabel.TabIndex = 0;
-            headerLabel.Text = "Log In";
-            // 
             // labelEmail
             // 
             labelEmail.AutoSize = true;
-            labelEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            labelEmail.ForeColor = System.Drawing.Color.White;
-            labelEmail.Location = new System.Drawing.Point(60, 80);
+            labelEmail.Font = new Font("Segoe UI", 12F);
+            labelEmail.ForeColor = Color.White;
+            labelEmail.Location = new Point(60, 80);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new System.Drawing.Size(65, 32);
+            labelEmail.Size = new Size(51, 21);
             labelEmail.TabIndex = 1;
             labelEmail.Text = "Email:";
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBoxEmail.Location = new System.Drawing.Point(180, 77);
+            textBoxEmail.Font = new Font("Segoe UI", 12F);
+            textBoxEmail.Location = new Point(180, 77);
             textBoxEmail.MaxLength = 50;
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new System.Drawing.Size(200, 39);
+            textBoxEmail.Size = new Size(200, 29);
             textBoxEmail.TabIndex = 2;
+
             // 
             // labelPassword
             // 
             labelPassword.AutoSize = true;
-            labelPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            labelPassword.ForeColor = System.Drawing.Color.White;
-            labelPassword.Location = new System.Drawing.Point(60, 140);
+            labelPassword.Font = new Font("Segoe UI", 12F);
+            labelPassword.ForeColor = Color.White;
+            labelPassword.Location = new Point(60, 140);
             labelPassword.Name = "labelPassword";
-            labelPassword.Size = new System.Drawing.Size(104, 32);
+            labelPassword.Size = new Size(79, 21);
             labelPassword.TabIndex = 3;
             labelPassword.Text = "Password:";
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBoxPassword.Location = new System.Drawing.Point(180, 137);
+            textBoxPassword.Font = new Font("Segoe UI", 12F);
+            textBoxPassword.Location = new Point(180, 137);
             textBoxPassword.MaxLength = 30;
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.PasswordChar = '*';
-            textBoxPassword.Size = new System.Drawing.Size(200, 39);
+            textBoxPassword.Size = new Size(200, 29);
             textBoxPassword.TabIndex = 4;
             // 
             // buttonLogin
             // 
-            buttonLogin.BackColor = System.Drawing.Color.FromArgb(52, 152, 219);
-            buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonLogin.BackColor = Color.FromArgb(52, 152, 219);
             buttonLogin.FlatAppearance.BorderSize = 0;
-            buttonLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            buttonLogin.ForeColor = System.Drawing.Color.White;
-            buttonLogin.Location = new System.Drawing.Point(180, 200);
+            buttonLogin.FlatStyle = FlatStyle.Flat;
+            buttonLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            buttonLogin.ForeColor = Color.White;
+            buttonLogin.Location = new Point(180, 200);
             buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new System.Drawing.Size(90, 40);
+            buttonLogin.Size = new Size(90, 40);
             buttonLogin.TabIndex = 5;
             buttonLogin.Text = "Login";
             buttonLogin.UseVisualStyleBackColor = false;
@@ -110,25 +100,36 @@
             // 
             // buttonCancel
             // 
-            buttonCancel.BackColor = System.Drawing.Color.FromArgb(231, 76, 60);
-            buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonCancel.BackColor = Color.FromArgb(231, 76, 60);
             buttonCancel.FlatAppearance.BorderSize = 0;
-            buttonCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            buttonCancel.ForeColor = System.Drawing.Color.White;
-            buttonCancel.Location = new System.Drawing.Point(290, 200);
+            buttonCancel.FlatStyle = FlatStyle.Flat;
+            buttonCancel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            buttonCancel.ForeColor = Color.White;
+            buttonCancel.Location = new Point(290, 200);
             buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new System.Drawing.Size(90, 40);
+            buttonCancel.Size = new Size(90, 40);
             buttonCancel.TabIndex = 6;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = false;
             buttonCancel.Click += buttonCancel_Click;
             // 
+            // headerLabel
+            // 
+            headerLabel.AutoSize = true;
+            headerLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            headerLabel.ForeColor = Color.WhiteSmoke;
+            headerLabel.Location = new Point(120, 15);
+            headerLabel.Name = "headerLabel";
+            headerLabel.Size = new Size(97, 37);
+            headerLabel.TabIndex = 0;
+            headerLabel.Text = "Log In";
+            // 
             // LogInForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackColor = System.Drawing.Color.FromArgb(44, 62, 80);
-            ClientSize = new System.Drawing.Size(480, 280);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(44, 62, 80);
+            ClientSize = new Size(480, 280);
             Controls.Add(headerLabel);
             Controls.Add(labelEmail);
             Controls.Add(textBoxEmail);
@@ -136,12 +137,12 @@
             Controls.Add(textBoxPassword);
             Controls.Add(buttonLogin);
             Controls.Add(buttonCancel);
-            Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Font = new Font("Segoe UI", 11F);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "LogInForm";
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Log In";
             ResumeLayout(false);
             PerformLayout();
