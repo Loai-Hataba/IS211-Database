@@ -14,6 +14,7 @@ namespace MovieRental
         public UserProfile()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             LoadRentedMovies();
         }
 
@@ -85,16 +86,62 @@ namespace MovieRental
             ResumeLayout(false);
             PerformLayout();
 
+            // Form properties
+            this.BackColor = Color.FromArgb(44, 62, 80); // Dark blue-gray background
+            this.WindowState = FormWindowState.Maximized;
+
+            // Main panel styling
+            mainPanel.BackColor = Color.FromArgb(52, 73, 94); // Matches ApplicationForm
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Padding = new Padding(40);
+
+            // Movies flow panel styling
+            moviesFlowPanel.BackColor = Color.Transparent;
+            moviesFlowPanel.Dock = DockStyle.Bottom;
+            moviesFlowPanel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Top;
+            moviesFlowPanel.AutoSize = true;
+            moviesFlowPanel.Location = new Point(40, 100);
+            moviesFlowPanel.Size = new Size(ClientSize.Width - 80, ClientSize.Height - 160);
+            moviesFlowPanel.Padding = new Padding(20);
+
+            // Title label styling
+            titleLabel.AutoSize = true;
+            titleLabel.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
+            titleLabel.ForeColor = Color.FromArgb(52, 152, 219); // Blue accent color
+            titleLabel.Location = new Point(40, 30);
+            titleLabel.Size = new Size(300, 60);
+            titleLabel.Text = "My Profile";
+
+            // Edit profile button styling
+            editProfileButton.BackColor = Color.FromArgb(13, 110, 253); // Bootstrap-like blue
+            editProfileButton.FlatStyle = FlatStyle.Flat;
+            editProfileButton.FlatAppearance.BorderSize = 0;
+            editProfileButton.Font = new Font("Segoe UI", 11F);
+            editProfileButton.ForeColor = Color.White;
+            editProfileButton.Size = new Size(150, 45);
+            editProfileButton.Location = new Point(ClientSize.Width - 190, 40);
+            editProfileButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            editProfileButton.Cursor = Cursors.Hand;
+
+            // Add hover effect to edit profile button
+            editProfileButton.MouseEnter += (s, e) => {
+                editProfileButton.BackColor = Color.FromArgb(11, 94, 215);
+            };
+            editProfileButton.MouseLeave += (s, e) => {
+                editProfileButton.BackColor = Color.FromArgb(13, 110, 253);
+            };
+
         }
 
         private Panel CreateMoviePanel(string title, DateTime rentalDate, DateTime returnDate, string status, string imageUrl = null)
         {
             Panel moviePanel = new Panel
             {
-                Size = new Size(230, 320),
-                BackColor = Color.White,
-                Margin = new Padding(10),
-                Cursor = Cursors.Hand // Add hand cursor to indicate clickability
+                Size = new Size(280, 400),
+                BackColor = Color.FromArgb(34, 49, 63), // Darker panel background
+                Margin = new Padding(15),
+                Padding = new Padding(10),
+                Cursor = Cursors.Hand
             };
 
             // Add shadow effect
@@ -110,9 +157,9 @@ namespace MovieRental
             // Movie Image
             PictureBox movieImage = new PictureBox
             {
-                Size = new Size(200, 200),
+                Size = new Size(250, 250),
                 Location = new Point(15, 15),
-                BackColor = Color.FromArgb(240, 240, 240),
+                BackColor = Color.FromArgb(44, 62, 80),
                 SizeMode = PictureBoxSizeMode.Zoom
             };
 
@@ -133,9 +180,10 @@ namespace MovieRental
             Label titleLabel = new Label
             {
                 Text = title,
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
-                Location = new Point(15, 225),
-                Size = new Size(200, 20),
+                Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                Location = new Point(15, 275),
+                Size = new Size(250, 25),
+                ForeColor = Color.White,
                 TextAlign = ContentAlignment.MiddleLeft
             };
 
@@ -143,35 +191,39 @@ namespace MovieRental
             Label rentalDateLabel = new Label
             {
                 Text = $"Rented: {rentalDate:MM/dd/yyyy}",
-                Font = new Font("Segoe UI", 9F),
-                Location = new Point(15, 250),
-                Size = new Size(200, 15),
-                ForeColor = Color.Gray
+                Font = new Font("Segoe UI", 10F),
+                Location = new Point(15, 305),
+                Size = new Size(250, 20),
+                ForeColor = Color.FromArgb(189, 195, 199)
             };
 
             // Return Date
             Label returnDateLabel = new Label
             {
                 Text = $"Return: {returnDate:MM/dd/yyyy}",
-                Font = new Font("Segoe UI", 9F),
-                Location = new Point(15, 270),
-                Size = new Size(200, 15),
-                ForeColor = Color.Gray
+                Font = new Font("Segoe UI", 10F),
+                Location = new Point(15, 330),
+                Size = new Size(250, 20),
+                ForeColor = Color.FromArgb(189, 195, 199)
             };
 
             // Status
             Label statusLabel = new Label
             {
                 Text = status,
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                Location = new Point(15, 290),
-                Size = new Size(200, 15),
-                ForeColor = status.ToLower() == "active" ? Color.Green : Color.Gray
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                Location = new Point(15, 355),
+                Size = new Size(250, 20),
+                ForeColor = status.ToLower() == "active" ? Color.FromArgb(46, 204, 113) : Color.FromArgb(189, 195, 199)
             };
 
             // Add hover effect
-            EventHandler mouseEnter = (s, e) => moviePanel.BackColor = Color.FromArgb(245, 245, 245);
-            EventHandler mouseLeave = (s, e) => moviePanel.BackColor = Color.White;
+            EventHandler mouseEnter = (s, e) => {
+                moviePanel.BackColor = Color.FromArgb(41, 58, 74);
+            };
+            EventHandler mouseLeave = (s, e) => {
+                moviePanel.BackColor = Color.FromArgb(34, 49, 63);
+            };
 
             // Add click handler for the panel
             EventHandler panelClick = (s, e) =>
@@ -398,10 +450,10 @@ namespace MovieRental
 
             // Wire up events
             saveButton.Click += SaveButton_Click;
- 
+            cancelButton.Click += CancelButton_Click;
 
             // Add controls to form
-            Controls.AddRange(new Control[] { 
+            Controls.AddRange(new Control[] {
                 labelName, textBoxName,
                 labelEmail, textBoxEmail,
                 labelPhone, textBoxPhone,
@@ -426,6 +478,11 @@ namespace MovieRental
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+        }
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         private bool ValidateInputs()
