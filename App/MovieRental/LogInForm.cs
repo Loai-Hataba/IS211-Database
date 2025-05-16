@@ -27,5 +27,10 @@ namespace MovieRental
         {
             this.Close();
         }
+
+        private void labelUsername_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
