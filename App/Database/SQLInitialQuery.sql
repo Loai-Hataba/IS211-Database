@@ -1,15 +1,4 @@
-CREATE DATABASE MovieRentalDB
-ON PRIMARY (
-    NAME = MovieRental_Data,
-    FILENAME = 'D:\Programming\SQL\IS211-Database\App\Database\MovieRental.mdf'
-	-- put the database folder path 
-)
-LOG ON (
-    NAME = MovieRental_Log,
-    FILENAME = 'D:\Programming\SQL\IS211-Database\App\Database\MovieRental.ldf'
-	-- put the database folder path 
-);
-
+CREATE DATABASE MovieRentalDB;
 
 USE MovieRentalDB;
 
