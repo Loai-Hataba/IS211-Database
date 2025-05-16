@@ -85,13 +85,6 @@ namespace MovieRental
             ResumeLayout(false);
             PerformLayout();
 
-            //// Add hover effect for edit button
-            //editProfileButton.MouseEnter += (s, e) => {
-            //    editProfileButton.BackColor = Color.FromArgb(0, 100, 180);
-            //};
-            //editProfileButton.MouseLeave += (s, e) => {
-            //    editProfileButton.BackColor = Color.FromArgb(0, 120, 212);
-            //};
         }
 
         private Panel CreateMoviePanel(string title, DateTime rentalDate, DateTime returnDate, string status, string imageUrl = null)
@@ -266,20 +259,12 @@ namespace MovieRental
 
         private void EditProfileButton_Click(object sender, EventArgs e)
         {
-            //var editForm = new EditProfileForm();
-            //if (editForm.ShowDialog() == DialogResult.OK)
-            //{
-            //    // Refresh profile data after edit
-            //}
-            var movieDetails = new MovieDetails(
-                movieId: 1,
-                title: "The Matrix",
-                description: "A computer programmer discovers that reality as he knows it is a simulation created by machines, and joins a rebellion to break free.",
-                price: 4.99m,
-                isAvailable: true,
-                imageUrl: "path/to/movie/image.jpg"
-            );
-            movieDetails.Show();
+            var editForm = new EditProfileForm();
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                // Refresh profile data after edit
+                // TODO: Implement refresh logic
+            }
         }
     }
 
@@ -301,24 +286,129 @@ namespace MovieRental
 
         private void InitializeComponent()
         {
+            // Form properties
             Text = "Edit Profile";
             Size = new Size(400, 500);
-            // Create and position controls
-            Label labelName = new Label();
-            textBoxName = new TextBox();
-            Label labelEmail = new Label();
-            textBoxEmail = new TextBox();
-            Label labelPhone = new Label();
-            textBoxPhone = new TextBox();
-            Label labelResidence = new Label();
-            textBoxResidenceAddress = new TextBox();
-            Label labelBusiness = new Label();
-            textBoxBusinessAddress = new TextBox();
-            saveButton = new Button();
+            StartPosition = FormStartPosition.CenterScreen;  // Center the form
+            FormBorderStyle = FormBorderStyle.FixedDialog;  // Fixed size
+            MaximizeBox = false;                           // Disable maximize button
+            MinimizeBox = true;                            // Allow minimize
+            BackColor = Color.White;
+            Padding = new Padding(20);
+
+            // Create controls
+            Label labelName = new Label
+            {
+                Text = "Name:",
+                Font = new Font("Segoe UI", 9F),
+                Location = new Point(20, 20),
+                Size = new Size(100, 23)
+            };
+
+            textBoxName = new TextBox
+            {
+                Location = new Point(20, 45),
+                Size = new Size(340, 23),
+                Font = new Font("Segoe UI", 9F)
+            };
+
+            Label labelEmail = new Label
+            {
+                Text = "Email:",
+                Font = new Font("Segoe UI", 9F),
+                Location = new Point(20, 80),
+                Size = new Size(100, 23)
+            };
+
+            textBoxEmail = new TextBox
+            {
+                Location = new Point(20, 105),
+                Size = new Size(340, 23),
+                Font = new Font("Segoe UI", 9F)
+            };
+
+            Label labelPhone = new Label
+            {
+                Text = "Phone:",
+                Font = new Font("Segoe UI", 9F),
+                Location = new Point(20, 140),
+                Size = new Size(100, 23)
+            };
+
+            textBoxPhone = new TextBox
+            {
+                Location = new Point(20, 165),
+                Size = new Size(340, 23),
+                Font = new Font("Segoe UI", 9F)
+            };
+
+            Label labelResidence = new Label
+            {
+                Text = "Residence Address:",
+                Font = new Font("Segoe UI", 9F),
+                Location = new Point(20, 200),
+                Size = new Size(200, 23)
+            };
+
+            textBoxResidenceAddress = new TextBox
+            {
+                Location = new Point(20, 225),
+                Size = new Size(340, 23),
+                Font = new Font("Segoe UI", 9F)
+            };
+
+            Label labelBusiness = new Label
+            {
+                Text = "Business Address:",
+                Font = new Font("Segoe UI", 9F),
+                Location = new Point(20, 260),
+                Size = new Size(200, 23)
+            };
+
+            textBoxBusinessAddress = new TextBox
+            {
+                Location = new Point(20, 285),
+                Size = new Size(340, 23),
+                Font = new Font("Segoe UI", 9F)
+            };
+
+            saveButton = new Button
+            {
+                Text = "Save",
+                BackColor = Color.FromArgb(0, 120, 212),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Location = new Point(160, 400),
+                Size = new Size(100, 35),
+                Font = new Font("Segoe UI", 9F),
+                Cursor = Cursors.Hand
+            };
+            saveButton.FlatAppearance.BorderSize = 0;
+
+            cancelButton = new Button
+            {
+                Text = "Cancel",
+                BackColor = Color.FromArgb(240, 240, 240),
+                FlatStyle = FlatStyle.Flat,
+                Location = new Point(270, 400),
+                Size = new Size(100, 35),
+                Font = new Font("Segoe UI", 9F),
+                Cursor = Cursors.Hand
+            };
+
+            // Wire up events
             saveButton.Click += SaveButton_Click;
-            cancelButton = new Button();
+ 
+
             // Add controls to form
-            Controls.AddRange(new Control[] { labelName, textBoxName, labelEmail, textBoxEmail, labelPhone, textBoxPhone, labelResidence, textBoxResidenceAddress, labelBusiness, textBoxBusinessAddress, saveButton, cancelButton });
+            Controls.AddRange(new Control[] { 
+                labelName, textBoxName,
+                labelEmail, textBoxEmail,
+                labelPhone, textBoxPhone,
+                labelResidence, textBoxResidenceAddress,
+                labelBusiness, textBoxBusinessAddress,
+                saveButton, cancelButton
+            });
         }
 
         private void LoadUserData()
@@ -331,6 +421,7 @@ namespace MovieRental
             // TODO: Validate and save user data to database
             if (ValidateInputs())
             {
+                // TODO : update the data in the database 
                 // Save changes
                 this.DialogResult = DialogResult.OK;
                 this.Close();
