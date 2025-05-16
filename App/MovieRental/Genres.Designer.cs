@@ -28,55 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            baba = new Button();
+            genresDataGrid = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)genresDataGrid).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // genresDataGrid
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(475, 188);
-            label1.MaximumSize = new Size(1000, 1000);
-            label1.MinimumSize = new Size(5, 5);
-            label1.Name = "label1";
-            label1.Size = new Size(262, 128);
-            label1.TabIndex = 0;
-            label1.Text = "koko";
-            // 
-            // baba
-            // 
-            baba.Font = new Font("Segoe UI", 20F);
-            baba.Location = new Point(509, 375);
-            baba.Name = "baba";
-            baba.Size = new Size(353, 192);
-            baba.TabIndex = 1;
-            baba.Text = "baba we mama";
-            baba.UseVisualStyleBackColor = true;
-            baba.Click += baba_click;
+            genresDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            genresDataGrid.Location = new Point(3, 3);
+            genresDataGrid.Name = "genresDataGrid";
+            genresDataGrid.Size = new Size(1344, 674);
+            genresDataGrid.TabIndex = 0;
+            genresDataGrid.AllowUserToAddRows = false;
+            genresDataGrid.AllowUserToDeleteRows = false;
+            genresDataGrid.ReadOnly = true;
+            genresDataGrid.RowTemplate.Height = 25;
             // 
             // Genres
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            Controls.Add(baba);
-            Controls.Add(label1);
+            Controls.Add(genresDataGrid);
             Name = "Genres";
             Size = new Size(1501, 885);
+            ((System.ComponentModel.ISupportInitialize)genresDataGrid).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private Button baba;
-
-        private void baba_click(object sender, EventArgs e)
-        {
-            // Handle button click event here
-            MessageBox.Show("Button clicked!");
-        }
+        private DataGridView genresDataGrid;
     }
 }

@@ -16,5 +16,13 @@ namespace MovieRental
         {
             InitializeComponent();
         }
+
+        public void loadGenres()
+        {
+            MessageBox.Show("walad!!");
+            string sql = "SELECT * FROM Genres";
+            DataTable genresTable = DatabaseManager.FetchData(sql);
+            genresDataGrid.DataSource = genresTable;
+        }
     }
 }

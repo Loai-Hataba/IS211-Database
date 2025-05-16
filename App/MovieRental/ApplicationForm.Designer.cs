@@ -31,6 +31,7 @@
             contentPanel = new Panel();
             loadGenreBtn = new Button();
             loadMovieBtn = new Button();
+            loadProfileBtn = new Button();
             SuspendLayout();
             // 
             // contentPanel
@@ -54,7 +55,7 @@
             // loadMovieBtn
             // 
             loadMovieBtn.Font = new Font("Segoe UI", 25F);
-            loadMovieBtn.Location = new Point(804, 12);
+            loadMovieBtn.Location = new Point(994, 12);
             loadMovieBtn.Name = "loadMovieBtn";
             loadMovieBtn.Size = new Size(185, 83);
             loadMovieBtn.TabIndex = 2;
@@ -62,11 +63,23 @@
             loadMovieBtn.UseVisualStyleBackColor = true;
             loadMovieBtn.Click += loadMovieBtn_Click;
             // 
+            // loadProfileBtn
+            // 
+            loadProfileBtn.Font = new Font("Segoe UI", 25F);
+            loadProfileBtn.Location = new Point(1756, 27);
+            loadProfileBtn.Name = "loadProfileBtn";
+            loadProfileBtn.Size = new Size(136, 53);
+            loadProfileBtn.TabIndex = 3;
+            loadProfileBtn.Text = "Profile";
+            loadProfileBtn.UseVisualStyleBackColor = true;
+            loadProfileBtn.Click += loadProfileBtn_Click;
+            // 
             // ApplicationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(loadProfileBtn);
             Controls.Add(loadMovieBtn);
             Controls.Add(loadGenreBtn);
             Controls.Add(contentPanel);
@@ -74,6 +87,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ApplicationForm";
             WindowState = FormWindowState.Maximized;
+            Load += ApplicationForm_Load;
             ResumeLayout(false);
         }
 
@@ -82,12 +96,13 @@
         private Panel contentPanel;
         private Button loadGenreBtn;
         private Button loadMovieBtn;
+        private Button loadProfileBtn;
 
         public void LoadUserControl(UserControl uc)
         {
             contentPanel.Controls.Clear();        // Remove any existing control
             uc.Dock = DockStyle.Fill; // Make it fill the panel
-            uc.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right; 
+            uc.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             contentPanel.Controls.Add(uc);        // Add the new control
         }
 
@@ -96,12 +111,21 @@
             // Load the Genre UserControl
             var genreControl = new Genres();
             LoadUserControl(genreControl);
+            genreControl.loadGenres(); // Call the method to load genres
         }
         public void loadMovieBtn_Click(object sender, EventArgs e)
         {
             // Load the Genre UserControl
             var genreControl = new ucMovies();
             LoadUserControl(genreControl);
+        }
+
+        public void loadProfileBtn_Click(object sender, EventArgs e)
+        {
+            // Load the Profile UserControl
+            var profileControl = new UserProfile();
+            profileControl.Show();
+            this.Hide(); // Hide the main form
         }
     }
 }

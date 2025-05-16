@@ -31,3 +31,5 @@ INSERT INTO Genres (GenreName) VALUES
 ('Thriller');
 
 Select * from Genres;
+
+INSERT INTO Genres (GenreName) VALUES ('koki');

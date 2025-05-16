@@ -16,5 +16,10 @@ namespace MovieRental
         {
             InitializeComponent();
         }
+
+        private void ApplicationForm_Load(object sender, EventArgs e)
+        {
+          
+        }
     }
 }
