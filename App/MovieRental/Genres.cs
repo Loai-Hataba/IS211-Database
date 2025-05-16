@@ -20,7 +20,7 @@ namespace MovieRental
         public void loadGenres()
         {
             MessageBox.Show("walad!!");
-            string sql = "SELECT * FROM Genres";
+            string sql = "Select * from Genres;";
             DataTable genresTable = DatabaseManager.FetchData(sql);
             genresDataGrid.DataSource = genresTable;
         }
