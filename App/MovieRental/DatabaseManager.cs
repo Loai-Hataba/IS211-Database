@@ -31,22 +31,24 @@ namespace MovieRental
         }
         public static string ConnectionString => _connectionString;
 
-        public static DataTable FetchData(string query)
+       public static List<T> FetchData<T>(string query, Func<SqlDataReader, T> mapFunction)
         {
+            var list = new List<T>();
 
-            var dt = new DataTable();
             using (var conn = GetConnection())
             {
                 conn.Open();
                 using (var cmd = new SqlCommand(query, conn))
+                using (var reader = cmd.ExecuteReader())
                 {
-                    using (var adapter = new SqlDataAdapter(cmd))
+                    while (reader.Read())
                     {
-                        adapter.Fill(dt);
+                        list.Add(mapFunction(reader));
                     }
                 }
             }
-            return dt;
+
+            return list;
         }
     }
 }

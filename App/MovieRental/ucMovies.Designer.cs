@@ -6,19 +6,13 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private FlowLayoutPanel flpMovies;
 
         /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
 
         #region Component Designer generated code
 
@@ -28,25 +22,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            nigga = new Button();
+            flpMovies = new FlowLayoutPanel();
             SuspendLayout();
             // 
-            // nigga
+            // flpMovies
             // 
-            nigga.Location = new Point(288, 154);
-            nigga.Name = "nigga";
-            nigga.Size = new Size(102, 58);
-            nigga.TabIndex = 0;
-            nigga.Text = "nigga";
-            nigga.UseVisualStyleBackColor = true;
-            nigga.Click += nigga_Click;
+            flpMovies.Name = "flpMovies";
+            flpMovies.Dock = DockStyle.Fill;
+            flpMovies.FlowDirection = FlowDirection.LeftToRight;
+            flpMovies.AutoScroll = true;
+            flpMovies.WrapContents = true;
+            flpMovies.Padding = new Padding(10);
+            flpMovies.BackColor = SystemColors.MenuHighlight;
+            Controls.Add(flpMovies);
             // 
             // ucMovies
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.MenuHighlight;
-            Controls.Add(nigga);
             Name = "ucMovies";
             Size = new Size(782, 512);
             ResumeLayout(false);
@@ -54,6 +48,5 @@
 
         #endregion
 
-        private Button nigga;
     }
 }

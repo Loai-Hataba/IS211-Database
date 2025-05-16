@@ -31,7 +31,6 @@
             contentPanel = new Panel();
             loadGenreBtn = new Button();
             loadMovieBtn = new Button();
-            loadProfileBtn = new Button();
             SuspendLayout();
             // 
             // contentPanel
@@ -63,23 +62,11 @@
             loadMovieBtn.UseVisualStyleBackColor = true;
             loadMovieBtn.Click += loadMovieBtn_Click;
             // 
-            // loadProfileBtn
-            // 
-            loadProfileBtn.Font = new Font("Segoe UI", 25F);
-            loadProfileBtn.Location = new Point(1756, 27);
-            loadProfileBtn.Name = "loadProfileBtn";
-            loadProfileBtn.Size = new Size(136, 53);
-            loadProfileBtn.TabIndex = 3;
-            loadProfileBtn.Text = "Profile";
-            loadProfileBtn.UseVisualStyleBackColor = true;
-            loadProfileBtn.Click += loadProfileBtn_Click;
-            // 
             // ApplicationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
-            Controls.Add(loadProfileBtn);
             Controls.Add(loadMovieBtn);
             Controls.Add(loadGenreBtn);
             Controls.Add(contentPanel);
@@ -96,7 +83,7 @@
         private Panel contentPanel;
         private Button loadGenreBtn;
         private Button loadMovieBtn;
-        private Button loadProfileBtn;
+        
 
         public void LoadUserControl(UserControl uc)
         {
@@ -111,13 +98,22 @@
             // Load the Genre UserControl
             var genreControl = new Genres();
             LoadUserControl(genreControl);
-            genreControl.loadGenres(); // Call the method to load genres
+            List<genreItem> genreItems = genreControl.loadGenres(); // Call the method to load genres
+            foreach (var genre in genreItems)
+                {
+                    MessageBox.Show($"ID: {genre.id}\nTitle: {genre.title}\n");
+                }
         }
         public void loadMovieBtn_Click(object sender, EventArgs e)
         {
             // Load the Genre UserControl
-            var genreControl = new ucMovies();
-            LoadUserControl(genreControl);
+            var movieControl = new ucMovies();
+            LoadUserControl(movieControl);
+            List<movieItem> movieItems = movieControl.loadMovies(); // Call the method to load genres
+            foreach (var movie in movieItems)
+                {
+                    MessageBox.Show($"ID: {movie.id}\nTitle: {movie.title}\nGenre ID: {movie.genreId}\nActor ID: {movie.actorId}\nRelease Date: {movie.releaseDate}, ImagePath: {movie.imagePath}");
+                }
         }
 
         public void loadProfileBtn_Click(object sender, EventArgs e)
