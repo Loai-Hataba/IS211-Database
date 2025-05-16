@@ -119,13 +119,6 @@ namespace MovieRental
             addToCartButton.FlatAppearance.BorderSize = 0;
             addToCartButton.Click += AddToCartButton_Click;
 
-            // Add hover effects
-            addToCartButton.MouseEnter += (s, e) => {
-                addToCartButton.BackColor = Color.FromArgb(0, 100, 180);
-            };
-            addToCartButton.MouseLeave += (s, e) => {
-                addToCartButton.BackColor = Color.FromArgb(0, 120, 212);
-            };
 
             // Form properties
             Text = "Movie Details";

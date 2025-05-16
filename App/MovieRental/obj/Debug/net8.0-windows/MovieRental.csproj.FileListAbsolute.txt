@@ -39,3 +39,8 @@ D:\Programming\SQL\IS211-Database\App\MovieRental\bin\Debug\net8.0-windows\Movie
 D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.genruntimeconfig.cache
 D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\ref\MovieRental.dll
 D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.ApplicationForm.resources
+G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.ApplicationForm.resources
+G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.Genres.resources
+G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.ucMovies.resources
+G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.UserProfile.resources
+G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.MovieDetails.resources

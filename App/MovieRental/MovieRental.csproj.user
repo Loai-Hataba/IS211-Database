@@ -13,9 +13,6 @@
     <Compile Update="MovieDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Movies.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="SignUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -24,6 +21,9 @@
     </Compile>
     <Compile Update="Genres.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserProfile.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 </Project>
