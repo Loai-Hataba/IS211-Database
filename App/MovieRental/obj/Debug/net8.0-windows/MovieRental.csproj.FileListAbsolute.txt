@@ -107,3 +107,4 @@ D:\Programming\SQL\IS211-Database\App\MovieRental\bin\Debug\net8.0-windows\runti
 D:\Programming\SQL\IS211-Database\App\MovieRental\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.csproj.AssemblyReference.cache
 D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRen.968B3B99.Up2Date
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.MovieDetails.resources
