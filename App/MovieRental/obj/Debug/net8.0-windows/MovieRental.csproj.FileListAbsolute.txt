@@ -17,3 +17,25 @@ G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\D
 G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\ref\MovieRental.dll
 G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.SignUpForm.resources
 G:\FCAI\2nd Year\2nd Term\Data Base\Project\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.LogInForm.resources
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.Form1.resources
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.genres.resources
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.LogInForm.resources
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.SignUpForm.resources
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.ucMovies.resources
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.csproj.GenerateResource.cache
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.AssemblyInfoInputs.cache
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.AssemblyInfo.cs
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.csproj.CoreCompileInputs.cache
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.sourcelink.json
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.dll
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\refint\MovieRental.dll
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.pdb
+D:\Programming\SQL\IS211-Database\App\MovieRental\bin\Debug\net8.0-windows\MovieRental.exe
+D:\Programming\SQL\IS211-Database\App\MovieRental\bin\Debug\net8.0-windows\MovieRental.deps.json
+D:\Programming\SQL\IS211-Database\App\MovieRental\bin\Debug\net8.0-windows\MovieRental.runtimeconfig.json
+D:\Programming\SQL\IS211-Database\App\MovieRental\bin\Debug\net8.0-windows\MovieRental.dll
+D:\Programming\SQL\IS211-Database\App\MovieRental\bin\Debug\net8.0-windows\MovieRental.pdb
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.genruntimeconfig.cache
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\ref\MovieRental.dll
+D:\Programming\SQL\IS211-Database\App\MovieRental\obj\Debug\net8.0-windows\MovieRental.ApplicationForm.resources
