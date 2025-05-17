@@ -185,13 +185,16 @@ namespace MovieRental.ProfilePages
 
             List<movieItem> movieList = DatabaseManager.FetchData(query, reader => new movieItem
             {
-                id = reader.GetInt32(0),
-                title = reader.GetString(1),
-                actorId = reader.GetInt32(2),
-                genreId = reader.GetInt32(3),
-                rentalCharge = reader.GetDouble(4),
-                releaseDate = reader.GetDateTime(5),
-                imagePath = reader.GetString(6)
+                id = reader.GetInt32(0),          // TapeId
+                title = reader.GetString(1),      // Title
+                description = reader.GetString(2),
+                actorId = reader.GetInt32(3),     // ActorID
+                genreId = reader.GetInt32(4),     // GenreID
+                rentalCharge = reader.GetDouble(5), // RentalCharge
+                releaseDate = reader.GetDateTime(6), // ReleaseDate
+                imagePath = reader.GetString(7),
+                // ImagePath
+                isAvailable = reader.GetBoolean(8) // IsAvailable
             });
 
             foreach (var movie in movieList)

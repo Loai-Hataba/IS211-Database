@@ -4,6 +4,15 @@
     <Compile Update="ApplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AuthForms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AuthForms\LogInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AuthForms\SignUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CartPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -22,11 +31,17 @@
     <Compile Update="MovieForms\MovieForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ProfilesPages\AdminProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ProfilesPages\UserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ucMovies.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Genres.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 </Project>
