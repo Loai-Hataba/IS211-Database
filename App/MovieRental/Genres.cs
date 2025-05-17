@@ -97,34 +97,88 @@ namespace MovieRental
 
         private void SetupDataGrid()
         {
-            // Genres Grid
+            // Genres Grid basic settings
             genresGrid.Dock = DockStyle.Fill;
             genresGrid.BackgroundColor = Color.FromArgb(52, 73, 94);
             genresGrid.BorderStyle = BorderStyle.None;
             genresGrid.GridColor = Color.FromArgb(44, 62, 80);
+            
+            // Cell and row styling
+            genresGrid.RowTemplate.Height = 40;
+            genresGrid.RowTemplate.DefaultCellStyle.Padding = new Padding(5);
+            genresGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(47, 66, 85);
             genresGrid.DefaultCellStyle.BackColor = Color.FromArgb(52, 73, 94);
             genresGrid.DefaultCellStyle.ForeColor = Color.WhiteSmoke;
+            genresGrid.DefaultCellStyle.Font = new Font("Segoe UI", 11F);
             genresGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            genresGrid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            genresGrid.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Column header styling
+            genresGrid.ColumnHeadersHeight = 50;
             genresGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(34, 49, 63);
-            genresGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.WhiteSmoke;
+            genresGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            genresGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            genresGrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            genresGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             genresGrid.EnableHeadersVisualStyles = false;
+
+            // Border and selection styling
+            genresGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            genresGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
+            genresGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            genresGrid.MultiSelect = false;
+
+            // Remove unused features
             genresGrid.RowHeadersVisible = false;
             genresGrid.AllowUserToAddRows = false;
             genresGrid.AllowUserToDeleteRows = false;
+            genresGrid.AllowUserToResizeRows = false;
             genresGrid.ReadOnly = true;
-            genresGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            genresGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            genresGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            genresGrid.RowTemplate.Height = 30;
+            
+            // Initialize columns with enhanced styling
+            var idColumn = new DataGridViewTextBoxColumn
+            {
+                Name = "Id",
+                HeaderText = "ID",
+                Width = 100,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Alignment = DataGridViewContentAlignment.MiddleCenter
+                }
+            };
 
-            // Initialize grid columns
-            genresGrid.Columns.Add("Id", "ID");
-            genresGrid.Columns.Add("Title", "Genre");
-            genresGrid.Columns[0].Width = 100;
-            genresGrid.Columns[1].Width = 200;
+            var titleColumn = new DataGridViewTextBoxColumn
+            {
+                Name = "Title",
+                HeaderText = "Genre Name",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Alignment = DataGridViewContentAlignment.MiddleLeft,
+                    Padding = new Padding(10, 0, 0, 0)
+                }
+            };
 
-           
+            // Add columns to grid
+            genresGrid.Columns.AddRange(new DataGridViewColumn[] { idColumn, titleColumn });
+
+            // Add hover effect
+            genresGrid.CellMouseEnter += (s, e) =>
+            {
+                if (e.RowIndex >= 0)
+                {
+                    genresGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(57, 79, 102);
+                }
+            };
+
+            genresGrid.CellMouseLeave += (s, e) =>
+            {
+                if (e.RowIndex >= 0)
+                {
+                    genresGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = 
+                        e.RowIndex % 2 == 0 ? Color.FromArgb(52, 73, 94) : Color.FromArgb(47, 66, 85);
+                }
+            };
         }
 
         private void LoadGenres()
