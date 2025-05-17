@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using MovieRental.MovieForms;
 
 namespace MovieRental
 {
@@ -140,16 +141,26 @@ namespace MovieRental
 
         private void AddMovie_Click(object sender, EventArgs e)
         {
-            // TODO: Implement Add Movie functionality
-            MessageBox.Show("Add Movie functionality to be implemented", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var form = new AddMovieForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadAllMovies(); // Refresh the list
+                }
+            }
         }
 
         private void EditMovie_Click(object tag, EventArgs e)
         {
             if (tag is movieItem movie)
             {
-                // TODO: Open edit movie form with movie details
-                MessageBox.Show($"Editing movie: {movie.title}", "Edit Movie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (var form = new EditMovieForm(movie))
+                {
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadAllMovies(); // Refresh the list
+                    }
+                }
             }
         }
 
