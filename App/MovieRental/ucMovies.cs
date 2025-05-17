@@ -12,9 +12,28 @@ namespace MovieRental
 {
     public partial class ucMovies : UserControl
     {
+        private Label titleLabel;
+
         public ucMovies()
         {
             InitializeComponent();
+            SetupTitle();
+        }
+
+        private void SetupTitle()
+        {
+            titleLabel = new Label
+            {
+                Text = "Available Movies",
+                Font = new Font("Segoe UI", 32F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(52, 152, 219),
+                AutoSize = true,
+                Location = new Point(20, 20)
+            };
+
+            Controls.Add(titleLabel);
+            flpMovies.Location = new Point(0, titleLabel.Bottom + 20);
+            flpMovies.Height = Height - titleLabel.Bottom - 40;
         }
 
         public List<movieItem> loadMovies()

@@ -38,7 +38,7 @@ Select * from Supplier;
 
 INSERT INTO Genres (GenreName) VALUES ('koki');
 
-drop table [movie tape];
+drop table [Movie Tape];
 
 CREATE TABLE [Movie Tape] (
   [TapeId] INT PRIMARY KEY IDENTITY(1,1),

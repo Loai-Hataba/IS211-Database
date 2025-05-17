@@ -24,23 +24,24 @@
         {
             flpMovies = new FlowLayoutPanel();
             SuspendLayout();
-            // 
-            // flpMovies
-            // 
+            
+            // FlowLayoutPanel styling
             flpMovies.Name = "flpMovies";
             flpMovies.Dock = DockStyle.Fill;
             flpMovies.FlowDirection = FlowDirection.LeftToRight;
             flpMovies.AutoScroll = true;
             flpMovies.WrapContents = true;
-            flpMovies.Padding = new Padding(10);
-            flpMovies.BackColor = SystemColors.MenuHighlight;
+            flpMovies.Padding = new Padding(20);
+            // Update background color to match theme
+            flpMovies.BackColor = Color.FromArgb(52, 73, 94);
+            
             Controls.Add(flpMovies);
-            // 
-            // ucMovies
-            // 
+            
+            // UserControl properties
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.MenuHighlight;
+            // Update background color to match theme
+            BackColor = Color.FromArgb(44, 62, 80);
             Name = "ucMovies";
             Size = new Size(782, 512);
             ResumeLayout(false);
