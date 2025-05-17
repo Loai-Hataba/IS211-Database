@@ -5,6 +5,10 @@ namespace MovieRental
         public Form1()
         {
             InitializeComponent();
+            // Prevent form resizing and maximizing
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
 
         private void sign_btn_Click(object sender, EventArgs e)

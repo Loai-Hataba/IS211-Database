@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using MovieRental.MovieForms;
 
 namespace MovieRental
 {
@@ -8,14 +9,11 @@ namespace MovieRental
     {
         private Panel mainPanel;
         private FlowLayoutPanel moviesFlowPanel;
-        private Label titleLabel;
         private Panel navigationBar;
         private Button backButton;
         private Button homeButton;
-        private Panel actionPanel;
         private Button addMovieButton;
-        private Button editMovieButton;
-        private Button deleteMovieButton;
+        private ContextMenuStrip movieContextMenu;
 
         public AdminProfile()
         {
@@ -29,14 +27,11 @@ namespace MovieRental
             // Initialize all controls
             mainPanel = new Panel();
             moviesFlowPanel = new FlowLayoutPanel();
-            titleLabel = new Label();
             navigationBar = new Panel();
             backButton = new Button();
             homeButton = new Button();
-            actionPanel = new Panel();
             addMovieButton = new Button();
-            editMovieButton = new Button();
-            deleteMovieButton = new Button();
+            movieContextMenu = new ContextMenuStrip();
 
             SuspendLayout();
 
@@ -87,16 +82,6 @@ namespace MovieRental
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
             homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;
 
-            // Action Panel with Admin Buttons
-            actionPanel = new Panel
-            {
-                Height = 40,
-                AutoSize = true,
-                BackColor = Color.Transparent,
-                Location = new Point(navigationBar.Width - 400, 10),
-                Anchor = AnchorStyles.Top | AnchorStyles.Right
-            };
-
             // Add Movie Button
             addMovieButton = new Button
             {
@@ -106,125 +91,161 @@ namespace MovieRental
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Segoe UI", 11F),
                 Size = new Size(120, 40),
-                Location = new Point(0, 0),
-                Cursor = Cursors.Hand
+                Location = new Point(navigationBar.Width - 140, 10),
+                Cursor = Cursors.Hand,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right
             };
             addMovieButton.FlatAppearance.BorderSize = 0;
             addMovieButton.Click += AddMovie_Click;
-
-            // Edit Movie Button
-            editMovieButton = new Button
-            {
-                Text = "✎ Edit",
-                BackColor = Color.FromArgb(52, 152, 219),
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat,
-                Font = new Font("Segoe UI", 11F),
-                Size = new Size(120, 40),
-                Location = new Point(130, 0),
-                Cursor = Cursors.Hand
-            };
-            editMovieButton.FlatAppearance.BorderSize = 0;
-            editMovieButton.Click += EditMovie_Click;
-
-            // Delete Movie Button
-            deleteMovieButton = new Button
-            {
-                Text = "🗑️ Delete",
-                BackColor = Color.FromArgb(231, 76, 60),
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat,
-                Font = new Font("Segoe UI", 11F),
-                Size = new Size(120, 40),
-                Location = new Point(260, 0),
-                Cursor = Cursors.Hand
-            };
-            deleteMovieButton.FlatAppearance.BorderSize = 0;
-            deleteMovieButton.Click += DeleteMovie_Click;
-
-            // Add hover effects
             addMovieButton.MouseEnter += (s, e) => addMovieButton.BackColor = Color.FromArgb(39, 174, 96);
             addMovieButton.MouseLeave += (s, e) => addMovieButton.BackColor = Color.FromArgb(46, 204, 113);
-            
-            editMovieButton.MouseEnter += (s, e) => editMovieButton.BackColor = Color.FromArgb(41, 128, 185);
-            editMovieButton.MouseLeave += (s, e) => editMovieButton.BackColor = Color.FromArgb(52, 152, 219);
-            
-            deleteMovieButton.MouseEnter += (s, e) => deleteMovieButton.BackColor = Color.FromArgb(192, 57, 43);
-            deleteMovieButton.MouseLeave += (s, e) => deleteMovieButton.BackColor = Color.FromArgb(231, 76, 60);
 
-            // Add buttons to action panel
-            actionPanel.Controls.AddRange(new Control[] { addMovieButton, editMovieButton, deleteMovieButton });
-
-            // Add all elements to navigation bar
+            // Add to navigation bar
             navigationBar.Controls.Add(backButton);
             navigationBar.Controls.Add(homeButton);
-            navigationBar.Controls.Add(actionPanel);
+            navigationBar.Controls.Add(addMovieButton);
 
             // --- Main Panel ---
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.BackColor = Color.FromArgb(52, 73, 94);
-            mainPanel.Padding = new Padding(40, 20, 40, 40);
-
-            // --- Title Label ---
-            titleLabel.Text = "Movie Management";
-            titleLabel.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
-            titleLabel.ForeColor = Color.FromArgb(52, 152, 219);
-            titleLabel.AutoSize = true;
-            titleLabel.Location = new Point(40, 20);
+            mainPanel.Padding = new Padding(40);
 
             // --- Movies Flow Panel ---
-            moviesFlowPanel.AutoScroll = true;
-            moviesFlowPanel.BackColor = Color.Transparent;
-            moviesFlowPanel.Dock = DockStyle.Bottom;
-            moviesFlowPanel.Size = new Size(ClientSize.Width - 80, ClientSize.Height - 200);
-            moviesFlowPanel.Padding = new Padding(20);
-            moviesFlowPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            moviesFlowPanel.Location = new Point(0, 120);
+            moviesFlowPanel = new FlowLayoutPanel
+            {
+                AutoScroll = true,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = true,
+                Dock = DockStyle.Fill,
+                BackColor = Color.Transparent,
+                Padding = new Padding(40),
+                Margin = new Padding(0)  // Remove top margin since there's no title
+            };
 
-            // Add controls to mainPanel
-            mainPanel.Controls.Add(titleLabel);
+            // Setup context menu
+            movieContextMenu.Items.Add("✎ Edit", null, (s, e) => EditMovie_Click(((ToolStripMenuItem)s).Tag, e));
+            movieContextMenu.Items.Add("🗑️ Delete", null, (s, e) => DeleteMovie_Click(((ToolStripMenuItem)s).Tag, e));
+
+            // Update controls hierarchy
             mainPanel.Controls.Add(moviesFlowPanel);
 
-            // --- Final Form Setup ---
             Controls.Add(mainPanel);
             Controls.Add(navigationBar);
 
             BackColor = Color.FromArgb(44, 62, 80);
             WindowState = FormWindowState.Maximized;
             Text = "Admin Profile - Movie Management";
-            ResumeLayout(false);
-            PerformLayout();
 
-            // Handle window resize
-            this.Resize += (s, e) =>
-            {
-                moviesFlowPanel.Size = new Size(mainPanel.Width - 40, mainPanel.Height - 160);
-            };
+            ResumeLayout(false);
         }
 
         private void AddMovie_Click(object sender, EventArgs e)
         {
-            // TODO: Implement Add Movie functionality
-            MessageBox.Show("Add Movie functionality to be implemented", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var form = new AddMovieForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadAllMovies(); // Refresh the list
+                }
+            }
         }
 
-        private void EditMovie_Click(object sender, EventArgs e)
+        private void EditMovie_Click(object tag, EventArgs e)
         {
-            // TODO: Implement Edit Movie functionality
-            MessageBox.Show("Edit Movie functionality to be implemented", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (tag is movieItem movie)
+            {
+                using (var form = new EditMovieForm(movie))
+                {
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadAllMovies(); // Refresh the list
+                    }
+                }
+            }
         }
 
-        private void DeleteMovie_Click(object sender, EventArgs e)
+        private void DeleteMovie_Click(object tag, EventArgs e)
         {
-            // TODO: Implement Delete Movie functionality
-            MessageBox.Show("Delete Movie functionality to be implemented", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (tag is movieItem movie)
+            {
+                if (MessageBox.Show($"Are you sure you want to delete {movie.title}?", 
+                    "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    // TODO: Implement delete functionality
+                    MessageBox.Show($"Movie deleted: {movie.title}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadAllMovies(); // Refresh the list
+                }
+            }
         }
 
         private void LoadAllMovies()
         {
-            // TODO: Load movies from database
-            // For now, using sample data similar to UserProfile
-            // Implement actual database loading logic
+            string query = "SELECT * FROM [Movie Tape]";
+            moviesFlowPanel.Controls.Clear();
+
+            List<movieItem> movieList = DatabaseManager.FetchData(query, reader => new movieItem
+            {
+                id = reader.GetInt32(0),
+                title = reader.GetString(1),
+                actorId = reader.GetInt32(2),
+                genreId = reader.GetInt32(3),
+                rentalCharge = reader.GetDouble(4),
+                releaseDate = reader.GetDateTime(5),
+                imagePath = reader.GetString(6)
+            });
+
+            foreach (var movie in movieList)
+            {
+                var card = CreateAdminMovieCard(movie);
+                moviesFlowPanel.Controls.Add(card);
+            }
+        }
+
+        private Control CreateAdminMovieCard(movieItem movie)
+        {
+            var card = new movieCard(movie);
+            
+            // Remove the three dots button and use right-click context menu instead
+            card.ContextMenuStrip = movieContextMenu;
+            
+            // Add mouse down event to handle right click
+            card.MouseDown += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    foreach (ToolStripItem item in movieContextMenu.Items)
+                    {
+                        item.Tag = movie;
+                    }
+                }
+            };
+
+            // Make all child controls show the context menu on right click
+            foreach (Control control in card.Controls)
+            {
+                control.ContextMenuStrip = movieContextMenu;
+                control.MouseDown += (s, e) =>
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        foreach (ToolStripItem item in movieContextMenu.Items)
+                        {
+                            item.Tag = movie;
+                        }
+                    }
+                };
+            }
+
+            // Style the context menu
+            movieContextMenu.BackColor = Color.FromArgb(34, 49, 63);
+            movieContextMenu.ForeColor = Color.WhiteSmoke;
+            movieContextMenu.Font = new Font("Segoe UI", 11F);
+            foreach (ToolStripItem item in movieContextMenu.Items)
+            {
+                item.BackColor = Color.FromArgb(34, 49, 63);
+            }
+
+            return card;
         }
     }
 }

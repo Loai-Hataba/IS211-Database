@@ -24,7 +24,7 @@ namespace MovieRental
         {
             // Form styling
             this.BackColor = Color.FromArgb(44, 62, 80);  // Dark blue-gray background
-            
+
             // Create header panel with shadow effect
             headerPanel = new Panel
             {
@@ -79,14 +79,17 @@ namespace MovieRental
             // Create user profile button
             userProfileButton = CreateIconButton("👤", "Profile");
             userProfileButton.Margin = new Padding(10, 0, 0, 0);
-            userProfileButton.Click += (s, e) => {
-                var profileForm = new UserProfile();
+            userProfileButton.Click += (s, e) =>
+            {
+                var profileForm = new AdminProfile();
                 profileForm.Show();
             };
 
             // Create cart button
             cartButton = CreateIconButton("🛒", "Cart");
             cartButton.Margin = new Padding(10, 0, 0, 0);
+            // Add this line to connect the click event
+            cartButton.Click += cartButton_Click;
 
             // Add buttons to right panel
             rightButtonsPanel.Controls.Add(userProfileButton);
@@ -134,7 +137,7 @@ namespace MovieRental
 
             headerPanel.Controls.Remove(userProfileButton);
             headerPanel.Controls.Remove(cartButton);
-            
+
             headerPanel.Controls.Add(rightButtonsPanel);
             headerPanel.Controls.Add(titleLabel);
             headerPanel.Controls.Add(navigationPanel);
@@ -184,11 +187,13 @@ namespace MovieRental
 
         private void AddButtonHoverEffect(Button button)
         {
-            button.MouseEnter += (s, e) => {
+            button.MouseEnter += (s, e) =>
+            {
                 button.ForeColor = Color.FromArgb(52, 152, 219);  // Primary blue color
                 button.Font = new Font(button.Font, FontStyle.Bold);
             };
-            button.MouseLeave += (s, e) => {
+            button.MouseLeave += (s, e) =>
+            {
                 if (activeIndicator.Location.X != button.Location.X)
                 {
                     button.ForeColor = Color.WhiteSmoke;
@@ -243,10 +248,16 @@ namespace MovieRental
             activeIndicator.BringToFront();
         }
 
+        private void cartButton_Click(object sender, EventArgs e)
+        {
+            // Handle cart button click
+            var cartForm = new CartPage();
+            cartForm.Show();
+        }
         private void ApplicationForm_Load(object sender, EventArgs e)
         {
             // loadMovieBtn_Click();
-          
+
         }
     }
 }
