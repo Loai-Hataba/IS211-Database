@@ -28,12 +28,12 @@ namespace MovieRental
                 Font = new Font("Segoe UI", 32F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(52, 152, 219),
                 AutoSize = true,
-                Location = new Point(20, 20)
+                Location = new Point(40, 30)  // Increased spacing from top
             };
 
             Controls.Add(titleLabel);
-            flpMovies.Location = new Point(0, titleLabel.Bottom + 20);
-            flpMovies.Height = Height - titleLabel.Bottom - 40;
+            flpMovies.Location = new Point(0, titleLabel.Bottom + 30);  // Increased spacing after title
+            flpMovies.Height = Height - titleLabel.Bottom - 60;  // Adjusted height calculation
         }
 
         public List<movieItem> loadMovies()
