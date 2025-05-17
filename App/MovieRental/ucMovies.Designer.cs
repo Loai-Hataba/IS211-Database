@@ -31,6 +31,7 @@
             flpMovies.Name = "flpMovies";
             flpMovies.Dock = DockStyle.Left;
             flpMovies.Width = 1700; // Adjusted width
+            flpMovies.Height = 800; // Adjusted width
             flpMovies.FlowDirection = FlowDirection.LeftToRight;
             flpMovies.AutoScroll = true;
             flpMovies.WrapContents = true;

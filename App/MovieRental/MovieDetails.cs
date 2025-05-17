@@ -9,7 +9,7 @@ namespace MovieRental
         private PictureBox movieImage;
         private Label titleLabel;
         private Label descriptionLabel;
-        private RichTextBox descriptionText;
+        private Label descriptionText;
         private Label priceLabel;
         private Label availabilityLabel;
         private Button addToCartButton;
@@ -146,8 +146,8 @@ namespace MovieRental
                 Size = new Size(200, 30)
             };
 
-            // Description Text
-            descriptionText = new RichTextBox
+            // Description Label
+            descriptionText = new Label
             {
                 Location = new Point(480, 140),
                 Size = new Size(600, 300),
@@ -155,7 +155,6 @@ namespace MovieRental
                 BackColor = Color.FromArgb(34, 49, 63),
                 ForeColor = Color.WhiteSmoke,
                 BorderStyle = BorderStyle.None,
-                ReadOnly = true
             };
 
             // Price Label
@@ -172,7 +171,8 @@ namespace MovieRental
             {
                 Font = new Font("Segoe UI", 14F, FontStyle.Bold),
                 Location = new Point(480, 510),
-                Size = new Size(200, 30)
+                Size = new Size(300, 30),  // Increased width from 200 to 300
+                AutoSize = true // Allow the label to adjust its size based on content
             };
 
             // Add to Cart Button
@@ -188,6 +188,7 @@ namespace MovieRental
                 Cursor = Cursors.Hand
             };
             addToCartButton.FlatAppearance.BorderSize = 0;
+            //!FIXME:
             addToCartButton.Click += AddToCartButton_Click;
 
             // Add hover effects
@@ -223,6 +224,8 @@ namespace MovieRental
             priceLabel.Text = $"${Price:F2}";
 
             // Set availability status with color coding
+            availabilityLabel.AutoSize = true; // Allow label to expand
+            availabilityLabel.MaximumSize = new Size(400, 0); // Set maximum width, 0 height means unlimited
             availabilityLabel.Text = IsAvailable ? "Available for Rent" : "Currently Unavailable";
             availabilityLabel.ForeColor = IsAvailable 
                 ? Color.FromArgb(46, 204, 113)  // Green for available
