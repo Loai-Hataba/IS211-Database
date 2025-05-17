@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using MovieRental.MovieForms;
 
-namespace MovieRental
+namespace MovieRental.ProfilePages
 {
     public partial class AdminProfile : Form
     {

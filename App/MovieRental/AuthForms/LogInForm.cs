@@ -140,8 +140,9 @@ namespace MovieRental.AuthForms
 
             // TODO: Add database validation here
             MessageBox.Show("Logged In successfully", "Log In", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            var profilePage = new UserProfile();
-            profilePage.Show();
+
+            var applicationForm = new ApplicationForm();
+            applicationForm.Show();
             this.Close();
         }
 

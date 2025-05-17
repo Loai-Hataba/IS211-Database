@@ -1,4 +1,5 @@
-﻿namespace MovieRental
+﻿using MovieRental.ProfilePages;
+namespace MovieRental
 {
     partial class ApplicationForm
     {
@@ -83,7 +84,7 @@
         private Panel contentPanel;
         private Button loadGenreBtn;
         private Button loadMovieBtn;
-        
+
 
         public void LoadUserControl(UserControl uc)
         {
