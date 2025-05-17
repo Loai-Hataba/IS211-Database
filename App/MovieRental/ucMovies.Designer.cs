@@ -35,7 +35,7 @@
             flpMovies.BackColor = Color.FromArgb(52, 73, 94);
             
             // Make the UserControl bigger
-            Size = new Size(1800, 1000);  // Increased from 782, 512
+            Size = new Size(1900, 1000);  // Increased from 782, 512
     
             Controls.Add(flpMovies);
             

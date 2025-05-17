@@ -7,14 +7,16 @@ namespace MovieRental
 {
     public class movieCard : UserControl
     {
-        private PictureBox pictureBoxPoster;
-        private Label labelTitle;
-        private Label labelGenre;
-        private Label labelPrice;
-        private Label labelYear;
+        private PictureBox pictureBoxPoster = null!;
+        private Label labelTitle = null!;
+        private Label labelGenre = null!;
+        private Label labelPrice = null!;
+        private Label labelYear = null!;
+        private readonly movieItem movie; // Add movie field to store the data
 
         public movieCard(movieItem movie)
         {
+            this.movie = movie; // Store the movie data
             InitializeComponent();
             LoadMovieData(movie);
         }
@@ -88,13 +90,17 @@ namespace MovieRental
             // Add click handler
             EventHandler cardClick = (s, e) =>
             {
+                string imageFileName = movie.imagePath;
+                string assetsPath = Path.Combine(Application.StartupPath, "..", "..", "..", "..", "Assets", imageFileName);
+                assetsPath = Path.GetFullPath(assetsPath);
+
                 var movieDetails = new MovieDetails(
-                    movieId: 1, // Replace with actual movie ID
-                    title: labelTitle.Text,
-                    description: "Get description from database", // Replace with actual description
-                    price: decimal.Parse(labelPrice.Text.Replace("Price: $", "")),
-                    isAvailable: true, // Replace with actual availability
-                    imageUrl: pictureBoxPoster.ImageLocation
+                    movieId: movie.id,
+                    title: movie.title,
+                    description: "Get description from database",
+                    price: Convert.ToDecimal(movie.rentalCharge),
+                    isAvailable: true,
+                    imageUrl: assetsPath
                 );
                 movieDetails.Show();
             };
@@ -126,8 +132,7 @@ namespace MovieRental
         private void LoadMovieData(movieItem movie)
         {
             labelTitle.Text = movie.title;
-            labelGenre.Text = $"Genre: {movie.genreId}";
-            labelPrice.Text = $"Price: ${movie.rentalCharge:F2}";
+            labelGenre.Text = $"Genre: {movie.genreId}";            labelPrice.Text = $"Price: ${movie.rentalCharge:0.00}";
             labelYear.Text = $"Released: {movie.releaseDate:yyyy}";
 
             try
