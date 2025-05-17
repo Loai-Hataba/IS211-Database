@@ -13,7 +13,7 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        
+
 
         #region Component Designer generated code
 
@@ -25,49 +25,54 @@
         {
             flpMovies = new FlowLayoutPanel();
             filterPanel = new Panel();
+            filterTitle = new Label();
+            filterPanel.SuspendLayout();
             SuspendLayout();
-            
-            // Main content panel for movies
-            flpMovies.Name = "flpMovies";
-            flpMovies.Dock = DockStyle.Left;
-            flpMovies.Width = 1700; // Adjusted width
-            flpMovies.FlowDirection = FlowDirection.LeftToRight;
+            // 
+            // flpMovies
+            // 
             flpMovies.AutoScroll = true;
-            flpMovies.WrapContents = true;
-            flpMovies.Padding = new Padding(20);
             flpMovies.BackColor = Color.FromArgb(52, 73, 94);
-            flpMovies.AutoSize = false;
-
-            // Filter Panel - will automatically fill remaining space
-            filterPanel.Dock = DockStyle.Fill; // Changed to Fill instead of Right
+            flpMovies.Dock = DockStyle.Left;
+            flpMovies.Location = new Point(0, 0);
+            flpMovies.Name = "flpMovies";
+            flpMovies.Padding = new Padding(20);
+            flpMovies.Size = new Size(1661, 950);
+            flpMovies.TabIndex = 1;
+            // 
+            // filterPanel
+            // 
             filterPanel.BackColor = Color.FromArgb(44, 62, 80);
-            filterPanel.Padding = new Padding(20);
-
-            // Add a title to the filter panel
-            Label filterTitle = new Label
-            {
-                Text = "Filters",
-                Font = new Font("Segoe UI", 20F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(52, 152, 219),
-                Dock = DockStyle.Top,
-                Height = 50,
-                TextAlign = ContentAlignment.MiddleLeft
-            };
             filterPanel.Controls.Add(filterTitle);
-            
-            Controls.Add(filterPanel);
-            Controls.Add(flpMovies);
-            
-            // UserControl properties
+            filterPanel.Dock = DockStyle.Fill;
+            filterPanel.Location = new Point(1661, 0);
+            filterPanel.Name = "filterPanel";
+            filterPanel.Padding = new Padding(20);
+            filterPanel.Size = new Size(139, 950);
+            filterPanel.TabIndex = 0;
+            // 
+            // filterTitle
+            // 
+            filterTitle.Location = new Point(0, 0);
+            filterTitle.Name = "filterTitle";
+            filterTitle.Size = new Size(100, 23);
+            filterTitle.TabIndex = 0;
+            // 
+            // ucMovies
+            // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 62, 80);
+            Controls.Add(filterPanel);
+            Controls.Add(flpMovies);
             Name = "ucMovies";
-            Size = new Size(1800, 950);
+            Size = new Size(1900, 940);
+            filterPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
+        private Label filterTitle;
     }
 }
