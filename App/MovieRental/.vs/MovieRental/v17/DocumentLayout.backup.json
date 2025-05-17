@@ -58,21 +58,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ucMovies.Designer.cs",
-              "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ucMovies.Designer.cs",
-              "RelativeDocumentMoniker": "ucMovies.Designer.cs",
-              "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ucMovies.Designer.cs",
-              "RelativeToolTip": "ucMovies.Designer.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAgwEMAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T20:27:12.303Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -83,12 +70,25 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ucMovies.Designer.cs",
+              "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ucMovies.Designer.cs",
+              "RelativeDocumentMoniker": "ucMovies.Designer.cs",
+              "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ucMovies.Designer.cs",
+              "RelativeToolTip": "ucMovies.Designer.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwB8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T20:27:12.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "ucMovies.cs [Design]",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ucMovies.cs",
               "RelativeDocumentMoniker": "ucMovies.cs",
-              "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ucMovies.cs [Design]*",
-              "RelativeToolTip": "ucMovies.cs [Design]*",
+              "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ucMovies.cs [Design]",
+              "RelativeToolTip": "ucMovies.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-17T20:26:22.126Z",
               "EditorCaption": " [Design]"
