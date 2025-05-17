@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Configuration;
-
+using MovieRental.AuthForms ;
 namespace MovieRental
 {
     internal static class Program

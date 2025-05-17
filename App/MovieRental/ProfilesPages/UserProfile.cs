@@ -2,7 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace MovieRental
+namespace MovieRental.ProfilePages
 {
     public partial class UserProfile : Form
     {
