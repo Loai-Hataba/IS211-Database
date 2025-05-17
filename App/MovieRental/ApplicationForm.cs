@@ -81,7 +81,7 @@ namespace MovieRental
             userProfileButton.Margin = new Padding(10, 0, 0, 0);
             userProfileButton.Click += (s, e) =>
             {
-                var profileForm = new UserProfile();
+                var profileForm = new AdminProfile();
                 profileForm.Show();
             };
 
