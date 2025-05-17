@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\applicationform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:applicationform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\applicationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:applicationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\applicationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:applicationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\applicationform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:applicationform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\genres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,7 +39,7 @@
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -46,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +62,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "ApplicationForm.cs [Design]",
+              "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ApplicationForm.cs",
+              "RelativeDocumentMoniker": "ApplicationForm.cs",
+              "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ApplicationForm.cs [Design]",
+              "RelativeToolTip": "ApplicationForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T20:53:55.445Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "DatabaseManager.cs",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\DatabaseManager.cs",
               "RelativeDocumentMoniker": "DatabaseManager.cs",
@@ -66,30 +82,28 @@
               "RelativeToolTip": "DatabaseManager.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAA1wDAAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:45:49.144Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T17:45:49.144Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Genres.cs [Design]",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\Genres.cs",
               "RelativeDocumentMoniker": "Genres.cs",
               "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\Genres.cs [Design]",
               "RelativeToolTip": "Genres.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T15:45:06.068Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-16T15:45:06.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ApplicationForm.Designer.cs",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ApplicationForm.Designer.cs",
               "RelativeDocumentMoniker": "ApplicationForm.Designer.cs",
               "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ApplicationForm.Designer.cs",
               "RelativeToolTip": "ApplicationForm.Designer.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAowHIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAowGQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T16:02:15.543Z",
               "EditorCaption": ""
@@ -102,14 +116,14 @@
               "RelativeDocumentMoniker": "ApplicationForm.cs",
               "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\ApplicationForm.cs",
               "RelativeToolTip": "ApplicationForm.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAPYAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAqwPYAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T18:24:54.344Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "LogInForm.cs",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\LogInForm.cs",
               "RelativeDocumentMoniker": "LogInForm.cs",
@@ -122,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Genres.cs",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\Genres.cs",
               "RelativeDocumentMoniker": "Genres.cs",
@@ -130,12 +144,11 @@
               "RelativeToolTip": "Genres.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:58:18.292Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T17:58:18.292Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -143,12 +156,11 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAB1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-16T18:36:18.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T18:36:18.914Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Genres.Designer.cs",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\Genres.Designer.cs",
               "RelativeDocumentMoniker": "Genres.Designer.cs",
@@ -156,20 +168,18 @@
               "RelativeToolTip": "Genres.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:58:12.159Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T17:58:12.159Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "LogInForm.cs [Design]",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\LogInForm.cs",
               "RelativeDocumentMoniker": "LogInForm.cs",
               "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\LogInForm.cs [Design]",
               "RelativeToolTip": "LogInForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:11:58.927Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-16T17:11:58.927Z"
             }
           ]
         }

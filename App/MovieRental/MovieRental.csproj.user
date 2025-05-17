@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="AdminProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ApplicationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CartPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form1.cs">
@@ -10,7 +16,19 @@
     <Compile Update="LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="movieCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="MovieDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MovieForms\AddMovieForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MovieForms\EditMovieForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MovieForms\MovieForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="SignUpForm.cs">
