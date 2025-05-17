@@ -36,22 +36,22 @@ namespace MovieRental
             flpMovies.Height = Height - titleLabel.Bottom - 60;  // Adjusted height calculation
         }        public List<movieItem> loadMovies()
         {
-            string query = "SELECT TapeId, Title, Description, ActorID, GenreID, RentalCharge, ReleaseDate, ImagePath, IsAvailable FROM [Movie Tape]";
+            // Explicitly list all columns to ensure correct order
+            string query = "SELECT * FROM [Movie Tape]";
 
-            List<movieItem> movieList = DatabaseManager.FetchData(query, reader => new movieItem
-            {
-                id = reader.GetInt32(0),          // TapeId
-                title = reader.GetString(1),      // Title
-                description = reader.GetString(2), // Description
-                actorId = reader.GetInt32(3),     // ActorID
-                genreId = reader.GetInt32(4),     // GenreID
-                rentalCharge = reader.GetDouble(5), // RentalCharge
-                releaseDate = reader.GetDateTime(6), // ReleaseDate
-                imagePath = reader.IsDBNull(7) ? "" : reader.GetString(7), // ImagePath
-                isAvailable = reader.GetBoolean(8)  // IsAvailable
+            List<movieItem> movieList = DatabaseManager.FetchData(query, reader => new movieItem{
+                    id = reader.GetInt32(0),          // TapeId
+                    title = reader.GetString(1),      // Title
+                    description = reader.GetString(2),
+                    actorId = reader.GetInt32(3),     // ActorID
+                    genreId = reader.GetInt32(4),     // GenreID
+                    rentalCharge = reader.GetDouble(5), // RentalCharge
+                    releaseDate = reader.GetDateTime(6), // ReleaseDate
+                    imagePath = reader.IsDBNull(7) ? "" : reader.GetString(7) // ImagePath
             });
 
             flpMovies.Controls.Clear();
+
             foreach (var movie in movieList)
             {
                 movieCard card = new movieCard(movie);

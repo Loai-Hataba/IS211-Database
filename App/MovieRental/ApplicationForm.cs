@@ -104,7 +104,7 @@ namespace MovieRental
             // Add logo/title
             Label titleLabel = new Label
             {
-                Text = "🎞️ Rented",
+                Text = "Movie Rental",
                 Font = new Font("Segoe UI", 26F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(52, 152, 219),  // Primary blue color
                 AutoSize = true,

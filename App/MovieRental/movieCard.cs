@@ -98,7 +98,8 @@ namespace MovieRental
                     movieId: movie.id,
                     title: movie.title,
                     description: movie.description,
-                    price: Convert.ToDecimal(movie.rentalCharge),                    isAvailable: movie.isAvailable,
+                    price: Convert.ToDecimal(movie.rentalCharge),
+                    isAvailable: movie.isAvailable,
                     imageUrl: assetsPath
                 );
                 movieDetails.Show();
