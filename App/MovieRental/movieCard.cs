@@ -31,10 +31,10 @@ namespace MovieRental
             labelYear = new Label();
 
             // Main Control Setup
-            this.Size = new Size(280, 400);
+            this.Size = new Size(350, 500);  // Increased from 280, 400
             this.BackColor = Color.FromArgb(34, 49, 63);
-            this.Margin = new Padding(15);
-            this.Padding = new Padding(10);
+            this.Margin = new Padding(25);    // Increased from 15
+            this.Padding = new Padding(15);   // Increased from 10
             this.Cursor = Cursors.Hand;
 
             // Add shadow effect
@@ -48,35 +48,35 @@ namespace MovieRental
             };
 
             // pictureBoxPoster
-            pictureBoxPoster.Size = new Size(250, 250);
+            pictureBoxPoster.Size = new Size(320, 320);  // Increased from 250, 250
             pictureBoxPoster.Location = new Point(15, 15);
             pictureBoxPoster.BackColor = Color.FromArgb(44, 62, 80);
             pictureBoxPoster.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxPoster.BorderStyle = BorderStyle.None;
 
             // labelTitle
-            labelTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            labelTitle.Location = new Point(15, 275);
-            labelTitle.Size = new Size(250, 25);
+            labelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold); // Increased from 14F
+            labelTitle.Location = new Point(15, 345);    // Adjusted for larger poster
+            labelTitle.Size = new Size(320, 30);         // Increased width
             labelTitle.ForeColor = Color.White;
             labelTitle.TextAlign = ContentAlignment.MiddleLeft;
 
             // labelGenre
-            labelGenre.Font = new Font("Segoe UI", 10F);
-            labelGenre.Location = new Point(15, 305);
-            labelGenre.Size = new Size(250, 20);
+            labelGenre.Font = new Font("Segoe UI", 12F); // Increased from 10F
+            labelGenre.Location = new Point(15, 380);    // Adjusted position
+            labelGenre.Size = new Size(320, 25);         // Increased size
             labelGenre.ForeColor = Color.FromArgb(189, 195, 199);
 
             // labelPrice
-            labelPrice.Font = new Font("Segoe UI", 10F);
-            labelPrice.Location = new Point(15, 330);
-            labelPrice.Size = new Size(250, 20);
+            labelPrice.Font = new Font("Segoe UI", 12F); // Increased from 10F
+            labelPrice.Location = new Point(15, 410);    // Adjusted position
+            labelPrice.Size = new Size(320, 25);         // Increased size
             labelPrice.ForeColor = Color.FromArgb(189, 195, 199);
 
             // labelYear
-            labelYear.Font = new Font("Segoe UI", 10F);
-            labelYear.Location = new Point(15, 355);
-            labelYear.Size = new Size(250, 20);
+            labelYear.Font = new Font("Segoe UI", 12F);  // Increased from 10F
+            labelYear.Location = new Point(15, 440);     // Adjusted position
+            labelYear.Size = new Size(320, 25);          // Increased size
             labelYear.ForeColor = Color.FromArgb(189, 195, 199);
 
             // Add hover effect
@@ -97,9 +97,9 @@ namespace MovieRental
                 var movieDetails = new MovieDetails(
                     movieId: movie.id,
                     title: movie.title,
-                    description: "Get description from database",
+                    description: movie.description,
                     price: Convert.ToDecimal(movie.rentalCharge),
-                    isAvailable: true,
+                    isAvailable: movie.isAvailable,
                     imageUrl: assetsPath
                 );
                 movieDetails.Show();
@@ -153,3 +153,5 @@ namespace MovieRental
         }
     }
 }
+
+

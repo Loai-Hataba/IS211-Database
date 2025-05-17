@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OIE4yySnd/M=",
+  "dgSpecHash": "mE6kmLkdUX8=",
   "success": true,
-  "projectFilePath": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
+  "projectFilePath": "d:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\loaiw\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\loaiw\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

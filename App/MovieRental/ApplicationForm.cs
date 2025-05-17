@@ -17,7 +17,7 @@ namespace MovieRental
         {
             InitializeComponent();
             CustomizeComponents();
-            // loadMovieBtn_Click(this, EventArgs.Empty); // Call Movies tab load at startup
+            loadMovieBtn_Click(this, EventArgs.Empty); // Call Movies tab load at startup
         }
 
         private void CustomizeComponents()

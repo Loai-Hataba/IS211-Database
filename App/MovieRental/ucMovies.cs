@@ -34,22 +34,20 @@ namespace MovieRental
             Controls.Add(titleLabel);
             flpMovies.Location = new Point(0, titleLabel.Bottom + 30);  // Increased spacing after title
             flpMovies.Height = Height - titleLabel.Bottom - 60;  // Adjusted height calculation
-        }
-
-        public List<movieItem> loadMovies()
+        }        public List<movieItem> loadMovies()
         {
+            // Explicitly list all columns to ensure correct order
             string query = "SELECT * FROM [Movie Tape]";
 
-            List<movieItem> movieList = DatabaseManager.FetchData(query, reader => new movieItem
-            {
-                id = reader.GetInt32(0),
-                title = reader.GetString(1),
-                actorId = reader.GetInt32(2),
-                genreId = reader.GetInt32(3),
-                rentalCharge = reader.GetDouble(4),
-                releaseDate = reader.GetDateTime(5),
-                imagePath = reader.GetString(6)
-
+            List<movieItem> movieList = DatabaseManager.FetchData(query, reader => new movieItem{
+                    id = reader.GetInt32(0),          // TapeId
+                    title = reader.GetString(1),      // Title
+                    description = reader.GetString(2),
+                    actorId = reader.GetInt32(3),     // ActorID
+                    genreId = reader.GetInt32(4),     // GenreID
+                    rentalCharge = reader.GetDouble(5), // RentalCharge
+                    releaseDate = reader.GetDateTime(6), // ReleaseDate
+                    imagePath = reader.IsDBNull(7) ? "" : reader.GetString(7) // ImagePath
             });
 
             flpMovies.Controls.Clear();
