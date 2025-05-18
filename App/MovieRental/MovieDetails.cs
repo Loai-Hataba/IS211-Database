@@ -9,7 +9,7 @@ namespace MovieRental
         private PictureBox movieImage;
         private Label titleLabel;
         private Label descriptionLabel;
-        private RichTextBox descriptionText;
+        private Label descriptionText;
         private Label priceLabel;
         private Label availabilityLabel;
         private Button addToCartButton;
@@ -147,7 +147,7 @@ namespace MovieRental
             };
 
             // Description Text
-            descriptionText = new RichTextBox
+            descriptionText = new Label
             {
                 Location = new Point(480, 140),
                 Size = new Size(600, 300),
@@ -155,7 +155,6 @@ namespace MovieRental
                 BackColor = Color.FromArgb(34, 49, 63),
                 ForeColor = Color.WhiteSmoke,
                 BorderStyle = BorderStyle.None,
-                ReadOnly = true
             };
 
             // Price Label

@@ -1,7 +1,9 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace MovieRental
 {
@@ -129,10 +131,13 @@ namespace MovieRental
             });
         }
 
+        
         private void LoadMovieData(movieItem movie)
         {
+            var genre = DatabaseManager.GetGenreById(movie.genreId).FirstOrDefault();
             labelTitle.Text = movie.title;
-            labelGenre.Text = $"Genre: {movie.genreId}";            labelPrice.Text = $"Price: ${movie.rentalCharge:0.00}";
+            labelGenre.Text = $"Genre: {genre.title}";
+            labelPrice.Text = $"Price: ${movie.rentalCharge:0.00}";
             labelYear.Text = $"Released: {movie.releaseDate:yyyy}";
 
             try
@@ -151,6 +156,7 @@ namespace MovieRental
                 pictureBoxPoster.Image = SystemIcons.Information.ToBitmap();
             }
         }
+
     }
 }
 

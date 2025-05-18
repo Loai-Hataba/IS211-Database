@@ -106,7 +106,7 @@ namespace MovieRental
             // Load the Genre UserControl
             var movieControl = new ucMovies();
             LoadUserControl(movieControl);
-            List<movieItem> movieItems = movieControl.loadMovies(); // Call the method to load genres
+            List<movieItem> movieItems = movieControl.loadMovies("SELECT * FROM [Movie Tape]"); // Call the method to load genres
         }
 
         public void loadProfileBtn_Click(object sender, EventArgs e)

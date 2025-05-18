@@ -41,7 +41,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Genres.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

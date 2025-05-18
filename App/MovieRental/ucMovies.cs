@@ -34,11 +34,9 @@ namespace MovieRental
             Controls.Add(titleLabel);
             flpMovies.Location = new Point(0, titleLabel.Bottom + 30);  // Increased spacing after title
             flpMovies.Height = Height - titleLabel.Bottom - 60;  // Adjusted height calculation
-        }        public List<movieItem> loadMovies()
+        }
+        public List<movieItem> loadMovies(string query)
         {
-            // Explicitly list all columns to ensure correct order
-            string query = "SELECT * FROM [Movie Tape]";
-
             List<movieItem> movieList = DatabaseManager.FetchData(query, reader => new movieItem
             {
                 id = reader.GetInt32(0),          // TapeId

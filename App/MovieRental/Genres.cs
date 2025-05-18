@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using Microsoft.Data.SqlClient;
 
 namespace MovieRental
 {
@@ -19,7 +18,7 @@ namespace MovieRental
         public Genres()
         {
             InitializeComponent();
-            LoadGenres();
+            loadGenres();
         }
 
         private void InitializeComponent()
@@ -67,7 +66,7 @@ namespace MovieRental
             addGenreButton.Font = new Font("Segoe UI", 10F);
             addGenreButton.Size = new Size(120, 35);
             addGenreButton.Location = new Point(520, 28);
-         
+
 
             // Refresh Button
             refreshButton.Text = "🔄 Refresh";
@@ -77,22 +76,35 @@ namespace MovieRental
             refreshButton.Font = new Font("Segoe UI", 10F);
             refreshButton.Size = new Size(100, 35);
             refreshButton.Location = new Point(650, 28);
-            refreshButton.Click += (s, e) => LoadGenres();
+            refreshButton.Click += (s, e) => loadGenres();
 
             // Main Panel
-            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Dock = DockStyle.Top;
             mainPanel.BackColor = Color.FromArgb(44, 62, 80);
             mainPanel.Padding = new Padding(20);
+            mainPanel.Size = new Size(1000, 600);
+            this.Size = new Size(1900, 940);
 
             // Configure Grid
             SetupDataGrid();
 
             // Add controls
-            headerPanel.Controls.AddRange(new Control[] { 
-                titleLabel, searchBox, addGenreButton, refreshButton 
+            headerPanel.Controls.AddRange(new Control[] {
+                titleLabel, searchBox, addGenreButton, refreshButton
             });
             mainPanel.Controls.Add(genresGrid);
-            this.Controls.AddRange(new Control[] { headerPanel, mainPanel });
+
+            var layout = new TableLayoutPanel();
+            layout.Dock = DockStyle.Fill;
+            layout.BackColor = Color.Transparent;
+            layout.RowCount = 2;
+            layout.ColumnCount = 1;
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 100)); // Header height
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100)); // Fill remaining
+            layout.Controls.Add(headerPanel, 0, 0);
+            layout.Controls.Add(mainPanel, 0, 1);
+
+            this.Controls.Add(layout);
         }
 
         private void SetupDataGrid()
@@ -102,7 +114,7 @@ namespace MovieRental
             genresGrid.BackgroundColor = Color.FromArgb(52, 73, 94);
             genresGrid.BorderStyle = BorderStyle.None;
             genresGrid.GridColor = Color.FromArgb(44, 62, 80);
-            
+
             // Cell and row styling
             genresGrid.RowTemplate.Height = 40;
             genresGrid.RowTemplate.DefaultCellStyle.Padding = new Padding(5);
@@ -134,7 +146,7 @@ namespace MovieRental
             genresGrid.AllowUserToDeleteRows = false;
             genresGrid.AllowUserToResizeRows = false;
             genresGrid.ReadOnly = true;
-            
+
             // Initialize columns with enhanced styling
             var idColumn = new DataGridViewTextBoxColumn
             {
@@ -175,47 +187,57 @@ namespace MovieRental
             {
                 if (e.RowIndex >= 0)
                 {
-                    genresGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = 
+                    genresGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor =
                         e.RowIndex % 2 == 0 ? Color.FromArgb(52, 73, 94) : Color.FromArgb(47, 66, 85);
                 }
             };
+            genresGrid.CellClick += GenresGrid_CellClick;
         }
 
-        private void LoadGenres()
+        private void GenresGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Ensure it's not the header row
+            {
+                string genreId = genresGrid.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                string query = $"SELECT * FROM [Movie Tape] WHERE genreId = {genreId}";
+                // Get the parent form and show ucMovies with filtered movies
+                var mainForm = this.FindForm() as ApplicationForm;
+                if (mainForm != null)
+                {
+                    var moviesControl = new ucMovies();
+                    moviesControl.loadMovies(query);
+                    mainForm.LoadUserControl(moviesControl);
+                }
+            }
+        }
+
+        public List<genreItem> loadGenres()
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("Starting LoadGenres method...");
                 genresGrid.Rows.Clear();
-                System.Diagnostics.Debug.WriteLine("Cleared existing rows");
-
                 string query = "SELECT * FROM Genres";
-                System.Diagnostics.Debug.WriteLine($"Executing query: {query}");
 
                 List<genreItem> genresList = DatabaseManager.FetchData(query, reader => new genreItem
                 {
                     id = reader.GetInt32(0),
                     title = reader.GetString(1),
-                    // description = reader.GetString(2)
                 });
 
-                System.Diagnostics.Debug.WriteLine($"Retrieved {genresList.Count} genres from database");
 
                 foreach (var genre in genresList)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Adding genre: ID={genre.id}, Title={genre.title}");
                     genresGrid.Rows.Add(genre.id, genre.title);
                 }
+                return genresList;
 
-                System.Diagnostics.Debug.WriteLine($"Successfully loaded {genresGrid.Rows.Count} genres into grid");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error in LoadGenres: {ex.Message}");
-                System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
                 MessageBox.Show($"Error loading genres: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            return null;
         }
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
@@ -234,21 +256,6 @@ namespace MovieRental
                 MessageBox.Show($"Error filtering genres: {ex.Message}", "Error", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-       
-
-  
-
-        public List<genreItem> loadGenres()
-        {
-            string query = "Select * from Genres;";
-            return DatabaseManager.FetchData(query, reader => new genreItem
-            {
-                id = reader.GetInt32(0),
-                title = reader.GetString(1),
-                // description = reader.GetString(2)
-            });
         }
     }
 }

@@ -31,7 +31,7 @@ namespace MovieRental
         }
         public static string ConnectionString => _connectionString;
 
-       public static List<T> FetchData<T>(string query, Func<SqlDataReader, T> mapFunction)
+        public static List<T> FetchData<T>(string query, Func<SqlDataReader, T> mapFunction)
         {
             var list = new List<T>();
 
@@ -49,6 +49,18 @@ namespace MovieRental
             }
 
             return list;
+        }
+        public static List<genreItem> GetGenreById(int genreId)
+        {
+            string query = $"SELECT * FROM Genres WHERE GenreID = {genreId}";
+            
+            List<genreItem> genreItemss = DatabaseManager.FetchData(query, reader => new genreItem
+            {
+                id = reader.GetInt32(0),
+                title = reader.GetString(1)
+            });
+
+            return genreItemss;
         }
     }
 }
