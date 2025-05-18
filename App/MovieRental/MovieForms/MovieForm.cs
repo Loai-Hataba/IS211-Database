@@ -7,6 +7,7 @@ namespace MovieRental.MovieForms
     public class MovieForm : Form
     {
         protected TextBox titleTextBox;
+        protected TextBox descriptionTextBox;
         protected ComboBox genreComboBox;
         protected ComboBox actorComboBox;
         protected TextBox priceTextBox;
@@ -17,12 +18,11 @@ namespace MovieRental.MovieForms
         protected Button cancelButton;
         protected PictureBox previewImage;
         protected movieItem Movie { get; set; }
-
         public MovieForm(string title)
         {
             InitializeComponent();
             this.Text = title;
-            
+                        
             // Prevent form resizing and maximizing
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -40,31 +40,33 @@ namespace MovieRental.MovieForms
             {
                 Dock = DockStyle.Fill,
                 Padding = new Padding(20),
-                RowCount = 8,
+                RowCount = 9,
                 ColumnCount = 2
             };
 
             // Add controls
             AddFormField(mainLayout, "Title:", titleTextBox = new TextBox(), 0);
-            AddFormField(mainLayout, "Genre:", genreComboBox = new ComboBox(), 1);
-            AddFormField(mainLayout, "Actor:", actorComboBox = new ComboBox(), 2);
-            AddFormField(mainLayout, "Price:", priceTextBox = new TextBox(), 3);
-            AddFormField(mainLayout, "Release Date:", releaseDatePicker = new DateTimePicker(), 4);
-
-            // Image path row
-            Panel imagePathPanel = new Panel { Dock = DockStyle.Fill };
+            AddFormField(mainLayout, "Description:", descriptionTextBox = new TextBox(), 1);
+            AddFormField(mainLayout, "Genre:", genreComboBox = new ComboBox(), 2);
+            AddFormField(mainLayout, "Actor:", actorComboBox = new ComboBox(), 3);
+            AddFormField(mainLayout, "Price:", priceTextBox = new TextBox(), 4);
+            // Image path row (row 5)
+            Panel imagePathPanel = new Panel { Dock = DockStyle.Fill, Height = 30 };
             imagePathTextBox = new TextBox { Width = 300, Location = new Point(0, 0) };
             browseButton = new Button
             {
                 Text = "Browse",
                 Location = new Point(310, 0),
-                BackColor = Color.FromArgb(52, 152, 219)
+                BackColor = Color.FromArgb(52, 152, 219),
+                Size = new Size(80, 25)
             };
             browseButton.Click += BrowseButton_Click;
             imagePathPanel.Controls.AddRange(new Control[] { imagePathTextBox, browseButton });
             AddFormField(mainLayout, "Image Path:", imagePathPanel, 5);
+            // Release date row (row 6)
+            AddFormField(mainLayout, "Release Date:", releaseDatePicker = new DateTimePicker(), 6);
 
-            // Preview image
+            // Preview image (row 7)
             previewImage = new PictureBox
             {
                 Size = new Size(200, 300),
@@ -72,15 +74,14 @@ namespace MovieRental.MovieForms
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = Color.FromArgb(34, 49, 63)
             };
-            mainLayout.Controls.Add(previewImage, 1, 6);
+            mainLayout.Controls.Add(previewImage, 1, 7);
 
-            // Buttons panel
+            // Buttons panel (row 8)
             FlowLayoutPanel buttonsPanel = new FlowLayoutPanel
             {
                 FlowDirection = FlowDirection.RightToLeft,
                 Dock = DockStyle.Fill
             };
-
             saveButton = new Button
             {
                 Text = "Save",
@@ -89,7 +90,6 @@ namespace MovieRental.MovieForms
                 Size = new Size(100, 40)
             };
             saveButton.Click += SaveButton_Click;
-
             cancelButton = new Button
             {
                 Text = "Cancel",
@@ -98,9 +98,8 @@ namespace MovieRental.MovieForms
                 Size = new Size(100, 40)
             };
             cancelButton.Click += (s, e) => this.Close();
-
             buttonsPanel.Controls.AddRange(new Control[] { cancelButton, saveButton });
-            mainLayout.Controls.Add(buttonsPanel, 1, 7);
+            mainLayout.Controls.Add(buttonsPanel, 1, 8);
 
             this.Controls.Add(mainLayout);
 

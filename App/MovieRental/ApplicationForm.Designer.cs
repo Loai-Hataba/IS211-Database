@@ -75,7 +75,6 @@ namespace MovieRental
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ApplicationForm";
             WindowState = FormWindowState.Maximized;
-            Load += ApplicationForm_Load;
             ResumeLayout(false);
         }
 

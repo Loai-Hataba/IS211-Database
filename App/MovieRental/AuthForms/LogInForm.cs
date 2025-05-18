@@ -142,8 +142,26 @@ namespace MovieRental.AuthForms
             appUser currentUser = new appUser();
             currentUser.email = textBoxEmail.Text;
             currentUser.password = textBoxPassword.Text;
-            Console.WriteLine($"we got'em: {currentUser.email} | {currentUser.password}");
-            List<appUser> usersList = DatabaseManager.FetchData($"SELECT * FROM Customer WHERE Email = '{currentUser.email}' AND Password = '{currentUser.password}'", reader => new appUser
+
+            List<appUser> adminList = DatabaseManager.FetchData($"SELECT * FROM Admin WHERE Email = '{currentUser.email}' AND Password = '{currentUser.password}'", reader => new appUser
+            {
+                UID = reader.GetInt32(0),
+                name = reader.GetString(1),
+                email = reader.GetString(2),
+                phoneNum = reader.GetString(3),
+                password = reader.GetString(4),
+                isAdmin = true
+            });
+            appUser adminCheck = adminList.FirstOrDefault();
+            if (adminCheck != null)
+            {
+                var applicationForm = new ApplicationForm(true);
+                applicationForm.Show();
+                this.Close();
+                return;
+            }
+
+            List<appUser> customerList = DatabaseManager.FetchData($"SELECT * FROM Customer WHERE Email = '{currentUser.email}' AND Password = '{currentUser.password}'", reader => new appUser
             {
                 UID = reader.GetInt32(0),
                 name = reader.GetString(1),
@@ -155,10 +173,9 @@ namespace MovieRental.AuthForms
 
             });
             
-            appUser userCheck = usersList.FirstOrDefault();
-            if (userCheck != null)
+            appUser customerCheck = customerList.FirstOrDefault();
+            if (customerCheck != null)
             {
-                MessageBox.Show("Logged In successfully", "Log In", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 var applicationForm = new ApplicationForm();
                 applicationForm.Show();
                 this.Close();
@@ -166,6 +183,8 @@ namespace MovieRental.AuthForms
             else
             {
                 MessageBox.Show("Email or Password are wrong", "Log In", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxEmail.Clear();
+                textBoxPassword.Clear();
                 return;
             }
         }

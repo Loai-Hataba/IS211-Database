@@ -265,8 +265,6 @@ namespace MovieRental.AuthForms
             string passwordData = textBoxPassword.Text;
             string creditCard = textBoxCreditCard.Text;
 
-            // Check if the email already exists in the database 
-            // TODO : 
             MessageBox.Show($"user data: {name} | {email} | {phoneNum} | {address} | {businessAdress} | {password} | {creditCard}");
             // insert the user into the database TODO : 
             string insertQuery = @"INSERT INTO Customer ([Name], Email, PhoneNum, [Address], BusinessAddress, [password]) Values (@Name, @Email, @PhoneNum, @Address, @BusinessAddress, @password)";

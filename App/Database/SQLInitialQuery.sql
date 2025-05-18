@@ -12,7 +12,7 @@ CREATE TABLE Genre (
 
 CREATE TABLE Supplier (
   SupplierID INT PRIMARY KEY IDENTITY(1,1),
-  Name VARCHAR(75),
+  [Name] VARCHAR(75),
   ContactInfo VARCHAR(75)
 );
 
@@ -23,14 +23,19 @@ CREATE TABLE Admin (
   PhoneNum CHAR(11),
   [Password] VARCHAR(20)
 );
+insert into Admin ([Name], Email, PhoneNum, [password]) values ('Loai admin beh', 'loaiwleed2005@gmail.com', '01275397858', 'kokowawa');
+select * from Admin;
+SELECT * FROM Admin WHERE Email = 'loaiwleed2005@gmail.com' AND Password = 'kokowawa';
 
 CREATE TABLE Actor (
   ActorID INT PRIMARY KEY IDENTITY(1,1),
   FirstName VARCHAR(75),
   LastName VARCHAR(75),
-  Gender BIT,
+  Gender BIT,		
   Bio VARCHAR(500)
 );
+
+SELECT * FROM Actor;
 
 CREATE TABLE Customer (
   [UID] INT PRIMARY KEY IDENTITY(1,1),
@@ -42,10 +47,15 @@ CREATE TABLE Customer (
   [Password] VARCHAR(20),
 );
 
+delete from Customer where UID = 1;
+select * from Customer;
+
+SELECT * FROM Customer WHERE Email = 'loaiwleed2005@gmail.com' AND Password = 'kokowawa';
 
 INSERT INTO Customer ([Name], Email, PhoneNum, [Address], BusinessAddress, [password]) Values
-('Loai Hataba', 'loaiwleed2005@gmail.com', '01275397858', 'mohandesin', 'bussines', 'kokowawa'),
-('abdullah mohammed', 'jijijji@jijij.com', '01755397858', 'masr', 'bussines', 'kokowawa');
+('Loai Hataba', 'loaiwleed2005@gmail.com', '01275397858', 'mohandesin', 'business', 'kokowawa'),
+('abdullah mohammed', 'jijijji@jijij.com', '01755397858', 'masr', 'business', 'kokowawa');
+
 
 select * from Customer;
 
@@ -67,6 +77,23 @@ CREATE TABLE [Movie Tape] (
   FOREIGN KEY (SupplierID) REFERENCES Supplier(SupplierID),
   FOREIGN KEY (GenreID) REFERENCES Genre(GenreID)
 );
+
+
+
+UPDATE [Movie Tape]
+SET 
+  Title = 'Inception',
+  [Description] = 'A mind-bending thriller.',
+  ActorID = 1,
+  GenreID = 2,
+  RentalCharge = 19.99,
+  ReleaseDate = '2010-07-16',
+  ImagePath = 'C:\Images\Inception.jpg',
+  IsAvailable = 1,
+  SupplyDate = '2023-05-01'
+WHERE TapeID = 23;
+
+select * from [Movie Tape];
 
 CREATE TABLE [Card] (
   LastFour VARCHAR(4),
@@ -93,7 +120,6 @@ CREATE TABLE Rents (
 CREATE TABLE ActsIn (
   ActorID INT,
   TapeID INT,
-  [Role] VARCHAR(30),
   PRIMARY KEY (ActorID, TapeID),
   FOREIGN KEY (ActorID) REFERENCES Actor(ActorID),
   FOREIGN KEY (TapeID) REFERENCES [Movie Tape](TapeID)
@@ -175,11 +201,18 @@ INSERT INTO Supplier ([Name], ContactInfo) VALUES
 
 
 
-select * from genre;
+select * from Supplier;
+
+update Supplier Set Name = 'noooo' where SupplierID = 3;
+
 drop table genre;
 delete from genre;
 DBCC CHECKIDENT ('Genre', RESEED, 0);
 
 select * from [Movie Tape];
+
+
 delete from [Movie Tape];
 DBCC CHECKIDENT ('Movie Tape', RESEED, 0);
+
+delete from [Movie Tape] where TapeID = 21;

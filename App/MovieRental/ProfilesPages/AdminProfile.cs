@@ -170,11 +170,16 @@ namespace MovieRental.ProfilePages
             {
                 if (MessageBox.Show($"Are you sure you want to delete {movie.title}?", 
                     "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    // TODO: Implement delete functionality
-                    MessageBox.Show($"Movie deleted: {movie.title}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadAllMovies(); // Refresh the list
-                }
+                    {
+                        MessageBox.Show($"Movie deleted: {movie.title}", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string query = "DELETE FROM [Movie Tape] WHERE tapeID = @Id";
+                        var parameters = new Dictionary<string, object>
+                        {
+                            { "@Id", movie.id}
+                        };
+                        DatabaseManager.InsertData(query, parameters);
+                        LoadAllMovies(); // Refresh the list
+                    }
             }
         }
 

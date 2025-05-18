@@ -9,6 +9,6 @@ namespace MovieRental.User
         public string address;
         public string businessAdress;
         public string password;
-        public bool isAdmin;
+        public bool isAdmin = false;
     }
 }
