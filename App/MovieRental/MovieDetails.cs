@@ -74,6 +74,8 @@ namespace MovieRental
             backButton.Click += (s, e) => this.Close();
             backButton.MouseEnter += (s, e) => backButton.ForeColor = Color.FromArgb(52, 152, 219);
             backButton.MouseLeave += (s, e) => backButton.ForeColor = Color.WhiteSmoke;
+            backButton.Click += backButton_Click;
+
 
             homeButton = new Button
             {
@@ -87,14 +89,14 @@ namespace MovieRental
                 Cursor = Cursors.Hand
             };
             homeButton.FlatAppearance.BorderSize = 0;
-            homeButton.Click += (s, e) => {
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form is ApplicationForm) form.Show();
-                    else if (form != this) form.Close();
-                }
+            homeButton.Click += (s, e) =>
+            {
+                var homeForm = new ApplicationForm();
+                homeForm.Show();
                 this.Close();
+                homeForm.BringToFront();
             };
+            
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
             homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;
 
@@ -210,11 +212,16 @@ namespace MovieRental
             Controls.Add(navigationBar);
 
             // Handle resize
-            this.Resize += (s, e) => {
+            this.Resize += (s, e) =>
+            {
                 // Adjust controls if needed on resize
             };
         }
 
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void LoadMovieDetails()
         {
             titleLabel.Text = MovieTitle;
@@ -223,7 +230,7 @@ namespace MovieRental
 
             // Set availability status with color coding
             availabilityLabel.Text = IsAvailable ? "Available for Rent" : "Currently Unavailable";
-            availabilityLabel.ForeColor = IsAvailable 
+            availabilityLabel.ForeColor = IsAvailable
                 ? Color.FromArgb(46, 204, 113)  // Green for available
                 : Color.FromArgb(231, 76, 60);  // Red for unavailable
 

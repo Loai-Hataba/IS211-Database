@@ -24,131 +24,127 @@ namespace MovieRental.ProfilePages
         }
 
         private void InitializeComponent()
-{
-    // Initialize all controls
-    mainPanel = new Panel();
-    moviesFlowPanel = new FlowLayoutPanel();
-    editProfileButton = new Button();
-    titleLabel = new Label();
-    navigationBar = new Panel();
-    backButton = new Button();
-    homeButton = new Button();
-
-    SuspendLayout();
-
-    // --- Navigation Bar ---
-    navigationBar.Dock = DockStyle.Top;
-    navigationBar.Height = 60;
-    navigationBar.BackColor = Color.FromArgb(34, 49, 63);
-    navigationBar.Padding = new Padding(10);
-
-    backButton.Text = "← Back";
-    backButton.BackColor = Color.Transparent;
-    backButton.ForeColor = Color.WhiteSmoke;
-    backButton.FlatStyle = FlatStyle.Flat;
-    backButton.Font = new Font("Segoe UI", 11F);
-    backButton.Size = new Size(100, 40);
-    backButton.Location = new Point(10, 10);
-    backButton.FlatAppearance.BorderSize = 0;
-    backButton.Cursor = Cursors.Hand;
-    backButton.Click += (s, e) => this.Close();
-    backButton.MouseEnter += (s, e) => backButton.ForeColor = Color.FromArgb(52, 152, 219);
-    backButton.MouseLeave += (s, e) => backButton.ForeColor = Color.WhiteSmoke;
-
-    homeButton.Text = "🏠 Home";
-    homeButton.BackColor = Color.Transparent;
-    homeButton.ForeColor = Color.WhiteSmoke;
-    homeButton.FlatStyle = FlatStyle.Flat;
-    homeButton.Font = new Font("Segoe UI", 11F);
-    homeButton.Size = new Size(100, 40);
-    homeButton.Location = new Point(120, 10);
-    homeButton.FlatAppearance.BorderSize = 0;
-    homeButton.Cursor = Cursors.Hand;
-    homeButton.Click += (s, e) => {
-        foreach (Form form in Application.OpenForms)
         {
-            if (form is ApplicationForm)
+            // Initialize all controls
+            mainPanel = new Panel();
+            moviesFlowPanel = new FlowLayoutPanel();
+            editProfileButton = new Button();
+            titleLabel = new Label();
+            navigationBar = new Panel();
+            backButton = new Button();
+            homeButton = new Button();
+
+            SuspendLayout();
+
+            // --- Navigation Bar ---
+            navigationBar.Dock = DockStyle.Top;
+            navigationBar.Height = 60;
+            navigationBar.BackColor = Color.FromArgb(34, 49, 63);
+            navigationBar.Padding = new Padding(10);
+
+            backButton.Text = "← Back";
+            backButton.BackColor = Color.Transparent;
+            backButton.ForeColor = Color.WhiteSmoke;
+            backButton.FlatStyle = FlatStyle.Flat;
+            backButton.Font = new Font("Segoe UI", 11F);
+            backButton.Size = new Size(100, 40);
+            backButton.Location = new Point(10, 10);
+            backButton.FlatAppearance.BorderSize = 0;
+            backButton.Cursor = Cursors.Hand;
+            backButton.Click += (s, e) => this.Close();
+            backButton.MouseEnter += (s, e) => backButton.ForeColor = Color.FromArgb(52, 152, 219);
+            backButton.MouseLeave += (s, e) => backButton.ForeColor = Color.WhiteSmoke;
+            backButton.Click += backButton_Click;
+
+            homeButton.Text = "🏠 Home";
+            homeButton.BackColor = Color.Transparent;
+            homeButton.ForeColor = Color.WhiteSmoke;
+            homeButton.FlatStyle = FlatStyle.Flat;
+            homeButton.Font = new Font("Segoe UI", 11F);
+            homeButton.Size = new Size(100, 40);
+            homeButton.Location = new Point(120, 10);
+            homeButton.FlatAppearance.BorderSize = 0;
+            homeButton.Cursor = Cursors.Hand;
+            homeButton.Click += (s, e) =>
             {
-                form.Show();
-            }
-            else if (form != this)
+                // Navigate to home page
+                var homeForm = new ApplicationForm();
+                homeForm.Show();
+                this.Close();
+            };
+            homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
+            homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;
+
+            navigationBar.Controls.Add(backButton);
+            navigationBar.Controls.Add(homeButton);
+
+            // --- Main Panel ---
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.BackColor = Color.FromArgb(52, 73, 94);
+            mainPanel.Padding = new Padding(40, 20, 40, 40);
+
+            // --- Title Label ---
+            titleLabel.Text = "My Profile";
+            titleLabel.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
+            titleLabel.ForeColor = Color.FromArgb(52, 152, 219);
+            titleLabel.AutoSize = true;
+            titleLabel.Location = new Point(0, 20);
+
+            // --- Edit Profile Button ---
+            editProfileButton.Text = "✎ Edit Profile";
+            editProfileButton.BackColor = Color.Transparent;
+            editProfileButton.ForeColor = Color.WhiteSmoke;
+            editProfileButton.FlatStyle = FlatStyle.Flat;
+            editProfileButton.Font = new Font("Segoe UI", 11F);
+            editProfileButton.Size = new Size(120, 40);
+            editProfileButton.Location = new Point(navigationBar.Width - 140, 10);
+            editProfileButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            editProfileButton.FlatAppearance.BorderSize = 0;
+            editProfileButton.Cursor = Cursors.Hand;
+            editProfileButton.Click += EditProfileButton_Click;
+
+            // Update hover effects for Edit Profile button
+            editProfileButton.MouseEnter += (s, e) =>
             {
-                form.Close();
-            }
+                editProfileButton.ForeColor = Color.FromArgb(52, 152, 219);
+            };
+            editProfileButton.MouseLeave += (s, e) =>
+            {
+                editProfileButton.ForeColor = Color.WhiteSmoke;
+            };
+
+            // Add Edit Profile button to navigation bar instead of main panel
+            navigationBar.Controls.Add(editProfileButton);
+
+            // --- Movies Flow Panel ---
+            moviesFlowPanel.AutoScroll = true;
+            moviesFlowPanel.BackColor = Color.Transparent;
+            moviesFlowPanel.Dock = DockStyle.Bottom;
+            moviesFlowPanel.Size = new Size(ClientSize.Width - 80, ClientSize.Height - 200);
+            moviesFlowPanel.Padding = new Padding(20);
+            moviesFlowPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            moviesFlowPanel.Location = new Point(0, 120);
+
+            // Add controls to mainPanel
+            mainPanel.Controls.Add(titleLabel);
+            mainPanel.Controls.Add(moviesFlowPanel);
+
+            // --- Final Form Setup ---
+            Controls.Add(mainPanel);
+            Controls.Add(navigationBar);
+
+            BackColor = Color.FromArgb(44, 62, 80);
+            WindowState = FormWindowState.Maximized;
+            Text = "User Profile";
+            ResumeLayout(false);
+            PerformLayout();
+
+            // Reposition editProfileButton on resize
+            this.Resize += (s, e) =>
+            {
+                moviesFlowPanel.Size = new Size(mainPanel.Width - 40, mainPanel.Height - 160);
+            };
         }
-        this.Close();
-    };
-    homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
-    homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;
-
-    navigationBar.Controls.Add(backButton);
-    navigationBar.Controls.Add(homeButton);
-
-    // --- Main Panel ---
-    mainPanel.Dock = DockStyle.Fill;
-    mainPanel.BackColor = Color.FromArgb(52, 73, 94);
-    mainPanel.Padding = new Padding(40, 20, 40, 40);
-
-    // --- Title Label ---
-    titleLabel.Text = "My Profile";
-    titleLabel.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
-    titleLabel.ForeColor = Color.FromArgb(52, 152, 219);
-    titleLabel.AutoSize = true;
-    titleLabel.Location = new Point(0, 20);
-
-    // --- Edit Profile Button ---
-    editProfileButton.Text = "✎ Edit Profile";
-    editProfileButton.BackColor = Color.Transparent;
-    editProfileButton.ForeColor = Color.WhiteSmoke;
-    editProfileButton.FlatStyle = FlatStyle.Flat;
-    editProfileButton.Font = new Font("Segoe UI", 11F);
-    editProfileButton.Size = new Size(120, 40);
-    editProfileButton.Location = new Point(navigationBar.Width - 140, 10);
-    editProfileButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-    editProfileButton.FlatAppearance.BorderSize = 0;
-    editProfileButton.Cursor = Cursors.Hand;
-    editProfileButton.Click += EditProfileButton_Click;
-
-    // Update hover effects for Edit Profile button
-    editProfileButton.MouseEnter += (s, e) => {
-        editProfileButton.ForeColor = Color.FromArgb(52, 152, 219);
-    };
-    editProfileButton.MouseLeave += (s, e) => {
-        editProfileButton.ForeColor = Color.WhiteSmoke;
-    };
-
-    // Add Edit Profile button to navigation bar instead of main panel
-    navigationBar.Controls.Add(editProfileButton);
-
-    // --- Movies Flow Panel ---
-    moviesFlowPanel.AutoScroll = true;
-    moviesFlowPanel.BackColor = Color.Transparent;
-    moviesFlowPanel.Dock = DockStyle.Bottom;
-    moviesFlowPanel.Size = new Size(ClientSize.Width - 80, ClientSize.Height - 200);
-    moviesFlowPanel.Padding = new Padding(20);
-    moviesFlowPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-    moviesFlowPanel.Location = new Point(0, 120);
-
-    // Add controls to mainPanel
-    mainPanel.Controls.Add(titleLabel);
-    mainPanel.Controls.Add(moviesFlowPanel);
-
-    // --- Final Form Setup ---
-    Controls.Add(mainPanel);
-    Controls.Add(navigationBar);
-
-    BackColor = Color.FromArgb(44, 62, 80);
-    WindowState = FormWindowState.Maximized;
-    Text = "User Profile";
-    ResumeLayout(false);
-    PerformLayout();
-
-    // Reposition editProfileButton on resize
-    this.Resize += (s, e) =>
-    {
-        moviesFlowPanel.Size = new Size(mainPanel.Width - 40, mainPanel.Height - 160);
-    };
-}
 
 
         private Panel CreateMoviePanel(string title, DateTime rentalDate, DateTime returnDate, string status, string imageUrl = null)
@@ -236,10 +232,12 @@ namespace MovieRental.ProfilePages
             };
 
             // Add hover effect
-            EventHandler mouseEnter = (s, e) => {
+            EventHandler mouseEnter = (s, e) =>
+            {
                 moviePanel.BackColor = Color.FromArgb(41, 58, 74);
             };
-            EventHandler mouseLeave = (s, e) => {
+            EventHandler mouseLeave = (s, e) =>
+            {
                 moviePanel.BackColor = Color.FromArgb(34, 49, 63);
             };
 
@@ -332,9 +330,13 @@ namespace MovieRental.ProfilePages
             var editForm = new EditProfileForm();
             if (editForm.ShowDialog() == DialogResult.OK)
             {
-                // Refresh profile data after edit
-                // TODO: Implement refresh logic
+              
             }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 
@@ -509,6 +511,7 @@ namespace MovieRental.ProfilePages
             });
         }
 
+    
         private void LoadUserData()
         {
             // TODO: Load actual user data from your database
@@ -551,5 +554,7 @@ namespace MovieRental.ProfilePages
 
             return true;
         }
+
     }
+
 }

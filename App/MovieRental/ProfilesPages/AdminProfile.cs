@@ -54,7 +54,7 @@ namespace MovieRental.ProfilePages
             backButton.Click += (s, e) => this.Close();
             backButton.MouseEnter += (s, e) => backButton.ForeColor = Color.FromArgb(52, 152, 219);
             backButton.MouseLeave += (s, e) => backButton.ForeColor = Color.WhiteSmoke;
-
+            backButton.Click += backButton_Click;
             // Home Button
             homeButton.Text = "🏠 Home";
             homeButton.BackColor = Color.Transparent;
@@ -67,17 +67,9 @@ namespace MovieRental.ProfilePages
             homeButton.Cursor = Cursors.Hand;
             homeButton.Click += (s, e) =>
             {
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form is ApplicationForm)
-                    {
-                        form.Show();
-                    }
-                    else if (form != this)
-                    {
-                        form.Close();
-                    }
-                }
+                 // Navigate to home page
+                var homeForm = new ApplicationForm(true);
+                homeForm.Show();
                 this.Close();
             };
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
@@ -151,6 +143,10 @@ namespace MovieRental.ProfilePages
             }
         }
 
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void EditMovie_Click(object tag, EventArgs e)
         {
             if (tag is movieItem movie)

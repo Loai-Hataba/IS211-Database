@@ -53,6 +53,7 @@ namespace MovieRental
             backButton.Click += (s, e) => this.Close();
             backButton.MouseEnter += (s, e) => backButton.ForeColor = Color.FromArgb(52, 152, 219);
             backButton.MouseLeave += (s, e) => backButton.ForeColor = Color.WhiteSmoke;
+            backButton.Click += backButton_Click;
 
             homeButton = new Button
             {
@@ -66,13 +67,13 @@ namespace MovieRental
                 Cursor = Cursors.Hand
             };
             homeButton.FlatAppearance.BorderSize = 0;
-            homeButton.Click += (s, e) => {
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form is ApplicationForm) form.Show();
-                    else if (form != this) form.Close();
-                }
+            homeButton.Click += (s, e) =>
+            {
+                var homePage = new ApplicationForm();
+                homePage.Show();
                 this.Close();
+                homePage.BringToFront();
+                homePage.Focus();
             };
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
             homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;
@@ -160,13 +161,17 @@ namespace MovieRental
             Controls.Add(navigationBar);
 
             // Handle resize
-            this.Resize += (s, e) => {
+            this.Resize += (s, e) =>
+            {
                 cartItemsPanel.Size = new Size(mainPanel.Width - 80, mainPanel.Height - 220);
                 checkoutButton.Location = new Point(mainPanel.Width - 240, mainPanel.Height - 80);
                 totalLabel.Location = new Point(40, mainPanel.Height - 80);
             };
         }
-
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private Panel CreateCartItemPanel(int movieId, string title, decimal price, string imageUrl)
         {
             Panel itemPanel = new Panel
@@ -265,7 +270,7 @@ namespace MovieRental
             // TODO: Remove item from database
             cartItemsPanel.Controls.Remove(itemPanel);
             itemPanel.Dispose();
-            
+
             // Recalculate total
             decimal total = 0;
             // TODO: Calculate new total from database
