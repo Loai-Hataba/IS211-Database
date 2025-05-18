@@ -177,3 +177,68 @@ Insert INTO Supplier ([name], ContactInfo) Values
 ('Orion Pictures', 'info@orionpictures.com'),
 ('Pixar Animation Studios', 'contact@pixar.com'),
 ('Summit Entertainment', 'info@summitent.com')
+
+
+
+
+
+/*
+-- a. What was the most interesting movie genre(s) that had maximum number of rentals?
+SELECT g.Name, COUNT(m.TapeID) AS Rentals
+FROM [Movie Tape] m
+INNER JOIN Genre g ON g.GenreID = m.GenreID
+INNER JOIN Rents r ON m.TapeID = r.TapeID
+GROUP BY g.Name
+HAVING COUNT(m.TapeID) = (
+    SELECT TOP 1 COUNT(m2.TapeID)
+    FROM [Movie Tape] m2
+    INNER JOIN Rents r2 ON m2.TapeID = r2.TapeID
+    GROUP BY m2.GenreID
+    ORDER BY COUNT(m2.TapeID) DESC
+);
+
+
+-- b. What was the movie genre that hadn’t any rental requests for the last month?
+SELECT g.Name
+FROM Genre g
+WHERE g.GenreID NOT IN (
+    SELECT DISTINCT m.GenreID
+    FROM Rents r
+    JOIN [Movie Tape] m ON r.TapeID = m.TapeID
+    WHERE r.RentDate >= DATEADD(MONTH, -1, GETDATE())
+);
+
+
+-- c. What were the added movies for each genre and when?
+SELECT m.Title, g.Name, m.SupplyDate
+FROM [Movie Tape] m
+INNER JOIN Genre g ON m.GenreID = g.GenreID
+ORDER BY g.Name, m.SupplyDate;
+
+
+-- d. For each user/ member, retrieve all his/her information and the number of movies he/she rented.
+SELECT c.*, COUNT(r.TapeID)
+FROM Customer c
+LEFT JOIN Rents r ON c.UID = r.UID
+GROUP BY c.UID, c.Name, c.Email, c.PhoneNum, c.Address, c.BusinessAddress, c.Password;
+ 
+
+-- e. What are the top rented (in-demand) genres and what are their total sales?
+SELECT g.Name AS Genre, COUNT(r.TapeID) AS TotalRentals, 
+       SUM(m.RentalCharge) AS TotalSales
+FROM Rents r
+JOIN [Movie Tape] m ON r.TapeID = m.TapeID
+JOIN Genre g ON m.GenreID = g.GenreID
+GROUP BY g.Name
+ORDER BY TotalRentals DESC;
+
+
+-- f. Who are the suppliers who didn’t provide any movie in the last three months?
+SELECT s.Name
+FROM Supplier s
+WHERE s.SupplierID NOT IN (
+    SELECT DISTINCT m.SupplierID
+    FROM [Movie Tape] m
+    WHERE m.SupplyDate >= DATEADD(MONTH, -3, GETDATE())
+);
+*/
