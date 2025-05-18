@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using MovieRental.User;
 
 namespace MovieRental.AuthForms
 {
@@ -138,12 +139,35 @@ namespace MovieRental.AuthForms
                 return;
             }
 
-            // TODO: Add database validation here
-            MessageBox.Show("Logged In successfully", "Log In", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            appUser currentUser = new appUser();
+            currentUser.email = textBoxEmail.Text;
+            currentUser.password = textBoxPassword.Text;
+            Console.WriteLine($"we got'em: {currentUser.email} | {currentUser.password}");
+            List<appUser> usersList = DatabaseManager.FetchData($"SELECT * FROM Customer WHERE Email = '{currentUser.email}' AND Password = '{currentUser.password}'", reader => new appUser
+            {
+                UID = reader.GetInt32(0),
+                name = reader.GetString(1),
+                email = reader.GetString(2),
+                phoneNum = reader.GetString(3),
+                address = reader.GetString(4),
+                businessAdress = reader.GetString(5),
+                password = reader.GetString(6),
 
-            var applicationForm = new ApplicationForm();
-            applicationForm.Show();
-            this.Close();
+            });
+            
+            appUser userCheck = usersList.FirstOrDefault();
+            if (userCheck != null)
+            {
+                MessageBox.Show("Logged In successfully", "Log In", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var applicationForm = new ApplicationForm();
+                applicationForm.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Email or Password are wrong", "Log In", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
