@@ -65,7 +65,8 @@ namespace MovieRental.ProfilePages
             homeButton.Location = new Point(120, 10);
             homeButton.FlatAppearance.BorderSize = 0;
             homeButton.Cursor = Cursors.Hand;
-            homeButton.Click += (s, e) => {
+            homeButton.Click += (s, e) =>
+            {
                 foreach (Form form in Application.OpenForms)
                 {
                     if (form is ApplicationForm)
@@ -168,21 +169,20 @@ namespace MovieRental.ProfilePages
         {
             if (tag is movieItem movie)
             {
-                if (MessageBox.Show($"Are you sure you want to delete {movie.title}?", 
+                if (MessageBox.Show($"Are you sure you want to delete {movie.title}?",
                     "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        MessageBox.Show($"Movie deleted: {movie.title}", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        string query = "DELETE FROM [Movie Tape] WHERE tapeID = @Id";
-                        var parameters = new Dictionary<string, object>
+                {
+                    MessageBox.Show($"Movie deleted: {movie.title}", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string query = "DELETE FROM [Movie Tape] WHERE tapeID = @Id";
+                    var parameters = new Dictionary<string, object>
                         {
                             { "@Id", movie.id}
                         };
-                        DatabaseManager.InsertData(query, parameters);
-                        LoadAllMovies(); // Refresh the list
-                    }
+                    DatabaseManager.InsertData(query, parameters);
+                    LoadAllMovies(); // Refresh the list
+                }
             }
         }
-
         private void LoadAllMovies()
         {
             string query = "SELECT * FROM [Movie Tape]";
@@ -212,10 +212,10 @@ namespace MovieRental.ProfilePages
         private Control CreateAdminMovieCard(movieItem movie)
         {
             var card = new movieCard(movie);
-            
+
             // Remove the three dots button and use right-click context menu instead
             card.ContextMenuStrip = movieContextMenu;
-            
+
             // Add mouse down event to handle right click
             card.MouseDown += (s, e) =>
             {
@@ -257,3 +257,4 @@ namespace MovieRental.ProfilePages
         }
     }
 }
+

@@ -1,9 +1,8 @@
 CREATE DATABASE MovieRentalDB;
-drop database MovieRentalDB;
-use master;
+
+
 -- MAKE SURE TO USE IT BEFORE ANYTHING
 USE MovieRentalDB;
-
 
 CREATE TABLE Genre (
   GenreID INT PRIMARY KEY IDENTITY(1,1),
@@ -16,6 +15,7 @@ CREATE TABLE Supplier (
   ContactInfo VARCHAR(75)
 );
 
+
 CREATE TABLE Admin (
   AdminID INT PRIMARY KEY IDENTITY(1,1),
   [Name] VARCHAR(75),
@@ -23,9 +23,7 @@ CREATE TABLE Admin (
   PhoneNum CHAR(11),
   [Password] VARCHAR(20)
 );
-insert into Admin ([Name], Email, PhoneNum, [password]) values ('Loai admin beh', 'loaiwleed2005@gmail.com', '01275397858', 'kokowawa');
-select * from Admin;
-SELECT * FROM Admin WHERE Email = 'loaiwleed2005@gmail.com' AND Password = 'kokowawa';
+
 
 CREATE TABLE Actor (
   ActorID INT PRIMARY KEY IDENTITY(1,1),
@@ -34,8 +32,6 @@ CREATE TABLE Actor (
   Gender BIT,		
   Bio VARCHAR(500)
 );
-
-SELECT * FROM Actor;
 
 CREATE TABLE Customer (
   [UID] INT PRIMARY KEY IDENTITY(1,1),
@@ -47,17 +43,6 @@ CREATE TABLE Customer (
   [Password] VARCHAR(20),
 );
 
-delete from Customer where UID = 1;
-select * from Customer;
-
-SELECT * FROM Customer WHERE Email = 'loaiwleed2005@gmail.com' AND Password = 'kokowawa';
-
-INSERT INTO Customer ([Name], Email, PhoneNum, [Address], BusinessAddress, [password]) Values
-('Loai Hataba', 'loaiwleed2005@gmail.com', '01275397858', 'mohandesin', 'business', 'kokowawa'),
-('abdullah mohammed', 'jijijji@jijij.com', '01755397858', 'masr', 'business', 'kokowawa');
-
-
-select * from Customer;
 
 CREATE TABLE [Movie Tape] (
   TapeID INT PRIMARY KEY IDENTITY(1,1),
@@ -69,31 +54,13 @@ CREATE TABLE [Movie Tape] (
   ReleaseDate DATE,
   ImagePath VARCHAR(300),
   IsAvailable BIT,
-  AdminID INT,
   SupplierID INT,
-  SupplyDate DATE,
+  SupplyDate DATE DEFAULT CAST(GETDATE() AS DATE),
   FOREIGN KEY (ActorID) REFERENCES Actor(ActorID),
-  FOREIGN KEY (AdminID) REFERENCES Admin(AdminID),
   FOREIGN KEY (SupplierID) REFERENCES Supplier(SupplierID),
   FOREIGN KEY (GenreID) REFERENCES Genre(GenreID)
 );
 
-
-
-UPDATE [Movie Tape]
-SET 
-  Title = 'Inception',
-  [Description] = 'A mind-bending thriller.',
-  ActorID = 1,
-  GenreID = 2,
-  RentalCharge = 19.99,
-  ReleaseDate = '2010-07-16',
-  ImagePath = 'C:\Images\Inception.jpg',
-  IsAvailable = 1,
-  SupplyDate = '2023-05-01'
-WHERE TapeID = 23;
-
-select * from [Movie Tape];
 
 CREATE TABLE [Card] (
   LastFour VARCHAR(4),
@@ -112,7 +79,7 @@ CREATE TABLE Rents (
   ReturnDate DATE,
   IsRented BIT,
   TotalCharge VARCHAR(100),
-  PRIMARY KEY (UID, TapeID, RentDate),
+  PRIMARY KEY (UID, TapeID),
   FOREIGN KEY (UID) REFERENCES Customer (UID),
   FOREIGN KEY (TapeID) REFERENCES [Movie Tape](TapeID)
 );
@@ -126,21 +93,18 @@ CREATE TABLE ActsIn (
 );
 
 CREATE TABLE Cart (
+  CartID INT IDENTITY (1,1),
   UID INT,
   TapeID INT,
-  AddedAt DATETIME DEFAULT GETDATE(),
-  PRIMARY KEY (UID, TapeID),
+  PRIMARY KEY (CartID),
   FOREIGN KEY (UID) REFERENCES Customer(UID),
   FOREIGN KEY (TapeID) REFERENCES [Movie Tape](TapeID)
 );
 
-select * from customer;
--- inserting to cart
-INSERT INTO Cart (UID, TapeID) VALUES (1, 5);
 
 
 
-INSERT INTO [Movie Tape] ([Title], [Description], [ActorID], [GenreID], [RentalCharge], [ReleaseDate], [ImagePath], [IsAvailable])
+INSERT INTO [Movie Tape] ([Title], [Description], [ActorID], [GenreID], [RentalCharge], [ReleaseDate], [ImagePath], [IsAvailable], [supplierId])
 VALUES 
 ('The Matrix', 'A computer hacker named Neo discovers the disturbing truth that the reality he lives in is actually a simulated world created by sentient machines to subdue the human population. After being contacted by a mysterious group of rebels, he joins their fight to break free from the Matrix and uncover the truth about his destiny as "The One." Together with Morpheus and Trinity, Neo learns to manipulate the digital world and takes a stand against the machine overlords.', 1, 1, 3.9, '1999-03-31', 'theMatrix.png', 0),
 ('Inception', 'Dom Cobb is a skilled thief with the rare ability to enter people''s dreams and steal their deepest secrets from their subconscious. His unique skill has made him a valuable asset in the world of corporate espionage, but it has also cost him everything he loves. When offered a chance to have his past crimes erased, he must pull off an impossible task: planting an idea in someone''s mind. As Cobb and his team dive deeper into layered dream worlds, the line between dream and reality begins to blur.', 2, 1, 4.50, '2010-07-16', 'inception.png', 1),
@@ -164,20 +128,6 @@ VALUES
 ('John Wick', 'John Wick, a legendary assassin in retirement, is pulled back into the criminal underworld after a group of gangsters kill his beloved doga final gift from his late wife. Fueled by vengeance and grief, he unleashes his lethal skills on those who wronged him. With a relentless drive and unmatched precision, John wages a one-man war, redefining modern action cinema with its stylized combat and dark emotional core.', 7, 5, 4.20, '2014-10-24', 'johnWick.png', 1);
 
 
--- seed intial actors
-INSERT INTO Actor (FirstName, LastName, Gender, Bio) VALUES
-('Robert', 'Downey', 1, 'American actor known for portraying Iron Man in the Marvel Cinematic Universe.'),
-('Scarlett', 'Johansson', 0, 'Award-winning actress known for her roles in action and drama films.'),
-('Chris', 'Hemsworth', 1, 'Australian actor best known for playing Thor in the MCU.'),
-('Emma', 'Stone', 0, 'Oscar-winning actress known for her versatility and charm.'),
-('Denzel', 'Washington', 1, 'Veteran actor recognized for his powerful dramatic performances.'),
-('Natalie', 'Portman', 0, 'Actress and director known for her intelligence and impactful roles.'),
-('Tom', 'Hanks', 1, 'Beloved actor known for iconic roles in Forrest Gump and Cast Away.'),
-('Jennifer', 'Lawrence', 0, 'Academy Award winner known for The Hunger Games and Silver Linings Playbook.'),
-('Morgan', 'Freeman', 1, 'Iconic actor with a distinctive voice and numerous acclaimed roles.'),
-('Zendaya', 'Coleman', 0, 'Actress and singer known for her work in Euphoria and Spider-Man.');
-
-
 -- Seed initial genres
 INSERT INTO Genre ([Name]) VALUES
 ('Action'),
@@ -192,27 +142,40 @@ INSERT INTO Genre ([Name]) VALUES
 ('Animation');
 
 
--- Seed initial genres
-INSERT INTO Supplier ([Name], ContactInfo) VALUES
-('koko & s', '01275397858'),
-('hamada balto', '4546845'),
-('baba we mama', 'sfsfsf'),
-('testingoo', '45468123854');
+-- seed intial actors
+INSERT INTO Actor (FirstName, LastName, Bio, Gender) Values
+('Keanu', 'Reeves', 'Canadian actor known for action roles and philosophical characters, especially in "The Matrix" and "John Wick" series.', 1),
+('Leonardo', 'DiCaprio', 'Oscar-winning American actor known for intense roles in films like "Inception", "Titanic", and "The Revenant".', 1),
+('Marlon', 'Brando', 'Legendary American actor acclaimed for his method acting, with iconic roles in "The Godfather" and "A Streetcar Named Desire".', 1),
+('Christian', 'Bale', 'Versatile British actor known for physically transformative roles including Batman and American Psycho.', 1),
+('Tom', 'Hanks', 'Beloved American actor with a warm on-screen presence, known for roles in "Forrest Gump", "Cast Away", and "Saving Private Ryan".', 1),
+('Kate', 'Winslet', 'British actress renowned for her work in period dramas and modern classics like "Titanic" and "The Reader".', 0),
+('John', 'Travolta', 'American actor and dancer who rose to fame in the 70s and revived his career with "Pulp Fiction".', 1),
+('Robert', 'Downey', 'Charismatic American actor best known for his role as Iron Man in the Marvel Cinematic Universe.', 1),
+('Sam', 'Neill', 'New Zealand actor best known for his role as Dr. Alan Grant in "Jurassic Park".', 1),
+('Matthew', 'Broderick', 'American actor and singer, known for voice acting Simba in "The Lion King" and his iconic role in "Ferris Bueller’s Day Off".', 1),
+('Matthew', 'McConaughey', 'Academy Award-winning American actor celebrated for both romantic comedies and dramatic roles like in "Interstellar".', 1),
+('Russell', 'Crowe', 'New Zealand-born Australian actor best known for his Oscar-winning performance in "Gladiator".', 1),
+('Tim', 'Robbins', 'American actor and director known for socially conscious films and his powerful role in "The Shawshank Redemption".', 1),
+('Sam', 'Worthington', 'Australian actor known for leading roles in sci-fi blockbusters like "Avatar" and "Clash of the Titans".', 1),
+('Jesse', 'Eisenberg', 'American actor known for playing intellectual, often neurotic characters like Mark Zuckerberg in "The Social Network".', 1),
+('Edward', 'Norton', 'Critically acclaimed American actor known for intense performances in films like "Fight Club" and "American History X".', 1),
+('Jodie', 'Foster', 'Two-time Oscar-winning American actress known for intelligent, strong-willed roles including "The Silence of the Lambs".', 0),
+('Anthony', 'Gonzalez', 'Young American voice actor and singer best known for voicing Miguel in Pixar’s "Coco".', 1),
+('Ed', 'Asner', 'Veteran American actor and voice artist known for playing Carl in "Up" and for his Emmy-winning TV roles.', 1);
 
 
-
-select * from Supplier;
-
-update Supplier Set Name = 'noooo' where SupplierID = 3;
-
-drop table genre;
-delete from genre;
-DBCC CHECKIDENT ('Genre', RESEED, 0);
-
-select * from [Movie Tape];
-
-
-delete from [Movie Tape];
-DBCC CHECKIDENT ('Movie Tape', RESEED, 0);
-
-delete from [Movie Tape] where TapeID = 21;
+Insert INTO Supplier ([name], ContactInfo) Values
+('Legendary Pictures', 'info@legendary.com'),
+('Warner Bros.', 'contact@warnerbros.com'),
+('Miramax Films', 'contact@miramax.com'),
+('Marvel Studios', 'support@marvelstudios.com'),
+('Universal Pictures', 'info@universalpictures.com'),
+('Walt Disney Pictures', 'contact@disney.com'),
+('Paramount Pictures', 'info@paramount.com'),
+('DreamWorks Pictures', 'contact@dreamworks.com'),
+('Columbia Pictures', 'legal@columbiapictures.com'),
+('20th Century Fox', 'press@fox.com'),
+('Orion Pictures', 'info@orionpictures.com'),
+('Pixar Animation Studios', 'contact@pixar.com'),
+('Summit Entertainment', 'info@summitent.com')
