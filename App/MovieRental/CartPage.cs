@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using MovieRental.AuthForms;
 
 namespace MovieRental
 {
@@ -295,7 +296,7 @@ namespace MovieRental
         private void CheckoutButton_Click(object sender, EventArgs e)
         {
             
-            // TODO: Mak the movie as rented in the database
+            // !FIXME: Mak the movie as rented in the database
             ///1- get the current cart 
             /// 2- insert the moives into the rented table
             /// remove the movies from the cart
@@ -336,7 +337,7 @@ namespace MovieRental
             totalLabel.Text = "Total: $0.00";
             // Show a message box to confirm checkout
 
-            MessageBox.Show("CheckedOut Successfully", "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"CheckedOut Successfully using: {SignUpForm.creditCardTemp}", "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

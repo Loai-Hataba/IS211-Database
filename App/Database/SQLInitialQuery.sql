@@ -67,10 +67,12 @@ CREATE TABLE [Card] (
   [UID] INT,
   CardType VARCHAR(75),
   [Status] VARCHAR(75),
-  Token VARCHAR(75),
   PRIMARY KEY (LastFour, UID),
   FOREIGN KEY (UID) REFERENCES Customer (UID)
 );
+drop table card;
+select * from card;
+INSERT INTO Card (LastFour, [uid], CardType, [Status]) Values ('3300', 2, 'Visa', 'Online');
 
 CREATE TABLE Rents (
   [UID] INT,

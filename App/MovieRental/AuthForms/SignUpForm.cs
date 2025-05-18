@@ -202,6 +202,8 @@ namespace MovieRental.AuthForms
             PerformLayout();
         }
 
+
+        public static string creditCardTemp = "";
         private void signup_btn_Click(object sender, EventArgs e)
         {
             // Check for empty fields
@@ -276,10 +278,23 @@ namespace MovieRental.AuthForms
                 {"@Address", address},
                 {"@BusinessAddress", businessAdress},
                 {"@password", password},
-
             };
 
             DatabaseManager.InsertData(insertQuery, parameters);
+
+            string lastFour = creditCard.Substring(creditCard.Length - 4);
+            Console.WriteLine($"Credit four: {lastFour}");
+
+            string cardquery = @"INSERT INTO Card (LastFour, [uid], CardType, [Status]) Values (@lastFour, @UID, @cardType, @status)";
+            var pms = new Dictionary<string, object>
+            {
+                {"@lastFour", lastFour},
+                {"@UID", ApplicationForm.globalUID},
+                {"@cardType", "MasterCard"},
+                {"@status", "Active"}
+            };
+            DatabaseManager.InsertData(cardquery, pms);
+            creditCardTemp = $"MasterCard No.: **** **** {lastFour}";
 
             // If all validations pass
             MessageBox.Show("Sign up successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
