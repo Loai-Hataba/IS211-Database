@@ -22,7 +22,7 @@ namespace MovieRental
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
 
-            _connectionString = config.GetConnectionString("MovieDB");
+            _connectionString = config.GetConnectionString("MovieRentalDB");
         }
 
         public static SqlConnection GetConnection()
@@ -52,8 +52,8 @@ namespace MovieRental
         }
         public static List<genreItem> GetGenreById(int genreId)
         {
-            string query = $"SELECT * FROM Genres WHERE GenreID = {genreId}";
-            
+            string query = $"SELECT * FROM Genre WHERE GenreID = {genreId}";
+
             List<genreItem> genreItemss = DatabaseManager.FetchData(query, reader => new genreItem
             {
                 id = reader.GetInt32(0),
@@ -61,6 +61,22 @@ namespace MovieRental
             });
 
             return genreItemss;
+        }
+        public static void InsertData(string query, Dictionary<string, object> parameters)
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    foreach (var param in parameters)
+                    {
+                        cmd.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+                    }
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

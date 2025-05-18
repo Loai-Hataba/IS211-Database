@@ -216,7 +216,7 @@ namespace MovieRental
             try
             {
                 genresGrid.Rows.Clear();
-                string query = "SELECT * FROM Genres";
+                string query = "SELECT * FROM Genre";
 
                 List<genreItem> genresList = DatabaseManager.FetchData(query, reader => new genreItem
                 {

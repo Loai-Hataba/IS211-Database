@@ -53,7 +53,7 @@ namespace MovieRental.AuthForms
             headerLabel.ForeColor = Color.WhiteSmoke;
             headerLabel.Location = new Point(173, 36);
             headerLabel.Size = new Size(204, 41);
-            headerLabel.Text = "Movie Rental";
+            headerLabel.Text = "📽️ Rented";
 
             // Form1
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -67,7 +67,7 @@ namespace MovieRental.AuthForms
             Font = new Font("Segoe UI", 12F);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Movie Rental";
+            Text = "Rented";
 
             ResumeLayout(false);
             PerformLayout();

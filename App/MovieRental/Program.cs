@@ -17,7 +17,7 @@ namespace MovieRental
            .Build();
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new ApplicationForm());
+            Application.Run(new Form1());
         }
     }
 }

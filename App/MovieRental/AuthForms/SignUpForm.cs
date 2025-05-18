@@ -257,18 +257,37 @@ namespace MovieRental.AuthForms
                 MessageBox.Show("Password must be at least 8 characters long and contain uppercase, lowercase, digit, and special character.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            string name = textBoxName.Text;
+            string email = textBoxEmail.Text;
+            string phoneNum = textBoxPhoneNumber.Text;
+            string address = textBoxResidenceAddress.Text;
+            string businessAdress = textBoxBusinessAddress.Text;
+            string passwordData = textBoxPassword.Text;
+            string creditCard = textBoxCreditCard.Text;
 
             // Check if the email already exists in the database 
             // TODO : 
-
+            MessageBox.Show($"user data: {name} | {email} | {phoneNum} | {address} | {businessAdress} | {password} | {creditCard}");
             // insert the user into the database TODO : 
-            //SqlConnection connection = new SqlConnection("your_connection_string_here");
-            //connection.Open();
-            //SqlCommand command = new SqlCommand("INSERT INTO Users (Name, Password, Email, ResidenceAddress, BusinessAddress, PhoneNumber, CreditCard) VALUES (@Name, @Password, @Email, @ResidenceAddress, @BusinessAddress, @PhoneNumber, @CreditCard)", connection);
-            //command.executeNonQuery();
-            //connection.Close();
+            string insertQuery = @"INSERT INTO Customer ([Name], Email, PhoneNum, [Address], BusinessAddress, [password]) Values (@Name, @Email, @PhoneNum, @Address, @BusinessAddress, @password)";
+            var parameters = new Dictionary<string, object>
+            {
+                {"@Name", name},
+                {"@Email", email},
+                {"@PhoneNum", phoneNum},
+                {"@Address", address},
+                {"@BusinessAddress", businessAdress},
+                {"@password", password},
+
+            };
+
+            DatabaseManager.InsertData(insertQuery, parameters);
+
             // If all validations pass
             MessageBox.Show("Sign up successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var loginForm = new LogInForm();
+            loginForm.Show();
+            this.Close();
         }
         // Helper method to check password strength
         private static bool IsStrongPassword(string password)
