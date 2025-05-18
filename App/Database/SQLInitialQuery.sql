@@ -1,3 +1,6 @@
+drop database MovieRentalDB ;
+use master ; 
+
 CREATE DATABASE MovieRentalDB;
 
 
@@ -102,9 +105,9 @@ CREATE TABLE Cart (
 );
 
 
+insert into [Admin] ( [Name] , [Email] , [PhoneNum] , [Password]) VALUES ( 'abdo' , 'abdo@gmail.com', '011' ,'2292005#Ab')
 
-
-INSERT INTO [Movie Tape] ([Title], [Description], [ActorID], [GenreID], [RentalCharge], [ReleaseDate], [ImagePath], [IsAvailable], [supplierId])
+INSERT INTO [Movie Tape] ([Title], [Description], [ActorID], [GenreID], [RentalCharge], [ReleaseDate], [ImagePath], [IsAvailable])
 VALUES 
 ('The Matrix', 'A computer hacker named Neo discovers the disturbing truth that the reality he lives in is actually a simulated world created by sentient machines to subdue the human population. After being contacted by a mysterious group of rebels, he joins their fight to break free from the Matrix and uncover the truth about his destiny as "The One." Together with Morpheus and Trinity, Neo learns to manipulate the digital world and takes a stand against the machine overlords.', 1, 1, 3.9, '1999-03-31', 'theMatrix.png', 0),
 ('Inception', 'Dom Cobb is a skilled thief with the rare ability to enter people''s dreams and steal their deepest secrets from their subconscious. His unique skill has made him a valuable asset in the world of corporate espionage, but it has also cost him everything he loves. When offered a chance to have his past crimes erased, he must pull off an impossible task: planting an idea in someone''s mind. As Cobb and his team dive deeper into layered dream worlds, the line between dream and reality begins to blur.', 2, 1, 4.50, '2010-07-16', 'inception.png', 1),
@@ -125,7 +128,7 @@ VALUES
 ('The Silence of the Lambs', 'FBI trainee Clarice Starling seeks the aid of imprisoned cannibalistic psychiatrist Dr. Hannibal Lecter to catch a serial killer known as Buffalo Bill. As Lecter toys with her mind, Clarice must confront her own past while navigating a terrifying investigation. The psychological tension builds as the cat-and-mouse game between hunter and hunted reaches a chilling climax.', 1, 8, 3.65, '1991-02-14', 'silenceLambs.png', 1),
 ('Coco', 'Young Miguel dreams of becoming a musician, despite his family''s ancestral ban on music. On Da de los Muertos, he finds himself magically transported to the Land of the Dead, where he searches for his great-great-grandfather, a legendary singer. Along the way, he uncovers family secrets and learns the importance of remembrance, love, and following one''s passion. Coco celebrates heritage with heartwarming visuals and powerful music.', 2, 7, 3.55, '2017-11-22', 'coco.png', 1),
 ('Up', 'Carl Fredricksen, a widowed balloon salesman, ties thousands of balloons to his house and sets off for South America to fulfill a lifelong dream. Along the way, he is joined by an eager young scout named Russell. Their journey is filled with unexpected challenges, colorful characters, and lessons about adventure, friendship, and letting go of the past. "Up" delivers emotional depth and lighthearted fun.', 3, 7, 3.40, '2009-05-29', 'up.png', 1),
-('John Wick', 'John Wick, a legendary assassin in retirement, is pulled back into the criminal underworld after a group of gangsters kill his beloved doga final gift from his late wife. Fueled by vengeance and grief, he unleashes his lethal skills on those who wronged him. With a relentless drive and unmatched precision, John wages a one-man war, redefining modern action cinema with its stylized combat and dark emotional core.', 7, 5, 4.20, '2014-10-24', 'johnWick.png', 1);
+('John Wick', 'John Wick, a legendary assassin in retirement, is pulled back into the criminal underworld after a group of gangsters kill his beloved doga final gift from his late wife. Fueled by vengeance and grief, he unleashes his lethal skills on those who wronged him. With a relentless drive and unmatched precision, John wages a one-man war, redefining modern action cinema with its stylized combat and dark emotional core.', 7, 5, 4.20, '2014-10-24', 'johnWick.png', 1)
 
 
 -- Seed initial genres
@@ -141,7 +144,7 @@ INSERT INTO Genre ([Name]) VALUES
 ('Documentary'),
 ('Animation');
 
-
+select * from Admin ;
 -- seed intial actors
 INSERT INTO Actor (FirstName, LastName, Bio, Gender) Values
 ('Keanu', 'Reeves', 'Canadian actor known for action roles and philosophical characters, especially in "The Matrix" and "John Wick" series.', 1),
@@ -162,7 +165,7 @@ INSERT INTO Actor (FirstName, LastName, Bio, Gender) Values
 ('Edward', 'Norton', 'Critically acclaimed American actor known for intense performances in films like "Fight Club" and "American History X".', 1),
 ('Jodie', 'Foster', 'Two-time Oscar-winning American actress known for intelligent, strong-willed roles including "The Silence of the Lambs".', 0),
 ('Anthony', 'Gonzalez', 'Young American voice actor and singer best known for voicing Miguel in Pixar’s "Coco".', 1),
-('Ed', 'Asner', 'Veteran American actor and voice artist known for playing Carl in "Up" and for his Emmy-winning TV roles.', 1);
+('Ed', 'Asner', 'Veteran American actor and voice artist known for playing Carl in "Up" and for his Emmy-winning TV roles.', 1)
 
 
 Insert INTO Supplier ([name], ContactInfo) Values
