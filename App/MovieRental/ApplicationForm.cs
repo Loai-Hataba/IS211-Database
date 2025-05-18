@@ -15,8 +15,9 @@ namespace MovieRental
         private Button userProfileButton;
         private Button cartButton;
         private Form currentProfilePage;
+        public static int globalUID;
 
-        public ApplicationForm(bool isAdmin = false)
+        public ApplicationForm(int UID = 0, bool isAdmin = false)
         {
             InitializeComponent();
             CustomizeComponents();
@@ -29,6 +30,7 @@ namespace MovieRental
             {
                 currentProfilePage = new UserProfile();
             }
+            globalUID = UID;
         }
 
         private void CustomizeComponents()
@@ -173,6 +175,7 @@ namespace MovieRental
 
             // Set Movies as default active tab
             AnimateTabSwitch(loadMovieBtn, loadGenreBtn, false);
+            // //MessageBox.Show($"Welcome to Rented! Please select a tab to get{globalUID}");
         }
 
         private Button CreateIconButton(string icon, string text)
@@ -261,7 +264,7 @@ namespace MovieRental
         private void cartButton_Click(object sender, EventArgs e)
         {
             // Handle cart button click
-            var cartForm = new CartPage();
+            var cartForm = new CartPage(this);
             cartForm.Show();
         }
     }

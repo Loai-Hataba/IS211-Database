@@ -285,41 +285,49 @@ namespace MovieRental.ProfilePages
             // Clear existing panels
             moviesFlowPanel.Controls.Clear();
 
-            // Sample data - replace with actual database data
-            var movies = new[]
+            /// we will load form the rented movies table
+            string query = $"SELECT [Movie Tape].TapeID, [Movie Tape].Title,[Movie Tape].[Description],[Movie Tape].ActorID, [Movie Tape].GenreID, [Movie Tape].RentalCharge, [Movie Tape].ReleaseDate, [Movie Tape].ImagePath, [Movie Tape].IsAvailable FROM Rents JOIN [Movie Tape] ON rents.TapeID = [Movie Tape].TapeID WHERE Rents.UID = {ApplicationForm.globalUID}";
+            List<movieItem> moviesList = DatabaseManager.FetchData(query, reader => new movieItem
             {
-                new {
-                    Title = "The Matrix",
-                    RentalDate = DateTime.Now.AddDays(-5),
-                    ReturnDate = DateTime.Now.AddDays(2),
-                    Status = "Active",
-                    ImageUrl = "path/to/matrix.jpg",
-                    Id = 1,
-                    Description = "A computer programmer discovers that reality as he knows it is a simulation created by machines, and joins a rebellion to break free.",
-                    Price = 4.99m,
-                    IsAvailable = true
-                },
-                new {
-                    Title = "Inception",
-                    RentalDate = DateTime.Now.AddDays(-10),
-                    ReturnDate = DateTime.Now.AddDays(-3),
-                    Status = "Returned",
-                    ImageUrl = "path/to/inception.jpg",
-                    Id = 2,
-                    Description = "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
-                    Price = 5.99m,
-                    IsAvailable = true
-                }
-            };
+                id = reader.GetInt32(0),
+                title = reader.GetString(1),
+                description = reader.GetString(2),
+                actorId = reader.GetInt32(3),
+                genreId = reader.GetInt32(4),
+                rentalCharge = reader.GetDouble(5),
+                releaseDate = reader.GetDateTime(6),
+                imagePath = reader.GetString(7),
+                isAvailable = reader.GetBoolean(8)
+            });
+            
+            // // TODO : if the moviesList is empty, show a message
+            // if (moviesList.Count == 0)
+            // {
+            //     Label noMoviesLabel = new Label
+            //     {
+            //         Text = "No rented movies found.",
+            //         Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+            //         ForeColor = Color.White,
+            //         AutoSize = true,
+            //         Location = new Point(20, 20)
+            //     };
+            //     moviesFlowPanel.Controls.Add(noMoviesLabel);
+            // }
 
-            foreach (var movie in movies)
+            string rentquery = $"SELECT RENTDate, ReturnDate Fromm Rents where UID = {ApplicationForm.globalUID}";
+             List<Rented> rentedList = DatabaseManager.FetchData(query, reader => new Rented
+             {
+                rentDate = reader.GetDateTime(0),
+                returnDate = reader.GetDateTime(1)
+            });
+            
+            for (int i = 0; i < moviesList.Count; i++)
             {
                 var moviePanel = CreateMoviePanel(
-                    movie.Title,
-                    movie.RentalDate,
-                    movie.ReturnDate,
-                    movie.Status,
-                    movie.ImageUrl
+                moviesList[i].title,
+                rentedList[i].rentDate,
+                rentedList[i].returnDate,
+                moviesList[i].imagePath
                 );
                 moviesFlowPanel.Controls.Add(moviePanel);
             }
@@ -330,7 +338,7 @@ namespace MovieRental.ProfilePages
             var editForm = new EditProfileForm();
             if (editForm.ShowDialog() == DialogResult.OK)
             {
-              
+
             }
         }
 
@@ -511,10 +519,32 @@ namespace MovieRental.ProfilePages
             });
         }
 
-    
+
         private void LoadUserData()
         {
-            // TODO: Load actual user data from your database
+            string query = $"SELECT Name, Email, PhoneNum, Address, BusinessAddress FROM Customer WHERE UID = {ApplicationForm.globalUID}";
+            var userData = DatabaseManager.FetchData(query, reader => new
+            {
+                Name = reader.GetString(0),
+                Email = reader.GetString(1),
+                Phone = reader.GetString(2),
+                ResidenceAddress = reader.GetString(3),
+                BusinessAddress = reader.GetString(4)
+            });
+            if (userData.Count > 0)
+            {
+                var user = userData[0];
+                textBoxName.Text = user.Name;
+                textBoxEmail.Text = user.Email;
+                textBoxPhone.Text = user.Phone;
+                textBoxResidenceAddress.Text = user.ResidenceAddress;
+                textBoxBusinessAddress.Text = user.BusinessAddress;
+            }
+            else
+            {
+                MessageBox.Show("Failed to load user data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -523,8 +553,20 @@ namespace MovieRental.ProfilePages
             if (ValidateInputs())
             {
                 // TODO : update the data in the database 
-                // Save changes
+                string query = $"UPDATE Customer SET Name = '@name', Email = '@email', Phone = '@phone', ResidenceAddress = '@address', BusinessAddress = '@business' WHERE UID = {ApplicationForm.globalUID}";
+                var parameters = new Dictionary<string, object>
+            {
+                {@"name", textBoxName.Text},
+                {@"email", textBoxPhone.Text},
+                {@"phone", textBoxPhone},
+                {@"address", textBoxResidenceAddress},
+                {@"business",textBoxBusinessAddress},
+
+            };
+                DatabaseManager.InsertData(query, parameters);
                 this.DialogResult = DialogResult.OK;
+                // Show success message     
+                MessageBox.Show("Profile updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }

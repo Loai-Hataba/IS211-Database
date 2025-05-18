@@ -14,11 +14,15 @@ namespace MovieRental
         private Label titleLabel;
         private Label totalLabel;
         private Button checkoutButton;
+        private ApplicationForm homePage;
+        
 
-        public CartPage()
+
+        public CartPage(ApplicationForm homepage)
         {
             InitializeComponent();
             LoadCartItems();
+            this.homePage = homePage;
         }
 
         private void InitializeComponent()
@@ -69,11 +73,8 @@ namespace MovieRental
             homeButton.FlatAppearance.BorderSize = 0;
             homeButton.Click += (s, e) =>
             {
-                var homePage = new ApplicationForm();
                 homePage.Show();
-                this.Close();
-                homePage.BringToFront();
-                homePage.Focus();
+                this.Hide();
             };
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
             homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;
@@ -172,7 +173,7 @@ namespace MovieRental
         {
             this.Close();
         }
-        private Panel CreateCartItemPanel(int movieId, string title, decimal price, string imageUrl)
+        private Panel CreateCartItemPanel(int movieId, string title, double price, string imageUrl)
         {
             Panel itemPanel = new Panel
             {
@@ -228,7 +229,7 @@ namespace MovieRental
                 Cursor = Cursors.Hand
             };
             removeButton.FlatAppearance.BorderSize = 0;
-            removeButton.Click += (s, e) => RemoveFromCart(movieId, itemPanel);
+            removeButton.Click += (s, e) => RemoveFromCart(movieId, price, itemPanel);
 
             // Add hover effects
             removeButton.MouseEnter += (s, e) => removeButton.BackColor = Color.FromArgb(192, 57, 43);
@@ -240,47 +241,102 @@ namespace MovieRental
                 priceLabel,
                 removeButton
             });
-
             return itemPanel;
         }
 
+        public double totalTemp;
         private void LoadCartItems()
         {
-            // TODO: Load actual cart items from database
-            // Sample data
-            var cartItems = new[]
+            totalTemp = 0;
+            Cart cart = new Cart();
+            string query = $"SELECT [Movie Tape].TapeID, [Movie Tape].Title,[Movie Tape].[Description],[Movie Tape].ActorID, [Movie Tape].GenreID, [Movie Tape].RentalCharge, [Movie Tape].ReleaseDate, [Movie Tape].ImagePath, [Movie Tape].IsAvailable FROM Cart JOIN [Movie Tape] ON Cart.TapeID = [Movie Tape].TapeID WHERE Cart.UID = {ApplicationForm.globalUID}";
+            List<movieItem> moviesList = DatabaseManager.FetchData(query, reader => new movieItem
             {
-                new { Id = 1, Title = "Sample Movie 1", Price = 4.99m, ImageUrl = "" },
-                new { Id = 2, Title = "Sample Movie 2", Price = 5.99m, ImageUrl = "" }
-            };
+                id = reader.GetInt32(0),
+                title = reader.GetString(1),
+                description = reader.GetString(2),
+                actorId = reader.GetInt32(3),
+                genreId = reader.GetInt32(4),
+                rentalCharge = reader.GetDouble(5),
+                releaseDate = reader.GetDateTime(6),
+                imagePath = reader.GetString(7),
+                isAvailable = reader.GetBoolean(8)
+            });
+            cart.moviesInCart = moviesList;
 
-            decimal total = 0;
-            foreach (var item in cartItems)
+            cart.total = 0;
+            foreach (var item in cart.moviesInCart)
             {
-                var itemPanel = CreateCartItemPanel(item.Id, item.Title, item.Price, item.ImageUrl);
+                var itemPanel = CreateCartItemPanel(item.id, item.title, item.rentalCharge, item.imagePath);
                 cartItemsPanel.Controls.Add(itemPanel);
-                total += item.Price;
+                cart.total += item.rentalCharge;
             }
 
-            totalLabel.Text = $"Total: ${total:F2}";
+            totalLabel.Text = $"Total: ${cart.total:F2}";
+            totalTemp = cart.total;
         }
 
-        private void RemoveFromCart(int movieId, Panel itemPanel)
+        private void RemoveFromCart(int movieId, double price, Panel itemPanel)
         {
-            // TODO: Remove item from database
+            string query = $"DELETE FROM cart WHERE UID = {ApplicationForm.globalUID}  And TapeID = {movieId}";
+            var parameters = new Dictionary<string, object>
+            {
+                { "@Id", movieId}
+            };
+            DatabaseManager.InsertData(query, parameters);
             cartItemsPanel.Controls.Remove(itemPanel);
             itemPanel.Dispose();
 
-            // Recalculate total
-            decimal total = 0;
-            // TODO: Calculate new total from database
-            totalLabel.Text = $"Total: ${total:F2}";
+            totalTemp -= price;
+            if (totalTemp < 0.1) totalTemp = 0;
+            totalLabel.Text = $"Total: ${totalTemp:F2}";
         }
 
         private void CheckoutButton_Click(object sender, EventArgs e)
         {
-            // TODO: Implement checkout functionality
-            MessageBox.Show("Proceeding to checkout...", "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            // TODO: Mak the movie as rented in the database
+            ///1- get the current cart 
+            /// 2- insert the moives into the rented table
+            /// remove the movies from the cart
+            // 3- remove the movies from the cart
+            string query = $"SELECT [Movie Tape].TapeID, [Movie Tape].Title,[Movie Tape].[Description],[Movie Tape].ActorID, [Movie Tape].GenreID, [Movie Tape].RentalCharge, [Movie Tape].ReleaseDate, [Movie Tape].ImagePath, [Movie Tape].IsAvailable FROM Cart JOIN [Movie Tape] ON Cart.TapeID = [Movie Tape].TapeID WHERE Cart.UID = {ApplicationForm.globalUID}";
+            List<movieItem> moviesList = DatabaseManager.FetchData(query, reader => new movieItem
+            {
+                id = reader.GetInt32(0),
+                title = reader.GetString(1),
+                description = reader.GetString(2),
+                actorId = reader.GetInt32(3),
+                genreId = reader.GetInt32(4),
+                rentalCharge = reader.GetDouble(5),
+                releaseDate = reader.GetDateTime(6),
+                imagePath = reader.GetString(7),
+                isAvailable = reader.GetBoolean(8)
+            });
+            foreach (var item in moviesList)
+            {
+                string insertQuery = $"INSERT INTO Rents ([UID], TapeID, TotalCharge) VALUES (@UID ,@tapeId, @charge)";
+                DatabaseManager.InsertData(insertQuery, new Dictionary<string, object>
+                {
+                    {"@UID", ApplicationForm.globalUID },
+                    {"@TapeID", item.id },
+                    {"@charge", item.rentalCharge}
+
+                });
+            }
+            
+            // Remove items from cart
+            string deleteQuery = $"DELETE FROM Cart WHERE UID = {ApplicationForm.globalUID}";
+            DatabaseManager.InsertData(deleteQuery, new Dictionary<string, object>
+            {
+                { "@UID", ApplicationForm.globalUID }
+            });
+            // Clear the cart items from the UI
+            cartItemsPanel.Controls.Clear();
+            totalLabel.Text = "Total: $0.00";
+            // Show a message box to confirm checkout
+
+            MessageBox.Show("CheckedOut Successfully", "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -68,7 +68,7 @@ namespace MovieRental.ProfilePages
             homeButton.Click += (s, e) =>
             {
                  // Navigate to home page
-                var homeForm = new ApplicationForm(true);
+                var homeForm = new ApplicationForm(0, true);
                 homeForm.Show();
                 this.Close();
             };

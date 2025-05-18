@@ -252,14 +252,21 @@ namespace MovieRental
             {
                 addToCartButton.BackColor = Color.FromArgb(149, 165, 166); // Lighter gray for disabled
             }
-        }
-
-        private void AddToCartButton_Click(object sender, EventArgs e)
+        }        private void AddToCartButton_Click(object sender, EventArgs e)
         {
             try
             {
-                // TODO: Implement add to cart functionality
-                // Add the movie to the user's cart in the database
+                // Get current user's UID from ApplicationForm
+                int currentUserId = ApplicationForm.globalUID;
+
+                string query = @"INSERT INTO cart ([UID], TapeID) Values (@UID, @tapeId);";
+                var parameters = new Dictionary<string, object>
+                {
+                    {@"UID", currentUserId},
+                    {"@tapeId", MovieId}
+                };
+                DatabaseManager.InsertData(query, parameters);
+
                 MessageBox.Show("Movie added to cart successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

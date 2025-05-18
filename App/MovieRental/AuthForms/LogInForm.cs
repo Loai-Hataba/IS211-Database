@@ -155,7 +155,7 @@ namespace MovieRental.AuthForms
             appUser adminCheck = adminList.FirstOrDefault();
             if (adminCheck != null)
             {
-                var applicationForm = new ApplicationForm(true);
+                var applicationForm = new ApplicationForm(adminCheck.UID ,true);
                 applicationForm.Show();
                 this.Close();
                 return;
@@ -174,9 +174,10 @@ namespace MovieRental.AuthForms
             });
             
             appUser customerCheck = customerList.FirstOrDefault();
+            
             if (customerCheck != null)
             {
-                var applicationForm = new ApplicationForm();
+                var applicationForm = new ApplicationForm(customerCheck.UID);
                 applicationForm.Show();
                 this.Close();
             }

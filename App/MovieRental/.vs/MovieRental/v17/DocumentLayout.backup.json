@@ -1,17 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\",
+  "WorkspaceRootPath": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\movieforms\\addmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\cartpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:cartpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\movieforms\\addmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:movieforms\\addmovieform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|g:\\fcai\\2nd year\\2nd term\\data base\\project\\is211-database\\app\\movierental\\genres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\genres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:genres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -22,19 +26,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "CartPage.cs",
+              "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\CartPage.cs",
+              "RelativeDocumentMoniker": "CartPage.cs",
+              "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\CartPage.cs",
+              "RelativeToolTip": "CartPage.cs",
+              "ViewState": "AgIAAC4BAAAAAAAAAAASwEIBAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T18:18:01.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AddMovieForm.cs",
-              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\MovieForms\\AddMovieForm.cs",
+              "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieForms\\AddMovieForm.cs",
               "RelativeDocumentMoniker": "MovieForms\\AddMovieForm.cs",
-              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\MovieForms\\AddMovieForm.cs",
+              "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieForms\\AddMovieForm.cs",
               "RelativeToolTip": "MovieForms\\AddMovieForm.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAxwAsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -44,30 +65,26 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DatabaseManager.cs",
-              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\DatabaseManager.cs",
+              "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\DatabaseManager.cs",
               "RelativeDocumentMoniker": "DatabaseManager.cs",
-              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\DatabaseManager.cs",
+              "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\DatabaseManager.cs",
               "RelativeToolTip": "DatabaseManager.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAUwEsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAswCkAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T11:27:56.448Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Genres.cs",
-              "DocumentMoniker": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Genres.cs",
+              "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\Genres.cs",
               "RelativeDocumentMoniker": "Genres.cs",
-              "ToolTip": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\IS211-Database\\App\\MovieRental\\Genres.cs",
+              "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\Genres.cs",
               "RelativeToolTip": "Genres.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBQAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-17T21:38:23.766Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }
