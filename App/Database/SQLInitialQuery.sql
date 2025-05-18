@@ -156,7 +156,7 @@ INSERT INTO Actor (FirstName, LastName, Bio, Gender) Values
 ('John', 'Travolta', 'American actor and dancer who rose to fame in the 70s and revived his career with "Pulp Fiction".', 1),
 ('Robert', 'Downey', 'Charismatic American actor best known for his role as Iron Man in the Marvel Cinematic Universe.', 1),
 ('Sam', 'Neill', 'New Zealand actor best known for his role as Dr. Alan Grant in "Jurassic Park".', 1),
-('Matthew', 'Broderick', 'American actor and singer, known for voice acting Simba in "The Lion King" and his iconic role in "Ferris Bueller’s Day Off".', 1),
+('Matthew', 'Broderick', 'American actor and singer, known for voice acting Simba in "The Lion King" and his iconic role in "Ferris Buellerï¿½s Day Off".', 1),
 ('Matthew', 'McConaughey', 'Academy Award-winning American actor celebrated for both romantic comedies and dramatic roles like in "Interstellar".', 1),
 ('Russell', 'Crowe', 'New Zealand-born Australian actor best known for his Oscar-winning performance in "Gladiator".', 1),
 ('Tim', 'Robbins', 'American actor and director known for socially conscious films and his powerful role in "The Shawshank Redemption".', 1),
@@ -164,7 +164,7 @@ INSERT INTO Actor (FirstName, LastName, Bio, Gender) Values
 ('Jesse', 'Eisenberg', 'American actor known for playing intellectual, often neurotic characters like Mark Zuckerberg in "The Social Network".', 1),
 ('Edward', 'Norton', 'Critically acclaimed American actor known for intense performances in films like "Fight Club" and "American History X".', 1),
 ('Jodie', 'Foster', 'Two-time Oscar-winning American actress known for intelligent, strong-willed roles including "The Silence of the Lambs".', 0),
-('Anthony', 'Gonzalez', 'Young American voice actor and singer best known for voicing Miguel in Pixar’s "Coco".', 1),
+('Anthony', 'Gonzalez', 'Young American voice actor and singer best known for voicing Miguel in Pixarï¿½s "Coco".', 1),
 ('Ed', 'Asner', 'Veteran American actor and voice artist known for playing Carl in "Up" and for his Emmy-winning TV roles.', 1)
 
 
@@ -182,3 +182,68 @@ Insert INTO Supplier ([name], ContactInfo) Values
 ('Orion Pictures', 'info@orionpictures.com'),
 ('Pixar Animation Studios', 'contact@pixar.com'),
 ('Summit Entertainment', 'info@summitent.com')
+
+
+
+
+
+/*
+-- a. What was the most interesting movie genre(s) that had maximum number of rentals?
+SELECT g.Name, COUNT(m.TapeID) AS Rentals
+FROM [Movie Tape] m
+INNER JOIN Genre g ON g.GenreID = m.GenreID
+INNER JOIN Rents r ON m.TapeID = r.TapeID
+GROUP BY g.Name
+HAVING COUNT(m.TapeID) = (
+    SELECT TOP 1 COUNT(m2.TapeID)
+    FROM [Movie Tape] m2
+    INNER JOIN Rents r2 ON m2.TapeID = r2.TapeID
+    GROUP BY m2.GenreID
+    ORDER BY COUNT(m2.TapeID) DESC
+);
+
+
+-- b. What was the movie genre that hadnâ€™t any rental requests for the last month?
+SELECT g.Name
+FROM Genre g
+WHERE g.GenreID NOT IN (
+    SELECT DISTINCT m.GenreID
+    FROM Rents r
+    JOIN [Movie Tape] m ON r.TapeID = m.TapeID
+    WHERE r.RentDate >= DATEADD(MONTH, -1, GETDATE())
+);
+
+
+-- c. What were the added movies for each genre and when?
+SELECT m.Title, g.Name, m.SupplyDate
+FROM [Movie Tape] m
+INNER JOIN Genre g ON m.GenreID = g.GenreID
+ORDER BY g.Name, m.SupplyDate;
+
+
+-- d. For each user/ member, retrieve all his/her information and the number of movies he/she rented.
+SELECT c.*, COUNT(r.TapeID)
+FROM Customer c
+LEFT JOIN Rents r ON c.UID = r.UID
+GROUP BY c.UID, c.Name, c.Email, c.PhoneNum, c.Address, c.BusinessAddress, c.Password;
+ 
+
+-- e. What are the top rented (in-demand) genres and what are their total sales?
+SELECT g.Name AS Genre, COUNT(r.TapeID) AS TotalRentals, 
+       SUM(m.RentalCharge) AS TotalSales
+FROM Rents r
+JOIN [Movie Tape] m ON r.TapeID = m.TapeID
+JOIN Genre g ON m.GenreID = g.GenreID
+GROUP BY g.Name
+ORDER BY TotalRentals DESC;
+
+
+-- f. Who are the suppliers who didnâ€™t provide any movie in the last three months?
+SELECT s.Name
+FROM Supplier s
+WHERE s.SupplierID NOT IN (
+    SELECT DISTINCT m.SupplierID
+    FROM [Movie Tape] m
+    WHERE m.SupplyDate >= DATEADD(MONTH, -3, GETDATE())
+);
+*/
