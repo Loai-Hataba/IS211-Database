@@ -177,6 +177,16 @@ namespace MovieRental.AuthForms
             
             if (customerCheck != null)
             {
+                // string cardquery = @"INSERT INTO Card (LastFour, [uid], CardType, [Status]) Values (@lastFour, @UID, @cardType, @status)";
+                // MessageBox.Show($"kokoi? {SignUpForm.lastFour} | {customerCheck.UID}");
+                // var pms = new Dictionary<string, object>
+                // {
+                //     {"@lastFour", "2005"},
+                //     {"@UID", customerCheck.UID},
+                //     {"@cardType", "MasterCard"},
+                //     {"@status", "Active"}
+                // };
+                // DatabaseManager.InsertData(cardquery, pms);
                 var applicationForm = new ApplicationForm(customerCheck.UID);
                 applicationForm.Show();
                 this.Close();
@@ -193,6 +203,8 @@ namespace MovieRental.AuthForms
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+            var newMenu = new Form1();
+            newMenu.Show();
         }
     }
 }

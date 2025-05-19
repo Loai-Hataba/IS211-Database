@@ -203,7 +203,8 @@ namespace MovieRental.AuthForms
         }
 
 
-        public static string creditCardTemp = "";
+        public static string lastFour = "2005";
+        public static string creditCardTemp = $"MasterCard No.: **** **** {lastFour}";
         private void signup_btn_Click(object sender, EventArgs e)
         {
             // Check for empty fields
@@ -267,7 +268,6 @@ namespace MovieRental.AuthForms
             string passwordData = textBoxPassword.Text;
             string creditCard = textBoxCreditCard.Text;
 
-            MessageBox.Show($"user data: {name} | {email} | {phoneNum} | {address} | {businessAdress} | {password} | {creditCard}");
             // insert the user into the database TODO : 
             string insertQuery = @"INSERT INTO Customer ([Name], Email, PhoneNum, [Address], BusinessAddress, [password]) Values (@Name, @Email, @PhoneNum, @Address, @BusinessAddress, @password)";
             var parameters = new Dictionary<string, object>
@@ -282,19 +282,12 @@ namespace MovieRental.AuthForms
 
             DatabaseManager.InsertData(insertQuery, parameters);
 
-            string lastFour = creditCard.Substring(creditCard.Length - 4);
+            lastFour = creditCard.Substring(creditCard.Length - 4);
             Console.WriteLine($"Credit four: {lastFour}");
 
-            string cardquery = @"INSERT INTO Card (LastFour, [uid], CardType, [Status]) Values (@lastFour, @UID, @cardType, @status)";
-            var pms = new Dictionary<string, object>
-            {
-                {"@lastFour", lastFour},
-                {"@UID", ApplicationForm.globalUID},
-                {"@cardType", "MasterCard"},
-                {"@status", "Active"}
-            };
-            DatabaseManager.InsertData(cardquery, pms);
-            creditCardTemp = $"MasterCard No.: **** **** {lastFour}";
+            
+
+
 
             // If all validations pass
             MessageBox.Show("Sign up successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

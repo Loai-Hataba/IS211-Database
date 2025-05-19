@@ -7,6 +7,9 @@
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|d:\\programming\\sql\\is211-database\\app\\movierental\\cartpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62020F16-4B1C-4DD6-83A0-AC90DC2038EF}|MovieRental.csproj|solutionrelative:cartpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -26,7 +29,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,6 +42,17 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAAEVAAAAAAAAAAAEwBIVAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-05-19T04:56:12.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "CartPage.cs",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\CartPage.cs",
               "RelativeDocumentMoniker": "CartPage.cs",
@@ -46,12 +60,11 @@
               "RelativeToolTip": "CartPage.cs",
               "ViewState": "AgIAAC4BAAAAAAAAAAASwEIBAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T18:18:01.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-18T18:18:01.361Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AddMovieForm.cs",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieForms\\AddMovieForm.cs",
               "RelativeDocumentMoniker": "MovieForms\\AddMovieForm.cs",
@@ -69,14 +82,14 @@
               "RelativeDocumentMoniker": "DatabaseManager.cs",
               "ToolTip": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\DatabaseManager.cs",
               "RelativeToolTip": "DatabaseManager.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAUwFAAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAIwEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T11:27:56.448Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Genres.cs",
               "DocumentMoniker": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\Genres.cs",
               "RelativeDocumentMoniker": "Genres.cs",

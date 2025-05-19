@@ -166,7 +166,7 @@ namespace MovieRental.ProfilePages
         }
 
 
-        private Panel CreateMoviePanel(string title, DateTime rentalDate, DateTime returnDate, string status, string imageUrl = null)
+        private Panel CreateMoviePanel(string title, DateTime rentalDate, DateTime returnDate, string status, string imageUrl)
         {
             Panel moviePanel = new Panel
             {
@@ -319,22 +319,9 @@ namespace MovieRental.ProfilePages
                 isAvailable = reader.GetBoolean(8)
             });
             
-            // // TODO : if the moviesList is empty, show a message
-            // if (moviesList.Count == 0)
-            // {
-            //     Label noMoviesLabel = new Label
-            //     {
-            //         Text = "No rented movies found.",
-            //         Font = new Font("Segoe UI", 14F, FontStyle.Bold),
-            //         ForeColor = Color.White,
-            //         AutoSize = true,
-            //         Location = new Point(20, 20)
-            //     };
-            //     moviesFlowPanel.Controls.Add(noMoviesLabel);
-            // }
+            string rentQuery = $"SELECT RentDate, DATEADD(MONTH, 1, RentDate) AS ReturnDate FROM Rents WHERE UID = {ApplicationForm.globalUID}";
 
-            string rentquery = $"SELECT RENTDate, ReturnDate Fromm Rents where UID = {ApplicationForm.globalUID}";
-             List<Rented> rentedList = DatabaseManager.FetchData(query, reader => new Rented
+             List<Rented> rentedList = DatabaseManager.FetchData(rentQuery, reader => new Rented
              {
                 rentDate = reader.GetDateTime(0),
                 returnDate = reader.GetDateTime(1)
@@ -342,11 +329,15 @@ namespace MovieRental.ProfilePages
             
             for (int i = 0; i < moviesList.Count; i++)
             {
+                string imageFileName = moviesList[i].imagePath;
+                string assetsPath = Path.Combine(Application.StartupPath, "..", "..", "..", "..", "Assets", imageFileName);
+                assetsPath = Path.GetFullPath(assetsPath);
                 var moviePanel = CreateMoviePanel(
                 moviesList[i].title,
                 rentedList[i].rentDate,
                 rentedList[i].returnDate,
-                moviesList[i].imagePath
+                "Rented",
+                assetsPath
                 );
                 moviesFlowPanel.Controls.Add(moviePanel);
             }
@@ -578,18 +569,17 @@ namespace MovieRental.ProfilePages
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // TODO: Validate and save user data to database
             if (ValidateInputs())
             {
-                // TODO : update the data in the database 
-                string query = $"UPDATE Customer SET Name = '@name', Email = '@email', Phone = '@phone', ResidenceAddress = '@address', BusinessAddress = '@business' WHERE UID = {ApplicationForm.globalUID}";
+                string query = @"UPDATE Customer SET Name = @name, Email = @email, PhoneNUM = @phone, Address = @address, BusinessAddress = @business WHERE UID = @UID";
                 var parameters = new Dictionary<string, object>
             {
                 {@"name", textBoxName.Text},
                 {@"email", textBoxPhone.Text},
-                {@"phone", textBoxPhone},
-                {@"address", textBoxResidenceAddress},
-                {@"business",textBoxBusinessAddress},
+                {@"phone", textBoxPhone.Text},
+                {@"address", textBoxResidenceAddress.Text},
+                {@"business",textBoxBusinessAddress.Text},
+                {@"UID", ApplicationForm.globalUID}
 
             };
                 DatabaseManager.InsertData(query, parameters);

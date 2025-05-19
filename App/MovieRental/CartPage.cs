@@ -310,12 +310,6 @@ namespace MovieRental
 
         private void CheckoutButton_Click(object sender, EventArgs e)
         {
-            
-            // !FIXME: Mak the movie as rented in the database
-            ///1- get the current cart 
-            /// 2- insert the moives into the rented table
-            /// remove the movies from the cart
-            // 3- remove the movies from the cart
             string query = $"SELECT [Movie Tape].TapeID, [Movie Tape].Title,[Movie Tape].[Description],[Movie Tape].ActorID, [Movie Tape].GenreID, [Movie Tape].RentalCharge, [Movie Tape].ReleaseDate, [Movie Tape].ImagePath, [Movie Tape].IsAvailable FROM Cart JOIN [Movie Tape] ON Cart.TapeID = [Movie Tape].TapeID WHERE Cart.UID = {ApplicationForm.globalUID}";
             List<movieItem> moviesList = DatabaseManager.FetchData(query, reader => new movieItem
             {
@@ -352,7 +346,7 @@ namespace MovieRental
             totalLabel.Text = "Total: $0.00";
             // Show a message box to confirm checkout
 
-            MessageBox.Show($"CheckedOut Successfully using: {SignUpForm.creditCardTemp}", "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"CheckedOut Successfully", "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

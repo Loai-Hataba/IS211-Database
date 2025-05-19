@@ -16,6 +16,9 @@
     <Compile Update="CartPage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\AddAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="movieCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
