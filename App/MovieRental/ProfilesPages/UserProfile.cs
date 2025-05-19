@@ -147,7 +147,7 @@ namespace MovieRental.ProfilePages
         }
 
 
-        private Panel CreateMoviePanel(string title, DateTime rentalDate, DateTime returnDate, string status, string imageUrl = null)
+        private Panel CreateMoviePanel(string title, DateTime rentalDate, DateTime returnDate, string status, string imageUrl)
         {
             Panel moviePanel = new Panel
             {
@@ -300,34 +300,35 @@ namespace MovieRental.ProfilePages
                 isAvailable = reader.GetBoolean(8)
             });
 
-            // // TODO : if the moviesList is empty, show a message
-            // if (moviesList.Count == 0)
-            // {
-            //     Label noMoviesLabel = new Label
-            //     {
-            //         Text = "No rented movies found.",
-            //         Font = new Font("Segoe UI", 14F, FontStyle.Bold),
-            //         ForeColor = Color.White,
-            //         AutoSize = true,
-            //         Location = new Point(20, 20)
-            //     };
-            //     moviesFlowPanel.Controls.Add(noMoviesLabel);
-            // }
-            MessageBox.Show($"yarab nebda2 ");
-            string rentquery = $"SELECT RENTDate, ReturnDate Fromm Rents where UID = {ApplicationForm.globalUID}";
-             List<Rented> rentedList = DatabaseManager.FetchData(query, reader => new Rented
+            if (moviesList.Count == 0)
+            {
+                Label noMoviesLabel = new Label
+                {
+                    Text = "No rented movies found.",
+                    Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                    ForeColor = Color.White,
+                    AutoSize = true,
+                    Location = new Point(20, 20)
+                };
+                moviesFlowPanel.Controls.Add(noMoviesLabel);
+            }
+            string rentquery = $"SELECT RENTDate, ReturnDate From Rents where UID = {ApplicationForm.globalUID}";
+             List<Rented> rentedList = DatabaseManager.FetchData(rentquery, reader => new Rented
              {
                 rentDate = reader.GetDateTime(0),
                 returnDate = reader.GetDateTime(1)
             });
             for (int i = 0; i < moviesList.Count; i++)
             {
-                MessageBox.Show($"yarab ne5las {rentedList[i].rentDate} | {rentedList[i].returnDate}");
+                string imageFileName = moviesList[i].imagePath;
+                string assetsPath = Path.Combine(Application.StartupPath, "..", "..", "..", "..", "Assets", imageFileName);
+                assetsPath = Path.GetFullPath(assetsPath);
                 var moviePanel = CreateMoviePanel(
                 moviesList[i].title,
                 rentedList[i].rentDate,
                 rentedList[i].returnDate,
-                moviesList[i].imagePath
+                "Rented",
+                assetsPath
                 );
                 moviesFlowPanel.Controls.Add(moviePanel);
             }
