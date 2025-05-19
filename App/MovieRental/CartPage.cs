@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using MovieRental.AuthForms;
+using System.IO;
 
 namespace MovieRental
 {
@@ -193,10 +194,26 @@ namespace MovieRental
             {
                 if (!string.IsNullOrEmpty(imageUrl))
                 {
-                    movieImage.Image = Image.FromFile(imageUrl);
+                    string imageFileName = imageUrl;
+                    string assetsPath = Path.Combine(Application.StartupPath, "..", "..", "..", "..", "Assets", imageFileName);
+                    
+                    if (File.Exists(assetsPath))
+                    {
+                        using (var stream = new FileStream(assetsPath, FileMode.Open, FileAccess.Read))
+                        {
+                            movieImage.Image = Image.FromStream(stream);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Image not found at: {assetsPath}");
+                    }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading image: {ex.Message}");
+            }
 
             Label titleLabel = new Label
             {

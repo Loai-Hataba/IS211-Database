@@ -17,20 +17,22 @@ namespace MovieRental
         private static Form currentProfilePage;
         public static int globalUID;
 
-             private bool isAdmin = false;
+             public static bool isAdmin = false;
         public ApplicationForm(int UID = 0, bool isAdmin = false)
         {
             InitializeComponent();
             CustomizeComponents();
             loadMovieBtn_Click(this, EventArgs.Empty); // Call Movies tab load at startup
-            this.isAdmin = isAdmin;
+            ApplicationForm.isAdmin = isAdmin;
             if (isAdmin)
             {
                 currentProfilePage = new AdminProfile();
+                cartButton.Visible = false; // Hide cart button for admin
             }
             else
             {
                 currentProfilePage = new UserProfile();
+                cartButton.Visible = true; // Show cart button for user
             }
             globalUID = UID;
         }

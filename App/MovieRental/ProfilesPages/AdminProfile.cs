@@ -2,6 +2,13 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using MovieRental.MovieForms;
+// using QuestPDF.Fluent;
+// using QuestPDF.Helpers;
+// using QuestPDF.Infrastructure;
+// using ScottPlot;
+// using ScottPlot.Plottables;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace MovieRental.ProfilePages
 {
@@ -13,6 +20,9 @@ namespace MovieRental.ProfilePages
         private Button backButton;
         private Button homeButton;
         private Button addMovieButton;
+        private Button reportButton; // Add with other private fields at the top
+        private Button logoutButton; // Add logout button
+        private Button addAdminButton;
         private ContextMenuStrip movieContextMenu;
 
         public AdminProfile()
@@ -31,6 +41,9 @@ namespace MovieRental.ProfilePages
             backButton = new Button();
             homeButton = new Button();
             addMovieButton = new Button();
+            reportButton = new Button(); // Initialize report button
+            logoutButton = new Button(); // Initialize logout button
+            addAdminButton = new Button();
             movieContextMenu = new ContextMenuStrip();
 
             SuspendLayout();
@@ -91,10 +104,69 @@ namespace MovieRental.ProfilePages
             addMovieButton.MouseEnter += (s, e) => addMovieButton.BackColor = Color.FromArgb(39, 174, 96);
             addMovieButton.MouseLeave += (s, e) => addMovieButton.BackColor = Color.FromArgb(46, 204, 113);
 
+            // Report Button
+            reportButton = new Button
+            {
+                Text = "📊 Reports",
+                BackColor = Color.FromArgb(52, 152, 219), // Blue color
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 11F),
+                Size = new Size(120, 40),
+                Location = new Point(navigationBar.Width - 280, 10),
+                Cursor = Cursors.Hand,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right
+            };
+            reportButton.FlatAppearance.BorderSize = 0;
+            reportButton.Click += ReportButton_Click;
+            reportButton.MouseEnter += (s, e) => reportButton.BackColor = Color.FromArgb(41, 128, 185);
+            reportButton.MouseLeave += (s, e) => reportButton.BackColor = Color.FromArgb(52, 152, 219);
+
+            // Logout Button
+            logoutButton = new Button
+            {
+                Text = "🚪 Logout",
+                BackColor = Color.FromArgb(231, 76, 60), // Red color
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 11F),
+                Size = new Size(120, 40),
+                Location = new Point(navigationBar.Width - 420, 10),
+                Cursor = Cursors.Hand,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right
+            };
+            logoutButton.FlatAppearance.BorderSize = 0;
+            logoutButton.Click += LogoutButton_Click;
+            logoutButton.MouseEnter += (s, e) => logoutButton.BackColor = Color.FromArgb(192, 57, 43);
+            logoutButton.MouseLeave += (s, e) => logoutButton.BackColor = Color.FromArgb(231, 76, 60);
+
+            // Add Admin Button
+            addAdminButton = new Button
+            {
+                Text = "👤 Add Admin",
+                BackColor = Color.FromArgb(155, 89, 182), // Purple color
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 11F),
+                Size = new Size(120, 40),
+                Location = new Point(navigationBar.Width - 540, 10),
+                Cursor = Cursors.Hand,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right
+            };
+            addAdminButton.FlatAppearance.BorderSize = 0;
+            addAdminButton.Click += AddAdminButton_Click;
+            addAdminButton.MouseEnter += (s, e) => addAdminButton.BackColor = Color.FromArgb(142, 68, 173);
+            addAdminButton.MouseLeave += (s, e) => addAdminButton.BackColor = Color.FromArgb(155, 89, 182);
+
             // Add to navigation bar
-            navigationBar.Controls.Add(backButton);
-            navigationBar.Controls.Add(homeButton);
-            navigationBar.Controls.Add(addMovieButton);
+            navigationBar.Controls.AddRange(new Control[] { 
+                backButton, 
+                homeButton,
+                addAdminButton,
+                logoutButton,
+                reportButton,
+                addMovieButton 
+            });
 
             // --- Main Panel ---
             mainPanel.Dock = DockStyle.Fill;
@@ -248,6 +320,98 @@ namespace MovieRental.ProfilePages
             }
 
             return card;
+        }
+
+        private void ReportButton_Click(object sender, EventArgs e)
+         {
+        //     QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+
+        //     Document.Create(container =>
+        //     {
+        //         container.Page(page =>
+        //         {
+        //             page.Size(PageSizes.A4);
+        //             page.Margin(2, QuestPDF.Infrastructure.Unit.Centimetre);
+
+        //             page.Content().Column(column =>
+        //             {
+        //                 column.Spacing(10);
+
+        //                 column.Item().Text("1] Rentals per Genre")
+        //                     .AlignLeft().Bold()
+        //                     .FontFamily("RockWell").FontSize(24);
+
+        //                 column.Item().AspectRatio(1).Svg(size =>
+        //                 {
+        //                     Dictionary<string, int> genreRentals = getGenreRentals();
+        //                     return GenerateBarChart(genreRentals, size);
+        //                 });
+
+        //                 column.Item().PageBreak();
+
+        //                 column.Item().Text("2] Profit per Genre")
+        //                     .AlignLeft().Bold()
+        //                     .FontFamily("RockWell").FontSize(24);
+
+        //                 column.Item().AspectRatio(1).Svg(size =>
+        //                 {
+        //                     Dictionary<string, int> genreProfit = getGenreProfit();
+        //                     return GenerateBarChart(genreProfit, size);
+        //                 });
+        //             });
+
+        //             page.Footer().AlignCenter()
+        //                 .Text(x =>
+        //                 {
+        //                     x.Span("Page ").FontFamily("Rockwell");
+        //                     x.CurrentPageNumber();
+        //                 });
+        //         });
+        //     }).GeneratePdfAndShow();
+        }
+
+        // // Add the helper methods from report.cs
+        // private Dictionary<string, int> getGenreRentals()
+        // {
+        //     // Copy implementation from report.cs
+        // }
+
+        // private Dictionary<string, int> getGenreProfit()
+        // {
+        //     // Copy implementation from report.cs
+        // }
+
+        // private string GenerateBarChart(Dictionary<string, int> stats, QuestPDF.Infrastructure.Size size)
+        // {
+        //     // Copy implementation from report.cs
+        // }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Restart();
+                Environment.Exit(0);
+            }
+        }
+
+        private void AddAdminButton_Click(object sender, EventArgs e)
+        {
+            using (var form = new AddAdminForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    // TODO: Add your database insertion code here using:
+                    // form.AdminName
+                    // form.AdminEmail
+                    // form.AdminPhone
+                    // form.AdminPassword
+                    
+                    MessageBox.Show("Admin added successfully!", "Success", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

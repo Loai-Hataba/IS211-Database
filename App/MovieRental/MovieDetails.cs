@@ -37,8 +37,17 @@ namespace MovieRental
             IsAvailable = isAvailable;
             ImageUrl = imageUrl;
 
+
             InitializeComponent();
             LoadMovieDetails();
+            if (ApplicationForm.isAdmin)
+            {
+                addToCartButton.Visible = false; // Hide the button for admin
+            }
+            else
+            {
+                addToCartButton.Visible = true; // Show the button for regular users
+            }
             this.WindowState = FormWindowState.Maximized;
         }
 

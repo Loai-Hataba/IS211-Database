@@ -15,6 +15,7 @@ namespace MovieRental.ProfilePages
         private Panel navigationBar;
         private Button backButton;
         private Button homeButton;
+        private Button logoutButton; // <-- New field
 
         public UserProfile()
         {
@@ -33,6 +34,7 @@ namespace MovieRental.ProfilePages
             navigationBar = new Panel();
             backButton = new Button();
             homeButton = new Button();
+            logoutButton = new Button(); // <-- Initialize new button
 
             SuspendLayout();
 
@@ -73,21 +75,6 @@ namespace MovieRental.ProfilePages
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
             homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;
 
-            navigationBar.Controls.Add(backButton);
-            navigationBar.Controls.Add(homeButton);
-
-            // --- Main Panel ---
-            mainPanel.Dock = DockStyle.Fill;
-            mainPanel.BackColor = Color.FromArgb(52, 73, 94);
-            mainPanel.Padding = new Padding(40, 20, 40, 40);
-
-            // --- Title Label ---
-            titleLabel.Text = "My Profile";
-            titleLabel.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
-            titleLabel.ForeColor = Color.FromArgb(52, 152, 219);
-            titleLabel.AutoSize = true;
-            titleLabel.Location = new Point(0, 20);
-
             // --- Edit Profile Button ---
             editProfileButton.Text = "✎ Edit Profile";
             editProfileButton.BackColor = Color.Transparent;
@@ -110,6 +97,40 @@ namespace MovieRental.ProfilePages
             {
                 editProfileButton.ForeColor = Color.WhiteSmoke;
             };
+
+            // --- Logout Button ---
+            logoutButton.Text = "🚪 Logout";
+            logoutButton.BackColor = Color.FromArgb(231, 76, 60); // Red color
+            logoutButton.ForeColor = Color.White;
+            logoutButton.FlatStyle = FlatStyle.Flat;
+            logoutButton.Font = new Font("Segoe UI", 11F);
+            logoutButton.Size = new Size(120, 40);
+            logoutButton.Location = new Point(navigationBar.Width - 280, 10);
+            logoutButton.Cursor = Cursors.Hand;
+            logoutButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            logoutButton.FlatAppearance.BorderSize = 0;
+            logoutButton.Click += LogoutButton_Click;
+            logoutButton.MouseEnter += (s, e) => logoutButton.BackColor = Color.FromArgb(192, 57, 43);
+            logoutButton.MouseLeave += (s, e) => logoutButton.BackColor = Color.FromArgb(231, 76, 60);
+
+            navigationBar.Controls.AddRange(new Control[] {
+                backButton,
+                homeButton,
+                logoutButton,
+                editProfileButton
+            });
+
+            // --- Main Panel ---
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.BackColor = Color.FromArgb(52, 73, 94);
+            mainPanel.Padding = new Padding(40, 20, 40, 40);
+
+            // --- Title Label ---
+            titleLabel.Text = "My Profile";
+            titleLabel.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
+            titleLabel.ForeColor = Color.FromArgb(52, 152, 219);
+            titleLabel.AutoSize = true;
+            titleLabel.Location = new Point(0, 20);
 
             // Add Edit Profile button to navigation bar instead of main panel
             navigationBar.Controls.Add(editProfileButton);
@@ -343,6 +364,16 @@ namespace MovieRental.ProfilePages
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Restart();
+                Environment.Exit(0);
+            }
         }
     }
 
