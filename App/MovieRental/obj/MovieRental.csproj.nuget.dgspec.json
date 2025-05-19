@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj": {}
+    "d:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj": {
+    "d:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
+        "projectUniqueName": "d:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
         "projectName": "MovieRental",
-        "projectPath": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
+        "projectPath": "d:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
         "packagesPath": "C:\\Users\\loaiw\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\obj\\",
+        "outputPath": "d:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

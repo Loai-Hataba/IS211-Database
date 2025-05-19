@@ -550,20 +550,17 @@ namespace MovieRental.ProfilePages
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // TODO: Validate and save user data to database
             if (ValidateInputs())
             {
-                // TODO : update the data in the database 
-                string query = $"UPDATE Customer SET Name = '@name', Email = '@email', Phone = '@phone', ResidenceAddress = '@address', BusinessAddress = '@business' WHERE UID = {ApplicationForm.globalUID}";
+                string query = $"UPDATE Customer SET Name = @name, Email = @email, PhoneNum = @phone, Address = @address, BusinessAddress = @business WHERE UID = {ApplicationForm.globalUID}";
                 var parameters = new Dictionary<string, object>
-            {
-                {@"name", textBoxName.Text},
-                {@"email", textBoxPhone.Text},
-                {@"phone", textBoxPhone},
-                {@"address", textBoxResidenceAddress},
-                {@"business",textBoxBusinessAddress},
-
-            };
+                {
+                    {"@name", textBoxName.Text},
+                    {"@email", textBoxEmail.Text},
+                    {"@phone", textBoxPhone.Text},
+                    {"@address", textBoxResidenceAddress.Text},
+                    {"@business", textBoxBusinessAddress.Text},
+                };
                 DatabaseManager.InsertData(query, parameters);
                 this.DialogResult = DialogResult.OK;
                 // Show success message     

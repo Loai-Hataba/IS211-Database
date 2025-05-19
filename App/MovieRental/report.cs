@@ -44,7 +44,7 @@
 //     return genreRentals;
 // }
 
-// private Dictionary<string, int> getGenreProfit()
+// private Dictionary<string, int> getGenreProf it()
 // {
 //     Dictionary<string, int> genreRentals = new Dictionary<string, int>();
 //     SqlConnection connection = new SqlConnection("Data Source=SHARNOUBI_HP\\SQLEXPRESS;Initial Catalog=MovieRentalDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");

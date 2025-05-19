@@ -143,6 +143,8 @@ namespace MovieRental.ProfilePages
             // Add Admin Button
             addAdminButton = new Button
             {
+
+                
                 Text = "👤 Add Admin",
                 BackColor = Color.FromArgb(155, 89, 182), // Purple color
                 ForeColor = Color.White,
