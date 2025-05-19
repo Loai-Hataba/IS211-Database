@@ -37,17 +37,8 @@ namespace MovieRental
             IsAvailable = isAvailable;
             ImageUrl = imageUrl;
 
-
             InitializeComponent();
             LoadMovieDetails();
-            if (ApplicationForm.isAdmin)
-            {
-                addToCartButton.Visible = false; // Hide the button for admin
-            }
-            else
-            {
-                addToCartButton.Visible = true; // Show the button for regular users
-            }
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -100,7 +91,10 @@ namespace MovieRental
             homeButton.FlatAppearance.BorderSize = 0;
             homeButton.Click += (s, e) =>
             {
+                var homeForm = new ApplicationForm();
+                homeForm.Show();
                 this.Close();
+                homeForm.BringToFront();
             };
             
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
@@ -179,7 +173,7 @@ namespace MovieRental
             {
                 Font = new Font("Segoe UI", 14F, FontStyle.Bold),
                 Location = new Point(480, 510),
-                Size = new Size(200, 30)
+                Size = new Size(350, 30) // Increased width to fit longer text
             };
 
             // Add to Cart Button
