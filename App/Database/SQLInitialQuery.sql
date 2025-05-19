@@ -1,6 +1,5 @@
 CREATE DATABASE MovieRentalDB;
 
-
 -- MAKE SURE TO USE IT BEFORE ANYTHING
 USE MovieRentalDB;
 
@@ -70,9 +69,7 @@ CREATE TABLE [Card] (
   PRIMARY KEY (LastFour, UID),
   FOREIGN KEY (UID) REFERENCES Customer (UID)
 );
-drop table card;
-select * from card;
-INSERT INTO Card (LastFour, [uid], CardType, [Status]) Values ('3300', 2, 'Visa', 'Online');
+
 
 CREATE TABLE Rents (
   [UID] INT,
@@ -104,19 +101,6 @@ CREATE TABLE Cart (
 -- view tables
 SELECT name 
 FROM sys.tables;
-
-use MovieRentalDB;
-
-
--- to be deleted
-select * from Customer;
-select *from rents;
-SELECT RENTDate, ReturnDate From Rents where UID = 6;
-
-update Customer set Email = 'abcd@abcd.com',[Password] = 'kokowawa' where uid = 7;
-
-delete from Customer;
-
 ----------------------------------------------------------------------------------------
 
 
@@ -136,7 +120,6 @@ INSERT INTO Genre ([Name]) VALUES
 ('Documentary'),
 ('Animation');
 
-select * from Admin ;
 -- seed intial actors
 INSERT INTO Actor (FirstName, LastName, Bio, Gender) Values
 ('Keanu', 'Reeves', 'Canadian actor known for action roles and philosophical characters, especially in "The Matrix" and "John Wick" series.', 1),
@@ -197,8 +180,6 @@ VALUES
 ('Coco', 'Young Miguel dreams of becoming a musician, despite his family''s ancestral ban on music. On Da de los Muertos, he finds himself magically transported to the Land of the Dead, where he searches for his great-great-grandfather, a legendary singer. Along the way, he uncovers family secrets and learns the importance of remembrance, love, and following one''s passion. Coco celebrates heritage with heartwarming visuals and powerful music.', 18, 7, 3.55, '2017-11-22', 'coco.png', 1, 12),
 ('Up', 'Carl Fredricksen, a widowed balloon salesman, ties thousands of balloons to his house and sets off for South America to fulfill a lifelong dream. Along the way, he is joined by an eager young scout named Russell. Their journey is filled with unexpected challenges, colorful characters, and lessons about adventure, friendship, and letting go of the past. "Up" delivers emotional depth and lighthearted fun.', 19, 7, 3.40, '2009-05-29', 'up.png', 1, 12),
 ('John Wick', 'John Wick, a legendary assassin in retirement, is pulled back into the criminal underworld after a group of gangsters kill his beloved doga final gift from his late wife. Fueled by vengeance and grief, he unleashes his lethal skills on those who wronged him. With a relentless drive and unmatched precision, John wages a one-man war, redefining modern action cinema with its stylized combat and dark emotional core.', 1, 1, 4.20, '2014-10-24', 'johnWick.png', 1, 11)
-
-
 
 
 
