@@ -90,7 +90,6 @@ namespace MovieRental.MovieForms
             DateTime releaseDate = releaseDatePicker.Value;
             string imagePath = imagePathTextBox.Text;
             bool isAvailable = true;
-            MessageBox.Show($"user data: {title} | {description} | {actorId} | {genreId} | {price} | {releaseDate} | {imagePath} | {isAvailable} | {Movie.id}");
             var parameters = new Dictionary<string, object>
             {
                 {@"title", title},

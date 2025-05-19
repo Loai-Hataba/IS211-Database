@@ -333,6 +333,32 @@ namespace MovieRental
                     {"@charge", item.rentalCharge}
 
                 });
+
+                string qry = @"UPDATE [Movie Tape]
+                            SET 
+                            Title = @title,
+                            [Description] = @description,
+                            ActorID = @actorId,
+                            GenreID = @genreId,
+                            RentalCharge =@price,
+                            ReleaseDate =@releaseDate,
+                            ImagePath =@imagePath,
+                            IsAvailable =@isAvailable
+                            WHERE TapeID = @tapeId;";
+                var pms = new Dictionary<string, object>
+                {
+                    {@"title", item.title},
+                    {"@description", item.description},
+                    { @"actorId", item.actorId},
+                    {@"genreId", item.genreId},
+                    {@"price", item.rentalCharge},
+                    {@"releaseDate", item.releaseDate},
+                    {@"imagePath", item.imagePath},
+                    {"@isAvailable", false},
+                    {"@tapeId", item.id}
+                };
+                DatabaseManager.InsertData(qry, pms);
+
             }
             
             // Remove items from cart
@@ -341,6 +367,9 @@ namespace MovieRental
             {
                 { "@UID", ApplicationForm.globalUID }
             });
+
+
+
             // Clear the cart items from the UI
             cartItemsPanel.Controls.Clear();
             totalLabel.Text = "Total: $0.00";

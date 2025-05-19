@@ -15,7 +15,6 @@ namespace MovieRental.ProfilePages
         private Panel navigationBar;
         private Button backButton;
         private Button homeButton;
-        private Button logoutButton; // <-- New field
 
         public UserProfile()
         {
@@ -34,7 +33,6 @@ namespace MovieRental.ProfilePages
             navigationBar = new Panel();
             backButton = new Button();
             homeButton = new Button();
-            logoutButton = new Button(); // <-- Initialize new button
 
             SuspendLayout();
 
@@ -69,11 +67,28 @@ namespace MovieRental.ProfilePages
             homeButton.Cursor = Cursors.Hand;
             homeButton.Click += (s, e) =>
             {
-               
+                // Navigate to home page
+                var homeForm = new ApplicationForm();
+                homeForm.Show();
                 this.Close();
             };
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
             homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;
+
+            navigationBar.Controls.Add(backButton);
+            navigationBar.Controls.Add(homeButton);
+
+            // --- Main Panel ---
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.BackColor = Color.FromArgb(52, 73, 94);
+            mainPanel.Padding = new Padding(40, 20, 40, 40);
+
+            // --- Title Label ---
+            titleLabel.Text = "My Profile";
+            titleLabel.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
+            titleLabel.ForeColor = Color.FromArgb(52, 152, 219);
+            titleLabel.AutoSize = true;
+            titleLabel.Location = new Point(0, 20);
 
             // --- Edit Profile Button ---
             editProfileButton.Text = "✎ Edit Profile";
@@ -97,40 +112,6 @@ namespace MovieRental.ProfilePages
             {
                 editProfileButton.ForeColor = Color.WhiteSmoke;
             };
-
-            // --- Logout Button ---
-            logoutButton.Text = "🚪 Logout";
-            logoutButton.BackColor = Color.FromArgb(231, 76, 60); // Red color
-            logoutButton.ForeColor = Color.White;
-            logoutButton.FlatStyle = FlatStyle.Flat;
-            logoutButton.Font = new Font("Segoe UI", 11F);
-            logoutButton.Size = new Size(120, 40);
-            logoutButton.Location = new Point(navigationBar.Width - 280, 10);
-            logoutButton.Cursor = Cursors.Hand;
-            logoutButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            logoutButton.FlatAppearance.BorderSize = 0;
-            logoutButton.Click += LogoutButton_Click;
-            logoutButton.MouseEnter += (s, e) => logoutButton.BackColor = Color.FromArgb(192, 57, 43);
-            logoutButton.MouseLeave += (s, e) => logoutButton.BackColor = Color.FromArgb(231, 76, 60);
-
-            navigationBar.Controls.AddRange(new Control[] {
-                backButton,
-                homeButton,
-                logoutButton,
-                editProfileButton
-            });
-
-            // --- Main Panel ---
-            mainPanel.Dock = DockStyle.Fill;
-            mainPanel.BackColor = Color.FromArgb(52, 73, 94);
-            mainPanel.Padding = new Padding(40, 20, 40, 40);
-
-            // --- Title Label ---
-            titleLabel.Text = "My Profile";
-            titleLabel.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
-            titleLabel.ForeColor = Color.FromArgb(52, 152, 219);
-            titleLabel.AutoSize = true;
-            titleLabel.Location = new Point(0, 20);
 
             // Add Edit Profile button to navigation bar instead of main panel
             navigationBar.Controls.Add(editProfileButton);
@@ -166,7 +147,7 @@ namespace MovieRental.ProfilePages
         }
 
 
-        private Panel CreateMoviePanel(string title, DateTime rentalDate, DateTime returnDate, string status, string imageUrl)
+        private Panel CreateMoviePanel(string title, DateTime rentalDate, DateTime returnDate, string status, string imageUrl = null)
         {
             Panel moviePanel = new Panel
             {
@@ -318,26 +299,35 @@ namespace MovieRental.ProfilePages
                 imagePath = reader.GetString(7),
                 isAvailable = reader.GetBoolean(8)
             });
-            
-            string rentQuery = $"SELECT RentDate, DATEADD(MONTH, 1, RentDate) AS ReturnDate FROM Rents WHERE UID = {ApplicationForm.globalUID}";
 
-             List<Rented> rentedList = DatabaseManager.FetchData(rentQuery, reader => new Rented
+            // // TODO : if the moviesList is empty, show a message
+            // if (moviesList.Count == 0)
+            // {
+            //     Label noMoviesLabel = new Label
+            //     {
+            //         Text = "No rented movies found.",
+            //         Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+            //         ForeColor = Color.White,
+            //         AutoSize = true,
+            //         Location = new Point(20, 20)
+            //     };
+            //     moviesFlowPanel.Controls.Add(noMoviesLabel);
+            // }
+            MessageBox.Show($"yarab nebda2 ");
+            string rentquery = $"SELECT RENTDate, ReturnDate Fromm Rents where UID = {ApplicationForm.globalUID}";
+             List<Rented> rentedList = DatabaseManager.FetchData(query, reader => new Rented
              {
                 rentDate = reader.GetDateTime(0),
                 returnDate = reader.GetDateTime(1)
             });
-            
             for (int i = 0; i < moviesList.Count; i++)
             {
-                string imageFileName = moviesList[i].imagePath;
-                string assetsPath = Path.Combine(Application.StartupPath, "..", "..", "..", "..", "Assets", imageFileName);
-                assetsPath = Path.GetFullPath(assetsPath);
+                MessageBox.Show($"yarab ne5las {rentedList[i].rentDate} | {rentedList[i].returnDate}");
                 var moviePanel = CreateMoviePanel(
                 moviesList[i].title,
                 rentedList[i].rentDate,
                 rentedList[i].returnDate,
-                "Rented",
-                assetsPath
+                moviesList[i].imagePath
                 );
                 moviesFlowPanel.Controls.Add(moviePanel);
             }
@@ -355,16 +345,6 @@ namespace MovieRental.ProfilePages
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void LogoutButton_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", 
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Application.Restart();
-                Environment.Exit(0);
-            }
         }
     }
 
@@ -569,17 +549,18 @@ namespace MovieRental.ProfilePages
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            // TODO: Validate and save user data to database
             if (ValidateInputs())
             {
-                string query = @"UPDATE Customer SET Name = @name, Email = @email, PhoneNUM = @phone, Address = @address, BusinessAddress = @business WHERE UID = @UID";
+                // TODO : update the data in the database 
+                string query = $"UPDATE Customer SET Name = '@name', Email = '@email', Phone = '@phone', ResidenceAddress = '@address', BusinessAddress = '@business' WHERE UID = {ApplicationForm.globalUID}";
                 var parameters = new Dictionary<string, object>
             {
                 {@"name", textBoxName.Text},
                 {@"email", textBoxPhone.Text},
-                {@"phone", textBoxPhone.Text},
-                {@"address", textBoxResidenceAddress.Text},
-                {@"business",textBoxBusinessAddress.Text},
-                {@"UID", ApplicationForm.globalUID}
+                {@"phone", textBoxPhone},
+                {@"address", textBoxResidenceAddress},
+                {@"business",textBoxBusinessAddress},
 
             };
                 DatabaseManager.InsertData(query, parameters);

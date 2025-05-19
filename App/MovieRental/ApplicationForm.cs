@@ -134,7 +134,7 @@ namespace MovieRental
             };
 
             // Style the content panel with shadow
-            contentPanel.BackColor = Color.FromArgb(52, 73, 94);  // Slightly lighter than background
+            contentPanel.BackColor = Color.FromArgb(52, 73, 94);
             contentPanel.Padding = new Padding(20);
             contentPanel.Margin = new Padding(20);
             contentPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -184,7 +184,6 @@ namespace MovieRental
 
             // Set Movies as default active tab
             AnimateTabSwitch(loadMovieBtn, loadGenreBtn, false);
-            // //MessageBox.Show($"Welcome to Rented! Please select a tab to get{globalUID}");
         }
 
         private Button CreateIconButton(string icon, string text)

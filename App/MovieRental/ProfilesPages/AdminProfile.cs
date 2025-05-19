@@ -402,11 +402,16 @@ namespace MovieRental.ProfilePages
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    // TODO: Add your database insertion code here using:
-                    // form.AdminName
-                    // form.AdminEmail
-                    // form.AdminPhone
-                    // form.AdminPassword
+                    string query = @"INSERT INTO Admin ([name], Email, PhoneNum, [password]) VALUES (@name, @email, @phoneNum, @password);";
+                    var parameters = new Dictionary<string, object>
+                    {
+                        {@"name", form.AdminName},
+                        {"@email", form.AdminEmail},
+                        { @"phoneNum", form.AdminPhone},
+                        {@"password", form.AdminPassword}
+                    };
+                    DatabaseManager.InsertData(query, parameters);
+
                     
                     MessageBox.Show("Admin added successfully!", "Success", 
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
