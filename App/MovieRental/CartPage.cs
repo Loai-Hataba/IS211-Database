@@ -15,15 +15,14 @@ namespace MovieRental
         private Label titleLabel;
         private Label totalLabel;
         private Button checkoutButton;
-        private ApplicationForm homePage;
-        
+       
 
 
         public CartPage(ApplicationForm homepage)
         {
             InitializeComponent();
             LoadCartItems();
-            this.homePage = homePage;
+            
         }
 
         private void InitializeComponent()
@@ -74,8 +73,7 @@ namespace MovieRental
             homeButton.FlatAppearance.BorderSize = 0;
             homeButton.Click += (s, e) =>
             {
-                homePage.Show();
-                this.Hide();
+              this.Close();
             };
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);
             homeButton.MouseLeave += (s, e) => homeButton.ForeColor = Color.WhiteSmoke;

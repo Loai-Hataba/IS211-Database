@@ -91,10 +91,7 @@ namespace MovieRental
             homeButton.FlatAppearance.BorderSize = 0;
             homeButton.Click += (s, e) =>
             {
-                var homeForm = new ApplicationForm();
-                homeForm.Show();
                 this.Close();
-                homeForm.BringToFront();
             };
             
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);

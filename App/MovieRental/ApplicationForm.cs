@@ -14,14 +14,16 @@ namespace MovieRental
         private Panel activeIndicator;
         private Button userProfileButton;
         private Button cartButton;
-        private Form currentProfilePage;
+        private static Form currentProfilePage;
         public static int globalUID;
 
+             private bool isAdmin = false;
         public ApplicationForm(int UID = 0, bool isAdmin = false)
         {
             InitializeComponent();
             CustomizeComponents();
             loadMovieBtn_Click(this, EventArgs.Empty); // Call Movies tab load at startup
+            this.isAdmin = isAdmin;
             if (isAdmin)
             {
                 currentProfilePage = new AdminProfile();
@@ -94,6 +96,11 @@ namespace MovieRental
             userProfileButton.Margin = new Padding(10, 0, 0, 0);
             userProfileButton.Click += (s, e) =>
             {
+                if (currentProfilePage == null || currentProfilePage.IsDisposed)
+                {
+                    // Recreate the profile page if it's null or disposed
+                    currentProfilePage = isAdmin ? new AdminProfile() : new UserProfile();
+                }
                 currentProfilePage.Show();
             };
 

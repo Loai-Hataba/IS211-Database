@@ -67,9 +67,7 @@ namespace MovieRental.ProfilePages
             homeButton.Cursor = Cursors.Hand;
             homeButton.Click += (s, e) =>
             {
-                // Navigate to home page
-                var homeForm = new ApplicationForm();
-                homeForm.Show();
+               
                 this.Close();
             };
             homeButton.MouseEnter += (s, e) => homeButton.ForeColor = Color.FromArgb(52, 152, 219);

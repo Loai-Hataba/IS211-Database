@@ -2341,23 +2341,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\loaiw\\.nuget\\packages\\": {},
+    "C:\\Users\\abdal\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
+      "projectUniqueName": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\Test\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
       "projectName": "MovieRental",
-      "projectPath": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
-      "packagesPath": "C:\\Users\\loaiw\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\SQL\\IS211-Database\\App\\MovieRental\\obj\\",
+      "projectPath": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\Test\\IS211-Database\\App\\MovieRental\\MovieRental.csproj",
+      "packagesPath": "C:\\Users\\abdal\\.nuget\\packages\\",
+      "outputPath": "G:\\FCAI\\2nd Year\\2nd Term\\Data Base\\Project\\Test\\IS211-Database\\App\\MovieRental\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\loaiw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\abdal\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
