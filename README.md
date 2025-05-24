@@ -1,6 +1,8 @@
 # IS211-Database: Movie Renting System
 
 A database project for an online Movie Renting System. This application allows users to browse and rent movies, with all data managed via a connected Microsoft SQL Server database.
+
+
 Note: Here is a more thorough indexing of the repo "https://deepwiki.com/Loai-Hataba/IS211-Database"
 
 ## Table of Contents
@@ -11,7 +13,6 @@ Note: Here is a more thorough indexing of the repo "https://deepwiki.com/Loai-Ha
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## About
@@ -99,10 +100,6 @@ Contributions are welcome! Please open issues or submit pull requests for any ch
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
 4. Push to the branch (`git push origin feature/AmazingFeature`).
 5. Open a pull request.
-
-## License
-
-_No license has been specified. Please add a license if you intend to share or reuse this project._
 
 ## Contact
 
